@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed":"#ffdbcf","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","tertiary-fixed-dim":"#4edea3","surface-tint":"#a93800","surface-bright":"#f8f9ff","secondary":"#545f73","outline":"#8f7065","on-error-container":"#93000a","surface-variant":"#d3e4fe","tertiary-container":"#00855b","inverse-surface":"#213145","secondary-fixed":"#d8e3fb","on-surface":"#0b1c30","tertiary":"#006947","on-secondary-fixed":"#111c2d","on-tertiary-container":"#f5fff6","on-secondary-container":"#586377","surface-container-low":"#eff4ff","inverse-primary":"#ffb59b","outline-variant":"#e4beb2","secondary-fixed-dim":"#bcc7de","inverse-on-surface":"#eaf1ff","on-secondary":"#ffffff","surface":"#f8f9ff","on-tertiary-fixed-variant":"#005236","surface-container-lowest":"#ffffff","on-background":"#0b1c30","on-error":"#ffffff","primary-fixed-dim":"#ffb59b","surface-container":"#e5eeff","surface-container-highest":"#d3e4fe","on-surface-variant":"#5b4137","on-tertiary-fixed":"#002113","on-tertiary":"#ffffff","on-primary-fixed":"#380d00","background":"#f8f9ff","tertiary-fixed":"#6ffbbe","primary-container":"#ce4700","error-container":"#ffdad6","on-primary-fixed-variant":"#812900","on-primary":"#ffffff","primary":"#a53700","on-secondary-fixed-variant":"#3c475a","on-primary-container":"#fffbff","error":"#ba1a1a","secondary-container":"#d5e0f8"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{},fontFamily:{headline:["Plus Jakarta Sans"],display:["Plus Jakarta Sans"],body:["Plus Jakarta Sans"],label:["Plus Jakarta Sans"]},fontSize:{}}}}</script></head><body class="bg-surface font-body text-on-surface min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-6 flex items-center gap-3 bg-surface-container-lowest"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm"><span class="material-symbols-outlined text-2xl">restaurant</span></div><div class="flex flex-col"><span class="font-headline font-bold text-lg text-on-surface leading-tight tracking-tight">IntraEats</span><span class="font-label text-xs text-on-surface-variant font-semibold tracking-wider uppercase">Pulse Core</span></div></div><div class="px-4 py-2"><div class="bg-surface-container-low rounded-lg p-2.5 flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span class="font-label text-xs font-semibold text-on-surface">Kiosk Terminals</span></div><span class="text-[11px] font-bold text-tertiary px-1.5 py-0.5 rounded bg-surface-container-lowest shadow-sm">SYNCED</span></div></div><nav class="flex flex-col gap-1 px-3 mt-2" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-sm"><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium text-sm hover:bg-surface-container hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium text-sm hover:bg-surface-container hover:text-on-surface transition-all" data-path="attendance" href="#"><span class="material-symbols-outlined text-xl">more_time</span><span>Attendance</span></a><a aria-current="page" class="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all bg-primary-container text-on-primary-container font-semibold shadow-sm" data-path="employees" href="#"><span class="material-symbols-outlined text-xl">badge</span><span>Employees</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium text-sm hover:bg-surface-container hover:text-on-surface transition-all" data-path="projects" href="#"><span class="material-symbols-outlined text-xl">folder_shared</span><span>Projects</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium text-sm hover:bg-surface-container hover:text-on-surface transition-all" data-path="reports" href="#"><span class="material-symbols-outlined text-xl">bar_chart</span><span>Reports</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium text-sm hover:bg-surface-container hover:text-on-surface transition-all" data-path="admin-users" href="#"><span class="material-symbols-outlined text-xl">manage_accounts</span><span>Admin Users</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-medium text-sm hover:bg-surface-container hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-xl">settings</span><span>Settings</span></a></nav></div><div class="p-4 bg-surface-container-low m-3 rounded-xl flex flex-col gap-2"><div class="flex items-center justify-between text-xs text-on-surface-variant font-semibold"><span>BUILD VER</span><span class="text-primary font-bold">v3.4.2-rel</span></div><div class="flex items-center gap-2 text-xs text-on-surface-variant"><span class="material-symbols-outlined text-sm text-tertiary">cloud_done</span><span>Cloud DB Active</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-8"><div class="flex items-center gap-4 flex-1 max-w-lg"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span><input class="w-full pl-9 pr-4 py-2 rounded-lg bg-surface-container-low text-xs text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search employee, badge ID, department..." type="text"/></div></div><div class="flex items-center gap-4"><div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low font-label text-xs font-semibold text-on-surface"><span class="material-symbols-outlined text-primary text-sm">schedule</span><span>EST Live: 09:41 AM</span></div><button class="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label text-xs font-bold shadow-sm transition-all" type="button"><span class="material-symbols-outlined text-base">add</span><span>Add Record</span></button><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-3 pl-3 bg-surface-container-lowest"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1X8-GCMEvQVmnwuKtt77xQUG2iTWpZuREwQ_4FL2d36rdWwuyirpFEKQ-dXZsKrGqhkR8cizWtGp7ikWMB1m3voIVypGLedyxB1bvkbiXNNLYai-WqG3_GgvjESxPNIcAfypyT3SqfLTbs4wgxlhJ0dh5Cv5BPkhTiqe9awoyxe2RgiZpFSRsVc_BShYh7BgI4lXGKEvVDcGUQFC-i8chDXsDBrybxkd_-BmW9lEOdOwSnV9pC2F1hBQG-3L5CcVHh9HrUVSlxdKw"/><div class="hidden xl:flex flex-col text-left"><span class="text-xs font-headline font-bold text-on-surface leading-none">Super Admin</span><span class="text-[11px] font-body text-on-surface-variant leading-tight">hr@intraeats.com</span></div></div></div></header><main class="flex-1 w-full pt-16 px-8 py-8 bg-surface"><div class="flex flex-col w-full gap-8">
+<!-- Top Headline & Action Controls -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-[11px] font-bold tracking-wide uppercase">Workforce Core</span>
+<span class="text-xs text-secondary font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Live DB Sync: Cluster Alpha
+        </span>
+</div>
+<h1 class="text-3xl font-extrabold text-on-surface tracking-tight font-headline mt-1">Employee Management</h1>
+<p class="text-sm text-secondary font-body mt-0.5">Directory of 126 active personnel, department allocations, and employee codes.</p>
+</div>
+<!-- Top Action Buttons -->
+<div class="flex items-center flex-wrap gap-2.5">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold shadow-sm transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-base text-secondary">file_download</span>
+<span>Export Directory</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold shadow-sm transition-all duration-150" type="button">
+<span class="material-symbols-outlined text-base text-secondary">upload_file</span>
+<span>Bulk Import</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary text-xs font-bold shadow-md hover:shadow-lg transition-all duration-150 transform active:scale-95" id="openModalBtn" type="button">
+<span class="material-symbols-outlined text-base">person_add</span>
+<span>+ Add New Employee</span>
+</button>
+</div>
+</div>
+<!-- Key Metrics Bento Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-secondary">Total Staff</span>
+<div class="text-3xl font-extrabold text-on-surface tracking-tight font-headline mt-1.5">126</div>
+</div>
+<div class="w-11 h-11 rounded-xl bg-primary-fixed flex items-center justify-center text-primary shadow-inner">
+<span class="material-symbols-outlined text-2xl">groups</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4 pt-3 bg-surface-container-low/60 -mx-5 -mb-5 px-5 py-2.5">
+<span class="text-tertiary flex items-center text-xs font-bold">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 98.4%
+        </span>
+<span class="text-[11px] text-secondary">operational quota filled</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-secondary">Full-Time Personnel</span>
+<div class="text-3xl font-extrabold text-on-surface tracking-tight font-headline mt-1.5">98</div>
+</div>
+<div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center text-secondary shadow-inner">
+<span class="material-symbols-outlined text-2xl">badge</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4 pt-3 bg-surface-container-low/60 -mx-5 -mb-5 px-5 py-2.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="text-[11px] text-secondary font-medium">77.7% of total company roster</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-secondary">Contract &amp; Shift</span>
+<div class="text-3xl font-extrabold text-on-surface tracking-tight font-headline mt-1.5">28</div>
+</div>
+<div class="w-11 h-11 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shadow-inner">
+<span class="material-symbols-outlined text-2xl">timelapse</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4 pt-3 bg-surface-container-low/60 -mx-5 -mb-5 px-5 py-2.5">
+<span class="text-xs font-bold text-primary">14 Kiosks</span>
+<span class="text-[11px] text-secondary">active floor operations</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl shadow-sm flex flex-col justify-between relative overflow-hidden group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-bold uppercase tracking-wider text-secondary">New Onboards (This Month)</span>
+<div class="text-3xl font-extrabold text-tertiary tracking-tight font-headline mt-1.5">+6</div>
+</div>
+<div class="w-11 h-11 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed shadow-inner">
+<span class="material-symbols-outlined text-2xl">how_to_reg</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4 pt-3 bg-surface-container-low/60 -mx-5 -mb-5 px-5 py-2.5">
+<span class="text-[11px] font-bold text-tertiary bg-tertiary-container/10 px-1.5 py-0.5 rounded">All Verified</span>
+<span class="text-[11px] text-secondary">KYC &amp; Biometrics complete</span>
+</div>
+</div>
+</div>
+<!-- Filter & Search Controls Bar -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm flex flex-col xl:flex-row gap-4 items-stretch xl:items-center justify-between">
+<!-- Search Bar -->
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-secondary text-lg">manage_search</span>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface-container-low text-xs font-medium text-on-surface placeholder:text-secondary focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" id="directorySearch" placeholder="Search by Employee Code (e.g. INTRA-EMP-001), Name, ID, Department..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold bg-surface-container-high text-secondary px-1.5 py-0.5 rounded">⌘ K</button>
+</div>
+<!-- Dropdown Filters -->
+<div class="flex flex-wrap items-center gap-2.5">
+<!-- Department Filter -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-2 rounded-xl text-xs">
+<span class="material-symbols-outlined text-secondary text-sm">domain</span>
+<select class="bg-transparent font-medium text-on-surface focus:outline-none text-xs cursor-pointer">
+<option value="all">All Departments</option>
+<option value="tech">Technology (42)</option>
+<option value="design">Design &amp; Brand (18)</option>
+<option value="ops">Operations &amp; Logistics (34)</option>
+<option value="marketing">Growth &amp; Marketing (16)</option>
+<option value="hr">People Ops &amp; HR (16)</option>
+</select>
+</div>
+<!-- Employment Type Filter -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-2 rounded-xl text-xs">
+<span class="material-symbols-outlined text-secondary text-sm">work_outline</span>
+<select class="bg-transparent font-medium text-on-surface focus:outline-none text-xs cursor-pointer">
+<option value="all">Employment: All</option>
+<option value="full-time">Full-Time (98)</option>
+<option value="contract">Contract (18)</option>
+<option value="shift">Shift Personnel (10)</option>
+</select>
+</div>
+<!-- Status Filter -->
+<div class="flex items-center gap-1.5 bg-surface-container-low px-3 py-2 rounded-xl text-xs">
+<span class="material-symbols-outlined text-secondary text-sm">filter_alt</span>
+<select class="bg-transparent font-medium text-on-surface focus:outline-none text-xs cursor-pointer">
+<option value="all">Status: All</option>
+<option value="active">Active (118)</option>
+<option value="leave">On Leave (5)</option>
+<option value="inactive">Inactive (3)</option>
+</select>
+</div>
+<!-- Reset / View toggles -->
+<button class="p-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-secondary hover:text-on-surface transition-colors" title="Reset Filters">
+<span class="material-symbols-outlined text-base">restart_alt</span>
+</button>
+<div class="flex items-center bg-surface-container-low p-1 rounded-xl">
+<button class="p-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-xs" title="Table View">
+<span class="material-symbols-outlined text-sm">view_list</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-on-surface" title="Grid Bento View">
+<span class="material-symbols-outlined text-sm">grid_view</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Master Employee Table Container -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col">
+<!-- Active Table Meta -->
+<div class="px-6 py-4 flex items-center justify-between bg-surface-container-lowest border-b-0">
+<div class="flex items-center gap-3">
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface font-headline">Directory Personnel Roster</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed text-[11px] font-bold">126 Records</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-secondary">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-tertiary"></span> 118 Active</span>
+<span class="text-surface-container-highest">|</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> 5 On Leave</span>
+<span class="text-surface-container-highest">|</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-error"></span> 3 Inactive</span>
+</div>
+</div>
+<!-- Responsive Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left text-xs whitespace-nowrap">
+<thead class="bg-surface-container-low text-secondary uppercase font-label text-[11px] tracking-wider select-none">
+<tr>
+<th class="px-6 py-3.5 font-bold">
+<input class="rounded accent-primary text-primary focus:ring-0 cursor-pointer" type="checkbox"/>
+</th>
+<th class="px-4 py-3.5 font-bold">Employee</th>
+<th class="px-4 py-3.5 font-bold">Unique Code</th>
+<th class="px-4 py-3.5 font-bold">Department &amp; Role</th>
+<th class="px-4 py-3.5 font-bold">Assigned Project</th>
+<th class="px-4 py-3.5 font-bold">Joining Date</th>
+<th class="px-4 py-3.5 font-bold">Shift Schedule</th>
+<th class="px-4 py-3.5 font-bold">Status</th>
+<th class="px-6 py-3.5 font-bold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent font-body text-on-surface">
+<!-- Row 1: Rahul Das -->
+<tr class="hover:bg-primary-fixed/20 transition-colors duration-150 group">
+<td class="px-6 py-4">
+<input class="rounded accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Close up modern business headshot of Rahul Das, a young South Asian software engineer smiling in an open creative office with bright natural lighting and warm amber accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3HfMSfdiHkELdZmdaptKQcqAWxgE9TnJyh3j8wPAVoqPdoaB8wpflzc6PMVUz2qq_b_oXs6DI1LHwKVxbel-K6T6_MMJzJeWOFwUKrIONqqtwM6U14oHBhvJ3EQe4WHR1A9DE1_KD5F9VGpiWR-KgGrfssrYAdZ3qKJHOv_MV3lgbPUNpxoB5AnXhGlOn5GqtWR8Gb8hUFLTqR4kqtevAn02PtjHf2mg-9mAoMAwTOmEajqGoc69V"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline text-xs group-hover:text-primary transition-colors">Rahul Das</span>
+<span class="text-[11px] text-secondary">IE001 • rahul.d@intraeats.com</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-mono text-[11px] font-bold text-on-surface">
+<span>INTRA-EMP-001</span>
+<button class="hover:text-primary transition-colors" onclick="navigator.clipboard.writeText('INTRA-EMP-001')" title="Copy Employee Code" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Technology</span>
+<span class="text-[11px] text-secondary">Lead Software Developer</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="px-2.5 py-1 rounded-md bg-secondary-container/70 text-on-secondary-fixed text-[11px] font-semibold">Pulse Terminal v2</span>
+</td>
+<td class="px-4 py-4 text-secondary font-medium">Jan 12, 2022</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span>
+<span>09:00 AM - 06:00 PM</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> Active
+              </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="Attendance History">
+<span class="material-symbols-outlined text-base">history</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="More Options">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Priya Sharma -->
+<tr class="hover:bg-primary-fixed/20 transition-colors duration-150 group">
+<td class="px-6 py-4">
+<input class="rounded accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Professional studio portrait of Priya Sharma, a young female Indian UI UX designer wearing modern creative attire, soft warm studio lighting, clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ0ZKcvaPmF-Lz0yqbod3ZwTPcZHlCgj9x0g1u7NhvMS8DzsWHZopa3-ucIxFOHp7NlZkboT_mW7kuGHrysnp2Q0w5vpeJz6Rz2ppxR6KbcMzKbfi-nTiLCghIH4SVyYzeOL8ChE8NfVm90HScPtD6O_UFtjWAfxY-UGWzThW6_uC-JEN6di2_QXWvmXFk1Hs8VqeIPvlob5OMULNSRPsddssvZXG5ozF9yn3ZoWZ62UjvJMZOprfK"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline text-xs group-hover:text-primary transition-colors">Priya Sharma</span>
+<span class="text-[11px] text-secondary">IE002 • priya.s@intraeats.com</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-mono text-[11px] font-bold text-on-surface">
+<span>INTRA-EMP-002</span>
+<button class="hover:text-primary transition-colors" onclick="navigator.clipboard.writeText('INTRA-EMP-002')" title="Copy Employee Code" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Design &amp; Brand</span>
+<span class="text-[11px] text-secondary">Senior Product Designer</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="px-2.5 py-1 rounded-md bg-secondary-container/70 text-on-secondary-fixed text-[11px] font-semibold">Kiosk UI Redesign</span>
+</td>
+<td class="px-4 py-4 text-secondary font-medium">Mar 04, 2022</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span>
+<span>09:30 AM - 06:30 PM</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Active
+              </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="Attendance History">
+<span class="material-symbols-outlined text-base">history</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="More Options">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Arjun Singh -->
+<tr class="hover:bg-primary-fixed/20 transition-colors duration-150 group">
+<td class="px-6 py-4">
+<input class="rounded accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Portrait of Arjun Singh, male logistics project manager with neatly trimmed beard, confident expression, natural indoor architectural setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA71YaGofzBeL-NPTXgBUrk9fibC2jQxiY1KaQ5tRjh_so1RR0KQ-PspY9ed5cjllBwDBfWglDlNQHbRu4NoVtdAMjV_WUXaLnEOPxsG2S0lDu2_iJhrv1M6VhgMr6JLBuS65n51BQEARnSyut6iWDCQgHOoCAK5TqBjX8teRa1ZClEedLURTDDW5dJeH-2DFriugTiQ3a0fXZKB5axIT889tSUDpMuN5sHLa_UVyRPztNrPWdklOrJ"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline text-xs group-hover:text-primary transition-colors">Arjun Singh</span>
+<span class="text-[11px] text-secondary">IE003 • arjun.s@intraeats.com</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-mono text-[11px] font-bold text-on-surface">
+<span>INTRA-EMP-003</span>
+<button class="hover:text-primary transition-colors" onclick="navigator.clipboard.writeText('INTRA-EMP-003')" title="Copy Employee Code" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Operations</span>
+<span class="text-[11px] text-secondary">Senior Project Coordinator</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="px-2.5 py-1 rounded-md bg-secondary-container/70 text-on-secondary-fixed text-[11px] font-semibold">East Coast Hub Launch</span>
+</td>
+<td class="px-4 py-4 text-secondary font-medium">Aug 18, 2022</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span>
+<span>08:00 AM - 05:00 PM</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> On Leave
+              </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="Attendance History">
+<span class="material-symbols-outlined text-base">history</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="More Options">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Ananya Roy -->
+<tr class="hover:bg-primary-fixed/20 transition-colors duration-150 group">
+<td class="px-6 py-4">
+<input class="rounded accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Headshot of Ananya Roy, professional marketing leader with stylish blazer, warm natural smile, culinary food tech office context" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3uCW2W7E8-OO9JXVvgzEA3_6QUOJDBN1EA2PEqi3sARvAOCPVeLBOVCUY6mkYZ4nCTXesuGO_JxiQ3EE6MeCX8SncJDB63tGWbUpotITM_urjWtCL1zgiaHJd_EY8xGg6rWllJXL-B0RYs37RFr9iMRi6QQLk-jRvJjb_FbOLZKGk1lJq7OIFSojg4RxKTBvye_hZ-d7kQ771CfSWiiHqgzBb38wnTQSG22zkV4eDsXYBRQaePdqd"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline text-xs group-hover:text-primary transition-colors">Ananya Roy</span>
+<span class="text-[11px] text-secondary">IE004 • ananya.r@intraeats.com</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-mono text-[11px] font-bold text-on-surface">
+<span>INTRA-EMP-004</span>
+<button class="hover:text-primary transition-colors" onclick="navigator.clipboard.writeText('INTRA-EMP-004')" title="Copy Employee Code" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Growth &amp; Marketing</span>
+<span class="text-[11px] text-secondary">Growth Lead</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="px-2.5 py-1 rounded-md bg-secondary-container/70 text-on-secondary-fixed text-[11px] font-semibold">Enterprise Cafeteria Pilot</span>
+</td>
+<td class="px-4 py-4 text-secondary font-medium">Nov 02, 2022</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span>
+<span>10:00 AM - 07:00 PM</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Active
+              </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="Attendance History">
+<span class="material-symbols-outlined text-base">history</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="More Options">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Vikram Patel -->
+<tr class="hover:bg-primary-fixed/20 transition-colors duration-150 group">
+<td class="px-6 py-4">
+<input class="rounded accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Headshot of Vikram Patel, male cloud systems and devops engineer wearing glasses and dark polo shirt in a high tech operations room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg0k38haFRrgfRLTHaJmx5z1mMAbdIzrvq9dZ0Qwi0yUTpc6MH_oq84oiqzX8Wc3fMmnuPNEntVKFY37I0XTZ2-w0Q3Mblc45T5beqpwSFVCPS57lu8-haWm1G2wyr-l6sImAPo7nGtoXzH0TbpZWPlpAxQpbg9YGztMb4iHg2iPZ07AIfkGTyP6ESEf6WchsS4nDr22xDU1pVvjQgeo9OWzlrFf8M4_p7T1e6jbEn285D4WK7FtoH"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline text-xs group-hover:text-primary transition-colors">Vikram Patel</span>
+<span class="text-[11px] text-secondary">IE005 • vikram.p@intraeats.com</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-mono text-[11px] font-bold text-on-surface">
+<span>INTRA-EMP-005</span>
+<button class="hover:text-primary transition-colors" onclick="navigator.clipboard.writeText('INTRA-EMP-005')" title="Copy Employee Code" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Technology</span>
+<span class="text-[11px] text-secondary">DevOps &amp; Cloud Architect</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="px-2.5 py-1 rounded-md bg-secondary-container/70 text-on-secondary-fixed text-[11px] font-semibold">AWS Edge Migration</span>
+</td>
+<td class="px-4 py-4 text-secondary font-medium">Jan 10, 2023</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span>
+<span>08:30 AM - 05:30 PM</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Active
+              </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="Attendance History">
+<span class="material-symbols-outlined text-base">history</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="More Options">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Sneha Kulkarni -->
+<tr class="hover:bg-primary-fixed/20 transition-colors duration-150 group">
+<td class="px-6 py-4">
+<input class="rounded accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Professional headshot of Sneha Kulkarni, HR generalist woman in smart casual attire, well lit bright conference room setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7Ws3wMvDxplIcLZ48B9wttIKrP6fPiDL48PId9oN0suTlk027Y9h_zz4eVFUEcHX9x6xguRM3reee5MKxN6Y_LmEA-AoGr8YSDPQzEc1YJYpCPsEZvqX5G9yp9QMW4dIun0KJ_ZhOU_2DsVPJ_JoezzjQKak95BxHthytPRbXiCPmHuRObfmLbuF-DToekPqxdqRBEpNdX7o6gutDFNSkPzvYxFnTg3AyV5bWPApuMyNN-sIE8t12"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline text-xs group-hover:text-primary transition-colors">Sneha Kulkarni</span>
+<span class="text-[11px] text-secondary">IE006 • sneha.k@intraeats.com</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-mono text-[11px] font-bold text-on-surface">
+<span>INTRA-EMP-006</span>
+<button class="hover:text-primary transition-colors" onclick="navigator.clipboard.writeText('INTRA-EMP-006')" title="Copy Employee Code" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">People &amp; Culture</span>
+<span class="text-[11px] text-secondary">HR Generalist</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="px-2.5 py-1 rounded-md bg-secondary-container/70 text-on-secondary-fixed text-[11px] font-semibold">Pulse Onboarding 2025</span>
+</td>
+<td class="px-4 py-4 text-secondary font-medium">May 15, 2023</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span>
+<span>09:00 AM - 06:00 PM</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Active
+              </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="Attendance History">
+<span class="material-symbols-outlined text-base">history</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="More Options">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 7: Marcus Vance -->
+<tr class="hover:bg-primary-fixed/20 transition-colors duration-150 group">
+<td class="px-6 py-4">
+<input class="rounded accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Portrait of Marcus Vance, field kitchen operations lead with chef jacket and modern black apron in a high volume catering production facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEYxmUxuXALqH9D2_bWcV-8r2Y-3_GNQCwX20S7RQCIBJM7GLt8svwjFqBktFu8RfnoE_83VoYdc853UUgsQ-5qUexoIdzh7nSVnxwdTGyBhcmfjKi76jP7_QgAAM7QmOYYUxkdzxOufL2UUt8U5HmBgNm5Od6Kebd3NIOKs1hso2TvvxNWHPT8dY2qG__WfsQ5tXAHz8gLDNqebRDRbVWp6V7Ko-2qGqNBXIqji9r8_NuQVFLUui9"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-tertiary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline text-xs group-hover:text-primary transition-colors">Marcus Vance</span>
+<span class="text-[11px] text-secondary">IE007 • marcus.v@intraeats.com</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-mono text-[11px] font-bold text-on-surface">
+<span>INTRA-EMP-007</span>
+<button class="hover:text-primary transition-colors" onclick="navigator.clipboard.writeText('INTRA-EMP-007')" title="Copy Employee Code" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Kitchen Operations</span>
+<span class="text-[11px] text-secondary">Executive Line Chef</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="px-2.5 py-1 rounded-md bg-secondary-container/70 text-on-secondary-fixed text-[11px] font-semibold">Corporate Lunch Line A</span>
+</td>
+<td class="px-4 py-4 text-secondary font-medium">Sep 01, 2023</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span>
+<span>06:00 AM - 03:00 PM (Shift)</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Active
+              </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="Attendance History">
+<span class="material-symbols-outlined text-base">history</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="More Options">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 8: Elena Rostova -->
+<tr class="hover:bg-primary-fixed/20 transition-colors duration-150 group">
+<td class="px-6 py-4">
+<input class="rounded accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-9 h-9 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Headshot of Elena Rostova, female data scientist with smart confident posture against clean architectural glass interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyiMrdcVJQeNRV95xHP2giD0xQhVkOgPasq6ujxq1XF019JOoEeWZ4SiIgDgEn54H2rcyNj5_efyRgL5MHZy72Yq8eKiEi3GTG4wADZOUwq1oWbU3rW2Sof4GqSh3lihw1gsUtD7TmdYjNjmf3gGJ1CkG7hn-cRaPcCB1d1EIRHzHDvjbwNSmX3LzXv9YW5yvHTdMnRalVQUZoROdHAFYYjifoHNhg3UW3dTMX0sC1z7ipeUHmEwed"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-error ring-2 ring-surface-container-lowest"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline text-xs group-hover:text-primary transition-colors">Elena Rostova</span>
+<span class="text-[11px] text-secondary">IE008 • elena.r@intraeats.com</span>
+</div>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container font-mono text-[11px] font-bold text-on-surface">
+<span>INTRA-EMP-008</span>
+<button class="hover:text-primary transition-colors" onclick="navigator.clipboard.writeText('INTRA-EMP-008')" title="Copy Employee Code" type="button">
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+</button>
+</div>
+</td>
+<td class="px-4 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Technology</span>
+<span class="text-[11px] text-secondary">Demand Forecast Analyst</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="px-2.5 py-1 rounded-md bg-secondary-container/70 text-on-secondary-fixed text-[11px] font-semibold">Kitchen AI Engine</span>
+</td>
+<td class="px-4 py-4 text-secondary font-medium">Feb 14, 2024</td>
+<td class="px-4 py-4">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-xs text-primary">schedule</span>
+<span>09:00 AM - 06:00 PM</span>
+</div>
+</td>
+<td class="px-4 py-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Inactive
+              </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="View Profile">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-primary transition-colors" title="Attendance History">
+<span class="material-symbols-outlined text-base">history</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="More Options">
+<span class="material-symbols-outlined text-base">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Footer -->
+<div class="px-6 py-4 bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3 text-xs text-secondary">
+<span>Showing <strong class="text-on-surface font-semibold">1-8</strong> of <strong class="text-on-surface font-semibold">126</strong> employees</span>
+<div class="flex items-center gap-1 pl-3 bg-surface-container-low">
+<span class="text-[11px]">Rows per page:</span>
+<select class="bg-surface-container-lowest font-medium text-on-surface rounded-lg px-2 py-1 text-xs focus:outline-none shadow-xs">
+<option>8</option>
+<option>16</option>
+<option>32</option>
+<option>50</option>
+</select>
+</div>
+</div>
+<!-- Pagination Buttons -->
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg bg-surface-container text-secondary hover:text-on-surface disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-base">first_page</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container text-secondary hover:text-on-surface disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-bold text-xs shadow-sm">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs">3</button>
+<span class="px-1 text-secondary text-xs">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs">16</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-secondary hover:text-on-surface">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-secondary hover:text-on-surface">
+<span class="material-symbols-outlined text-base">last_page</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Interactive Slide-out / Modal Drawer for "Add New Employee" -->
+<div class="fixed inset-0 bg-inverse-surface/60 backdrop-blur-sm z-50 flex justify-end transition-opacity duration-300" id="employeeDrawerBackdrop">
+<div class="w-full max-w-2xl bg-surface-container-lowest h-full shadow-2xl flex flex-col justify-between overflow-y-auto transform transition-transform duration-300" id="employeeDrawerPanel">
+<!-- Drawer Header -->
+<div class="p-6 bg-surface-container-low flex items-center justify-between sticky top-0 z-10 shadow-xs">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-xl">person_add</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h2 class="text-lg font-bold font-headline text-on-surface tracking-tight">Register New Employee</h2>
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed text-[10px] font-extrabold uppercase">Live Preview</span>
+</div>
+<span class="text-xs text-secondary font-body">Create employee profile and auto-generate unique IntraEats verification code.</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container hover:bg-surface-container-high text-secondary hover:text-on-surface flex items-center justify-center transition-colors" id="closeModalBtn" type="button">
+<span class="material-symbols-outlined text-base">close</span>
+</button>
+</div>
+<!-- Drawer Form Body -->
+<div class="p-6 flex-1 flex flex-col gap-6">
+<!-- Code Auto-Gen Highlight Card -->
+<div class="p-4 rounded-xl bg-primary-fixed/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">qr_code_2</span>
+<div class="flex flex-col">
+<span class="text-xs text-on-surface-variant font-bold uppercase tracking-wider">Assigned Identity Code</span>
+<span class="font-mono text-base font-extrabold text-primary">INTRA-EMP-011</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[11px] text-secondary font-medium">Internal Badge ID</span>
+<div class="text-xs font-bold text-on-surface">IE011</div>
+</div>
+</div>
+<!-- Section 1: Basic Information -->
+<div class="flex flex-col gap-3">
+<h3 class="text-xs font-bold text-on-surface uppercase tracking-wider font-headline flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> 1. Personnel Details
+          </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Full Name *</label>
+<input class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" placeholder="e.g. Maya Krishnan" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Official Work Email *</label>
+<input class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" placeholder="e.g. maya.k@intraeats.com" type="email"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Mobile Number (SMS verification)</label>
+<input class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" placeholder="+1 (555) 019-2834" type="tel"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Emergency Contact Phone</label>
+<input class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" placeholder="+1 (555) 998-1120" type="tel"/>
+</div>
+</div>
+</div>
+<!-- Section 2: Role & Department -->
+<div class="flex flex-col gap-3 pt-2">
+<h3 class="text-xs font-bold text-on-surface uppercase tracking-wider font-headline flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> 2. Department &amp; Allocation
+          </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Department *</label>
+<select class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner cursor-pointer">
+<option>Technology &amp; Engineering</option>
+<option>Design &amp; UX</option>
+<option>Kitchen &amp; Food Operations</option>
+<option>Growth &amp; Business Development</option>
+<option>People Ops &amp; Admin</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Designation / Role *</label>
+<input class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" placeholder="e.g. Lead QA Automation Engineer" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Employment Contract Type</label>
+<select class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner cursor-pointer">
+<option>Full-Time Regular</option>
+<option>Contract (6 Months)</option>
+<option>Contract (12 Months)</option>
+<option>Frontline Shift Specialist</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Assigned Active Project</label>
+<input class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" placeholder="e.g. Self-Checkout Kiosks v3" type="text"/>
+</div>
+</div>
+</div>
+<!-- Section 3: Schedule & Shift -->
+<div class="flex flex-col gap-3 pt-2">
+<h3 class="text-xs font-bold text-on-surface uppercase tracking-wider font-headline flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> 3. Joining &amp; Operational Schedule
+          </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Official Joining Date</label>
+<input class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner" type="date" value="2025-04-01"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-xs font-semibold text-secondary">Assigned Shift Hours</label>
+<select class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner cursor-pointer">
+<option>Standard Day (09:00 AM - 06:00 PM)</option>
+<option>Early Morning Kitchen (06:00 AM - 03:00 PM)</option>
+<option>Afternoon Prep (12:00 PM - 09:00 PM)</option>
+<option>Night Dispatch &amp; Restock (09:00 PM - 05:00 AM)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Section 4: Notes -->
+<div class="flex flex-col gap-1 pt-2">
+<label class="text-xs font-semibold text-secondary">Internal HR Notes &amp; Kiosk Provisioning</label>
+<textarea class="px-3 py-2 rounded-xl bg-surface-container-low text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary shadow-inner resize-none" placeholder="Provide background check references, catering safety certification numbers, or terminal access permissions..." rows="3"></textarea>
+</div>
+<!-- Biometric verification banner -->
+<div class="p-3.5 rounded-xl bg-surface-container-low flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-xl">fingerprint</span>
+<div class="text-xs">
+<span class="font-bold text-on-surface">Auto-Enroll Biometric ID:</span>
+<span class="text-secondary ml-1">Kiosk terminals will prompt for facial/fingerprint scan upon first clock-in using INTRA-EMP-011.</span>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Action Bar -->
+<div class="p-6 bg-surface-container-low flex items-center justify-between sticky bottom-0 z-10 shadow-[0_-2px_8px_rgba(0,0,0,0.03)]">
+<button class="px-4 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-secondary hover:text-on-surface font-semibold text-xs transition-colors" id="cancelDrawerBtn" type="button">
+          Cancel &amp; Close
+        </button>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs transition-colors" type="button">
+            Save as Draft
+          </button>
+<button class="px-6 py-2.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-bold text-xs shadow-md hover:shadow-lg transition-all flex items-center gap-2" id="saveEmployeeBtn" type="button">
+<span class="material-symbols-outlined text-base">how_to_reg</span>
+<span>Save &amp; Generate Code</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const backdrop = document.getElementById('employeeDrawerBackdrop');
+    const panel = document.getElementById('employeeDrawerPanel');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const cancelBtn = document.getElementById('cancelDrawerBtn');
+    const saveBtn = document.getElementById('saveEmployeeBtn');
+    const searchInput = document.getElementById('directorySearch');
+
+    function openDrawer() {
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+    }
+
+    function closeDrawer() {
+      backdrop.classList.add('hidden');
+      backdrop.classList.remove('flex');
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeDrawer);
+    
+    // Clicking backdrop outside panel closes drawer
+    backdrop.addEventListener('click', function(e) {
+      if (e.target === backdrop) {
+        closeDrawer();
+      }
+    });
+
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function() {
+        const originalText = saveBtn.innerHTML;
+        saveBtn.innerHTML = '<span class="material-symbols-outlined text-base animate-spin">refresh</span> Provisioning...';
+        setTimeout(function() {
+          saveBtn.innerHTML = '<span class="material-symbols-outlined text-base">check</span> Created!';
+          setTimeout(function() {
+            saveBtn.innerHTML = originalText;
+            closeDrawer();
+          }, 800);
+        }, 900);
+      });
+    }
+
+    // Keyboard shortcut CMD+K or Ctrl+K focus search
+    window.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        if (searchInput) searchInput.focus();
+      }
+      if (e.key === 'Escape' && !backdrop.classList.contains('hidden')) {
+        closeDrawer();
+      }
+    });
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest py-4 px-8 shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="flex items-center justify-between text-xs text-on-surface-variant"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-tertiary"></span><span>Real-time Operational Database Connected (Cluster US-East-1)</span></div><p class="font-medium">© 2025 IntraEats Platform. Internal HR &amp; Field Operations.</p></div></footer></div></body></html>

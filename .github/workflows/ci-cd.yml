@@ -1,0 +1,102 @@
+name: CI/CD Pipeline - IntraEats HR & Attendance System
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test-and-build:
+    name: Build & Run Automated Smoke Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP Environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_sqlite, zip, gd, fileinfo, bcmath
+          coverage: none
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Composer Dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Install NPM Dependencies & Build Assets
+        run: |
+          npm ci || npm install
+          npm run build
+
+      - name: Prepare Environment File & Keys
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          touch database/database.sqlite
+
+      - name: Run Database Migrations & Seeders
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: |
+          php artisan migrate --force
+          php artisan db:seed --force
+
+      - name: Execute Automated Feature Tests (8 Tests, 53 Assertions)
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: |
+          php -d memory_limit=512M vendor/bin/phpunit tests/Feature/SystemSmokeTest.php
+
+  deploy-render:
+    name: Deploy to Render (Web Service)
+    needs: test-and-build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Render Deploy Hook
+        env:
+          RENDER_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "$RENDER_HOOK" ]; then
+            echo "Triggering Render deployment webhook..."
+            curl -X POST "$RENDER_HOOK"
+            echo "Render deploy triggered successfully!"
+          else
+            echo "RENDER_DEPLOY_HOOK_URL secret not configured yet."
+            echo "Render can also auto-deploy on push to 'main' when the repo is connected via Render Dashboard!"
+          fi
+
+  deploy-vercel:
+    name: Deploy to Vercel (Serverless)
+    needs: test-and-build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          if [ -n "$VERCEL_TOKEN" ]; then
+            echo "Deploying to Vercel using vercel CLI..."
+            npm install -g vercel
+            vercel --prod --token="$VERCEL_TOKEN" --yes
+          else
+            echo "VERCEL_TOKEN secret not configured in GitHub repository."
+            echo "Vercel can also auto-deploy on push when imported directly from the Vercel Dashboard!"
+          fi

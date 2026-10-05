@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-fixed-dim":"#4edea3","tertiary":"#006947","on-secondary-container":"#586377","secondary-container":"#d5e0f8","secondary-fixed":"#d8e3fb","tertiary-fixed":"#6ffbbe","surface-container-high":"#dce9ff","surface-container-lowest":"#ffffff","tertiary-container":"#00855b","surface-container-highest":"#d3e4fe","surface-tint":"#a93800","on-tertiary-fixed-variant":"#005236","secondary-fixed-dim":"#bcc7de","on-primary":"#ffffff","primary-fixed-dim":"#ffb59b","on-background":"#0b1c30","inverse-surface":"#213145","on-surface-variant":"#5b4137","surface-bright":"#f8f9ff","surface-variant":"#d3e4fe","secondary":"#545f73","error-container":"#ffdad6","error":"#ba1a1a","on-secondary":"#ffffff","on-secondary-fixed":"#111c2d","on-error":"#ffffff","inverse-primary":"#ffb59b","primary-fixed":"#ffdbcf","on-surface":"#0b1c30","on-primary-fixed-variant":"#812900","outline":"#8f7065","surface-dim":"#cbdbf5","primary":"#a53700","on-tertiary-fixed":"#002113","primary-container":"#ce4700","inverse-on-surface":"#eaf1ff","on-error-container":"#93000a","background":"#f8f9ff","surface-container":"#e5eeff","on-primary-fixed":"#380d00","on-primary-container":"#fffbff","surface":"#f8f9ff","outline-variant":"#e4beb2","surface-container-low":"#eff4ff","on-tertiary-container":"#f5fff6","on-tertiary":"#ffffff","on-secondary-fixed-variant":"#3c475a"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin":"2rem","space-xl":"2.5rem","gutter-mobile":"0.75rem","gutter":"1.25rem","space-sm":"0.5rem","space-md":"1rem","margin-mobile":"1rem","space-xs":"0.25rem","space-lg":"1.5rem"},"fontFamily":{"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"display":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"display-mobile":["Plus Jakarta Sans"]},"fontSize":{"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"800"}],"headline-sm":["18px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.005em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"display-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"800"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 bottom-0 w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold shadow-sm">IE</div><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight leading-none truncate">IntraEats</span><span class="font-label-sm text-label-sm font-bold text-primary tracking-wide uppercase truncate">HR Center</span></div></div><div class="px-space-md py-space-xs"><div class="h-px w-full bg-surface-container"></div></div><div class="px-space-md pt-space-xs"><span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-secondary">Workforce Core</span></div><nav class="flex flex-col gap-1 px-space-sm py-space-xs" data-active-classes="bg-primary text-on-primary font-bold shadow-sm"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard-overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="attendance-validation" href="#"><span class="material-symbols-outlined text-[20px]">how_to_reg</span><span>Attendance</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="employees-directory" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span>Employees</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="projects-allocation" href="#"><span class="material-symbols-outlined text-[20px]">assignment</span><span>Projects</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reports-center" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span>Reports</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="admin-security" href="#"><span class="material-symbols-outlined text-[20px]">admin_panel_settings</span><span>Admin Users</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="system-settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span>Settings</span></a></nav></div><div class="flex flex-col p-space-sm gap-space-sm"><div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs text-tertiary font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-bold">Terminal Sync</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Public attendance kiosks are operational.</p><a class="mt-space-xs inline-flex items-center justify-center gap-space-xs py-2 px-space-sm bg-surface-container-lowest hover:bg-surface-container text-primary hover:text-on-surface font-label-md text-label-md rounded-lg transition-all shadow-sm" data-path="employee-portal" href="#"><span class="material-symbols-outlined text-[16px]">open_in_new</span><span>Employee Portal</span></a></div><div class="px-space-xs py-1 flex items-center justify-between text-secondary font-label-sm text-label-sm"><span>v2.4.0 Engine</span><span class="material-symbols-outlined text-[14px]">verified_user</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter"><div class="flex items-center gap-space-md"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-on-surface leading-tight tracking-tight">IntraEats HR</span><span class="font-body-sm text-body-sm text-secondary hidden xl:inline">HR &amp; Attendance Management System</span></div><div class="relative w-80 lg:w-96"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-secondary">search</span><input class="w-full bg-surface-container-low text-on-surface placeholder:text-secondary pl-9 pr-4 py-2 rounded-xl text-body-sm font-body-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search employee, ID, department, project..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1.5 bg-surface-container-low rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container"></span><span class="font-label-md text-label-md text-on-surface">09:42:15 AM EST</span><span class="font-label-sm text-label-sm text-secondary">(Live)</span></div><button class="inline-flex items-center gap-space-xs px-space-sm py-2 bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container font-label-md text-label-md rounded-xl transition-all shadow-sm"><span class="material-symbols-outlined text-[18px]">add</span><span>Add Record</span></button><button class="relative p-2 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-all"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-md text-label-md font-bold text-on-surface leading-tight">Super Admin</span><span class="font-body-sm text-body-sm text-secondary leading-tight">hr@intraeats.com</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida/AEtjO1X8-GCMEvQVmnwuKtt77xQUG2iTWpZuREwQ_4FL2d36rdWwuyirpFEKQ-dXZsKrGqhkR8cizWtGp7ikWMB1m3voIVypGLedyxB1bvkbiXNNLYai-WqG3_GgvjESxPNIcAfypyT3SqfLTbs4wgxlhJ0dh5Cv5BPkhTiqe9awoyxe2RgiZpFSRsVc_BShYh7BgI4lXGKEvVDcGUQFC-i8chDXsDBrybxkd_-BmW9lEOdOwSnV9pC2F1hBQG-3L5CcVHh9HrUVSlxdKw"/></div></div></header><main class="w-full pt-16 flex-1 bg-background px-gutter py-space-md"><div class="flex flex-col w-full">
+<!-- Subtle Dynamic Ambient Halo -->
+<div class="relative w-full overflow-hidden mb-space-lg">
+<div class="absolute -top-24 -right-16 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 -left-20 w-80 h-80 rounded-full bg-secondary-container/40 blur-3xl pointer-events-none"></div>
+<!-- Page Header & Action Command Bar -->
+<div class="relative flex flex-col xl:flex-row xl:items-end justify-between gap-space-md pt-space-xs pb-space-md">
+<div class="flex flex-col gap-1 max-w-3xl">
+<div class="inline-flex items-center gap-space-xs text-primary font-label-sm uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span>Resource Architecture &amp; Shift Analytics</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">
+          Project Management &amp; Workforce Allocation
+        </h1>
+<p class="font-body-md text-body-md text-secondary">
+          Track corporate initiatives, culinary kitchen hubs, and client projects with linked employee shifts and attendance billability.
+        </p>
+</div>
+<div class="flex items-center flex-wrap gap-space-sm">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-md rounded-xl shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px] text-secondary">file_download</span>
+<span>Export Project Audit</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 bg-primary hover:bg-primary-container text-on-primary font-label-md rounded-xl shadow-md hover:shadow-lg transition-all" id="openCreateModalBtn">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+<span>+ Create New Project</span>
+</button>
+</div>
+</div>
+<!-- 4 KPI Overview Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Active Projects</span>
+<span class="font-display text-display font-extrabold text-on-surface tracking-tight mt-1">12</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+</div>
+</div>
+<div class="mt-space-md flex items-center justify-between text-body-sm pt-space-xs">
+<span class="text-secondary font-medium">8 Tech • 4 Culinary</span>
+<span class="font-label-sm text-tertiary font-bold bg-tertiary-fixed/40 px-2 py-0.5 rounded-full">100% Target Met</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Allocated Personnel</span>
+<span class="font-display text-display font-extrabold text-on-surface tracking-tight mt-1">94</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low text-tertiary">
+<span class="material-symbols-outlined text-[24px]">group</span>
+</div>
+</div>
+<div class="mt-space-md flex items-center justify-between text-body-sm pt-space-xs">
+<span class="text-secondary font-medium">Staff Members Assigned</span>
+<span class="font-label-sm text-secondary font-bold bg-surface-container px-2 py-0.5 rounded-full">92% Utilized</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Tracked Hours / Wk</span>
+<span class="font-display text-display font-extrabold text-primary tracking-tight mt-1">3,428</span>
+</div>
+<div class="p-2.5 rounded-xl bg-primary-fixed text-primary">
+<span class="material-symbols-outlined text-[24px]">timer</span>
+</div>
+</div>
+<div class="mt-space-md flex items-center justify-between text-body-sm pt-space-xs">
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span class="text-on-surface font-semibold">98.4%</span>
+<span class="text-secondary">Billable</span>
+</div>
+<span class="font-label-sm text-tertiary font-bold">+184h vs Prev</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Project Punctuality</span>
+<span class="font-display text-display font-extrabold text-on-surface tracking-tight mt-1">94.2%</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low text-tertiary">
+<svg class="w-6 h-6 text-tertiary" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.8"></path>
+<path class="text-tertiary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94.2, 100" stroke-linecap="round" stroke-width="3.8"></path>
+</svg>
+</div>
+</div>
+<div class="mt-space-md flex items-center justify-between text-body-sm pt-space-xs">
+<span class="text-secondary font-medium">On-Time Terminal Check-in</span>
+<span class="font-label-sm text-tertiary font-bold bg-tertiary-fixed/40 px-2 py-0.5 rounded-full">+2.1% SLA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Filter & Project Scope Segment -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm mb-space-md">
+<!-- Filter Tabs -->
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-xl overflow-x-auto" id="filterTabGroup">
+<button class="tab-btn px-space-sm py-1.5 rounded-lg font-label-md text-on-primary bg-primary shadow-sm transition-all" data-tab="all" onclick="filterProjects('all')">
+        All Projects (12)
+      </button>
+<button class="tab-btn px-space-sm py-1.5 rounded-lg font-label-md text-secondary hover:text-on-surface hover:bg-surface-container transition-all" data-tab="active" onclick="filterProjects('active')">
+        Active (8)
+      </button>
+<button class="tab-btn px-space-sm py-1.5 rounded-lg font-label-md text-secondary hover:text-on-surface hover:bg-surface-container transition-all" data-tab="completed" onclick="filterProjects('completed')">
+        Completed (3)
+      </button>
+<button class="tab-btn px-space-sm py-1.5 rounded-lg font-label-md text-secondary hover:text-on-surface hover:bg-surface-container transition-all" data-tab="on-hold" onclick="filterProjects('on-hold')">
+        On Hold (1)
+      </button>
+<button class="tab-btn px-space-sm py-1.5 rounded-lg font-label-md text-secondary hover:text-on-surface hover:bg-surface-container transition-all" data-tab="archived" onclick="filterProjects('archived')">
+        Archived (0)
+      </button>
+</div>
+<!-- Quick Search & View Toggle -->
+<div class="flex items-center gap-space-sm">
+<div class="relative flex-1 sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-secondary">tune</span>
+<input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-secondary pl-9 pr-3 py-1.5 rounded-xl text-body-sm focus:outline-none shadow-sm transition-all" id="projectSearchInput" onkeyup="searchProjects()" placeholder="Filter by initiative, lead..." type="text"/>
+</div>
+<div class="flex items-center bg-surface-container-low p-1 rounded-xl">
+<button class="p-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-sm" title="Card Grid View">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:text-on-surface" title="Table View">
+<span class="material-symbols-outlined text-[18px]">table_rows</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Content Grid of High-Density Project Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-space-md mb-space-xl" id="projectsGrid">
+<!-- Card 1: IntraEats HR Dashboard UI & Kiosk Sync -->
+<div class="project-item active bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<!-- Top Status Bar & Code -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-secondary bg-surface-container-low px-2 py-0.5 rounded-md font-mono">PRJ-TECH-01</span>
+<span class="font-label-sm text-secondary font-medium">IntraEats Internal</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight mt-1 group-hover:text-primary transition-colors">
+              IntraEats HR Dashboard UI &amp; Kiosk Sync
+            </h3>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm bg-tertiary-fixed/30 text-tertiary font-bold">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+            Active
+          </span>
+</div>
+<!-- Visual Hero Thumbnail Context -->
+<div class="relative w-full h-32 rounded-lg overflow-hidden my-space-sm bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern tech design studio with engineers working on dual display interfaces displaying orange UI dashboards and attendance telemetry, bright daylight ambiance with high-tech software team atmosphere in IntraEats orange brand aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHAlBljSyNSPbyRFADEtKDQFSXv_A05wKU4oIf2lpUIFWyTM_lNf7csuqOZHPYlJeLu5ub-u-YdzgJst1spVt_WBStFHyfBNhFYWb1dp9kXLeySn7JJrAYSwsbF4zsqpemHu9OoI6Aw8DwD07rmcMhUSsKaZVxzUAeKmKeRvMdrRS0dn4ByOi_GL_slxZAUwsRECGF3L9pHs1YDPm_lBaY3we42o_nguS3NApEyfyxoWaaIsB4Sy4C"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-space-sm">
+<div class="flex items-center gap-space-xs text-on-primary font-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">cloud_sync</span>
+<span>Kiosk Terminal Sync: Real-time active</span>
+</div>
+</div>
+</div>
+<!-- Manager & Timeline Meta -->
+<div class="grid grid-cols-2 gap-space-xs py-space-xs bg-surface-container-low/50 rounded-lg px-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<img class="w-7 h-7 rounded-full object-cover shadow-sm" data-alt="Professional portrait headshot of Rahul Das, a smart tech project leader wearing casual corporate blazer with warm friendly smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhJjFnY9oDelRjsZP43sq-xDffBigT4lU6N8unhbSDJ_YfyI58DJh8w1sPIqv7eurml6Luj_Uuwu5R1KVjAwuszLYBsSdCkHBcx4x0PkWVMkEiQIzOoGAqW7NC_Yt3HYb71GovNoYDt28LybZ4tPNIu5MoGEGmxRbBwT4EdKNaQPBXBsxURRe-kDAL6xqlYOrHyrajaSaBwrC9tilZiAEA1ZMBiwufclGVvxkebpQal6woXBJPm6fS"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-secondary leading-none">Project Lead</span>
+<span class="font-label-md font-semibold text-on-surface truncate">Rahul Das</span>
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="font-label-sm text-secondary leading-none">Timeline</span>
+<span class="font-label-md font-medium text-on-surface">Jan 15, 2026 - Ongoing</span>
+</div>
+</div>
+<!-- Assigned Team & Attendance Metric -->
+<div class="space-y-space-xs mt-space-sm">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Assigned Team (8 Members)</span>
+<span class="font-label-sm font-bold text-tertiary">98% Onsite Cadence</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Team engineer Priya Sharma headshot smiling in modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0JZE7kgZTdcWSBuWHv30V2QKGxgAlB1juaUhTCNcWc6iN4xKSOnBY3ZqU37o4-oOSapGR75Oa1zJoftgTz8TtKnH39HAWYDAlbL6Y1HyrZqduoLUa0-zUcBT0TbXGW0Eg07tBvv8gS6k3l33k7wxUN6qTbRtGVk3iyRzOS_ULr2aGoD03QDiiV_bkOBk0SxL-6ldCWEOj4uZ8v9ACMusWYQy6odi6IYYheVB46T8RTdTDtRuMIABg"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Team software developer Sarah Lee headshot with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNsrktQQOvyNgAcSuSEeWeqNfFQofoz2YfbKLt1X0SnDobUSGsvM34lM2bV6X6K7X0zRoLmWwvEz4WzdYQnDJsQHRTOt9prXqZhgPmByDA-VTaAwXu5AVGha75Adzo9lC9ue_W_wpEfKLNPEY_lN9zfRxrzQSFvKJAMip3ya7SaCyIJri9qeFL5Ky4auWKvMkdVoadxGOOrf5wm8gRG9YXRuff67pU6cifuWuEi_2hHRh9sLs05oLA"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Team systems architect David Chen headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOf4ucx-5YId0M5B4g85WP2hD5wsYin3EiRG-aLa46Kel_geGyuYXucu12j_HqTFUpBEK1cXzOmjzLosweD2qjishjkfrqGg53LpUJIiHUAlevzAgzzbH1_AUtvIcSAX8NJv8lGJ2EIZNTXhn16zaUWh1oqjH9guwbFq3oTdkocYwGJ6x5UpP9ICAgsqeyaa_YRRjXfFEs95k_yA3Vl8d3gmm4tpyrkDGLtl2DVrZq5kl54qUErCMV"/>
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary text-label-sm font-bold flex items-center justify-center border-2 border-surface-container-lowest">
+                +5
+              </div>
+</div>
+<div class="flex items-center gap-1 font-label-md text-on-surface font-semibold">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span>1,240 hrs logged</span>
+</div>
+</div>
+<!-- Progress Bar Indicator -->
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden mt-2">
+<div class="bg-tertiary h-full rounded-full" style="width: 98%;"></div>
+</div>
+</div>
+</div>
+<!-- Action Commands -->
+<div class="flex items-center justify-between gap-space-xs pt-space-md mt-space-md border-t border-surface-container">
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span>Manage Team</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<button class="p-2 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="View Shift Timesheet">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Edit Project">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Central Cloud Kitchen Hub 04 - Austin -->
+<div class="project-item active bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<!-- Top Status Bar & Code -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-secondary bg-surface-container-low px-2 py-0.5 rounded-md font-mono">PRJ-OPS-04</span>
+<span class="font-label-sm text-secondary font-medium">IntraEats Logistics</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight mt-1 group-hover:text-primary transition-colors">
+              Central Cloud Kitchen Hub 04 - Austin
+            </h3>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm bg-tertiary-fixed/30 text-tertiary font-bold">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+            Active
+          </span>
+</div>
+<!-- Visual Hero Thumbnail Context -->
+<div class="relative w-full h-32 rounded-lg overflow-hidden my-space-sm bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High tech commercial cloud kitchen hub with stainless steel prep stations, digital order boards, chefs in clean uniforms preparing gourmet delivery meals under bright industrial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2QwCtgK-sPcMo2ZNyVz_4Ph6nHfB7Mhqw-UECd9F6QVcQ8EYqx_EJqW0-bW6oh0HbbBB1mrmCfndUN-J2qt30kRZMRgCrJzMUouko8lh-ymzngdjO5GDCbrrQYUWtIKkkeMzWmTqYLA8ehaRa7lgP7njfYE_I6s2985KgAVFn5sJ-Z3PR0SbZSX5CU97rCh66jk_zofvWkRkqjKXepInqGlYxNr7gtjDnGZyjhvfDbHGnoHTeFnB3"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-space-sm">
+<div class="flex items-center gap-space-xs text-on-primary font-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">cooking</span>
+<span>Kitchen Line Shift 02 Active</span>
+</div>
+</div>
+</div>
+<!-- Manager & Timeline Meta -->
+<div class="grid grid-cols-2 gap-space-xs py-space-xs bg-surface-container-low/50 rounded-lg px-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<img class="w-7 h-7 rounded-full object-cover shadow-sm" data-alt="Portrait of Marcus Vance, executive chef and operations director with sharp focus and professional chef coat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4nfqQUDDKP1pm6hm_5DfYgpl1866II1D4efjmS7rwTNB4Q-P5hPqzS38AGImQxWU2wbXGUobcSRAq81Z9u9USBS2PvJu0wAEAcIX2fPz8TVUzXWlsBSepgkaaB2-WBG4d0XHkw7wkeZzMl-7HQP7-JDmetCdF5HKNUtsHfeKLdCg7T4g5NWwpp7Zlm_jRCClkQzz5Anf1i7LFV29fF9hL5wdNrLQGZqhLav5y-i9LmbB1ztXa-Abu"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-secondary leading-none">Executive Chef</span>
+<span class="font-label-md font-semibold text-on-surface truncate">Marcus Vance</span>
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="font-label-sm text-secondary leading-none">Timeline</span>
+<span class="font-label-md font-medium text-on-surface">Mar 01, 2026 - Oct 31, 2026</span>
+</div>
+</div>
+<!-- Assigned Team & Attendance Metric -->
+<div class="space-y-space-xs mt-space-sm">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Assigned Team (24 Staff)</span>
+<span class="font-label-sm font-bold text-tertiary">91.2% SLA Performance</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Sous chef prep specialist portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVhdnhw28NL0c71swI85njuG5g_0GpRQES9g0KXX0F7KUByyKobJkRSwGmrLGulmwlHcBcD6vfTN24k3FZahJaYrP8IKzOGSTyoMKXyV5Fie6wlmQn_2wL46vpyenKiu7pjjupwDhJKtaLw0giP3YKofSHzHIsbUbs_lPUqoB9l5YG4rLDJCceORzZLh8XExt8ksZS_PBsBdN8OXCNPFBi9p9qZHKTMNT_UJ28N7xmiFvobQR3Ws7P"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Culinary QA lead portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6lGh2aSQwAhMQUy_8x_ruT2t0ZAhxx_pfSqh2qEgvg8s8dtVwVZrq_edJQqQQLnOND3YlBi8tAlVZbvr_nbvORcoF_wxchMEvmWrJEzKGmCs1_osHx8ZEYENZsbrTNtUzc-M9-EDccjbDxFuMAqEhCSKqNlzhN6Y0g_U23Euco0V8P7rNDerqbj-2oNbIxOGW3n2saDLu3Qvtd83OZ3dCCEzqeQHv5jP-UhD8i39E9Cw9ZKXq6exu"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Kitchen dispatch specialist portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeTAR99hleFFdAVlQXMGd7aYDo9HqoZuNURhmqjDoYFp0BXDqz9HGgnYRzGuWJnApPJHw6E7Ifq_Jd2XySQQXVgRdPoboL4sy8jSpSiE44qBwHtU-ZaRPxezHnsZGmVFNof0YTvuwmJSer9uMVQCQ2llHtgttbDnSe8lgoUuCJTIa8Ek8YGvyVqbr5NiRnWwJaJgNco78LmQedbpJXuHZLFpX7etemvhDMOd36LKnZKhozt9WEAExu"/>
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary text-label-sm font-bold flex items-center justify-center border-2 border-surface-container-lowest">
+                +21
+              </div>
+</div>
+<div class="flex items-center gap-1 font-label-md text-on-surface font-semibold">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span>2,180 hrs logged</span>
+</div>
+</div>
+<!-- Progress Bar Indicator -->
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden mt-2">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 91.2%;"></div>
+</div>
+</div>
+</div>
+<!-- Action Commands -->
+<div class="flex items-center justify-between gap-space-xs pt-space-md mt-space-md border-t border-surface-container">
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span>Manage Team</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<button class="p-2 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="View Shift Timesheet">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Edit Project">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Customer Mobile Experience (iOS/Android v3) -->
+<div class="project-item active bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<!-- Top Status Bar & Code -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-secondary bg-surface-container-low px-2 py-0.5 rounded-md font-mono">PRJ-TECH-02</span>
+<span class="font-label-sm text-secondary font-medium">IntraEats Consumer App</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight mt-1 group-hover:text-primary transition-colors">
+              Customer Mobile Experience (iOS/Android v3)
+            </h3>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm bg-tertiary-fixed/30 text-tertiary font-bold">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+            Active
+          </span>
+</div>
+<!-- Visual Hero Thumbnail Context -->
+<div class="relative w-full h-32 rounded-lg overflow-hidden my-space-sm bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Product designers reviewing mobile app prototypes on mobile phones and tablets in an open concept collaborative space, brand orange color highlights on screens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGNjnTLAJFrZtIWIFgIHBSs03hcMUoeYT4QO7NJKamhogG1lq9FZZyMmeprleFEP1RfULSqfSY3YJ5giKE5ntw0qnNwvd3kFpTsmnB6bZ2qJBkslzMqEzorvpmtvZubuDDOPPsJlCU_IK0kbYX9n7B-DFq6MhAohnIvbswQXrayWa2h2MU94e8a21EngsVp32CAoG4JeMHGkV0MT5f1ZLJZm6DUDvFomTagvmv3Ui-HNwLAU-PTC_g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-space-sm">
+<div class="flex items-center gap-space-xs text-on-primary font-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">smartphone</span>
+<span>Sprint 14: Checkout Flow</span>
+</div>
+</div>
+</div>
+<!-- Manager & Timeline Meta -->
+<div class="grid grid-cols-2 gap-space-xs py-space-xs bg-surface-container-low/50 rounded-lg px-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<img class="w-7 h-7 rounded-full object-cover shadow-sm" data-alt="Portrait of Priya Sharma, lead UX design director with confident posture in sleek modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeeC0X4qLL_SkmTBoMSffzlx74MeOyIKkeBHvN8jEJ8M6F6IlpkPySL27AP7WarOQhAe_3X8BvMSjr24ELwB9agxEmn7jPOnL0rnBrrcqpMBcz191-IQW52xy0ruSJxixVBcKJmToQ49DpYT1US51PBaUXi38Y0SOb8S1uD9_RHWZlAscVgx2YQ3AWbZhPYN9OrNEZVGd02X5Eh0VWoOhzumHLgf2lfqkHul9jnhmlFQg6zdvMAJUq"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-secondary leading-none">Design Lead</span>
+<span class="font-label-md font-semibold text-on-surface truncate">Priya Sharma</span>
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="font-label-sm text-secondary leading-none">Timeline</span>
+<span class="font-label-md font-medium text-on-surface">Feb 01, 2026 - Nov 30, 2026</span>
+</div>
+</div>
+<!-- Assigned Team & Attendance Metric -->
+<div class="space-y-space-xs mt-space-sm">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Assigned Team (12 Members)</span>
+<span class="font-label-sm font-bold text-on-surface">85.7% Onsite Cadence</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Mobile engineer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvIwSeMnAlqXS_NGEqIfJkzZTnH9oEFZvlpeXscc7QIoNO-cp9fHtvMco1Qo6TSsxrFW6eIRGXOiACr9PMMEOQ0gS90yvaeSEJu3D5R41MUjHfaIp1z0SaUT60NdxMurECAXWOiX26-aryJtpTCcOlC0NrG_rOXMpPGk9uFA3BjpNQLLKYze6zVzWrUIBwKfgRkpLNo88wI1azi-J2rGrafQmOm3krc6S1TFw81usW9qbzbkXSgKBg"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="iOS lead engineer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4R3_K_LQAYNX2YKFUdAiMHd1Hy653gRcO9VpsyK-RtYywgLKU-MF-Fcbxdqt922HFiKATyjC6UQ_uwWhMKoMBbLFB881PRdtHtOc3AMgfmTBtUduiHTTca_Fzd2ege8Ffu8OWlij4Z3kdYuHZgesiPeoUYwRE1m8WAnoALtBWPlzotBtU-N_rSacZZuagCHJbQ0Ts7apqS5Yem0oQ1CTyd59Uxu1RGeG8RaCIpZ2oLQennj5CUDk9"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="React Native specialist portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAosnWaF1fFl7iOF8Affb03vpTWh0Ce4XZ7Z7XvHldrGtb87JVUK10YO2_yUwAX35wq1jRTEov7MeQ4GCSzeXJ449pP093AlOtPoWPKWXp_hQ-_6fSOt9QytHKcIqpBfQXUv3UqAUfZIG8E7bPHTsUc2LmaKWs7ZjDuK085mbLo85Wb2ubKFieCmoI4RhrTF5QZbBtx2pkEghtslscO4j7c2vFzgnPERglE0N7pFDZ7L31AoAAtokix"/>
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container text-label-sm font-bold flex items-center justify-center border-2 border-surface-container-lowest">
+                +9
+              </div>
+</div>
+<div class="flex items-center gap-1 font-label-md text-on-surface font-semibold">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span>890 hrs logged</span>
+</div>
+</div>
+<!-- Progress Bar Indicator -->
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden mt-2">
+<div class="bg-primary-container h-full rounded-full" style="width: 85.7%;"></div>
+</div>
+</div>
+</div>
+<!-- Action Commands -->
+<div class="flex items-center justify-between gap-space-xs pt-space-md mt-space-md border-t border-surface-container">
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span>Manage Team</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<button class="p-2 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="View Shift Timesheet">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Edit Project">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4: Automated Self-Checkout Kiosks Integration -->
+<div class="project-item on-hold bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
+<div>
+<!-- Top Status Bar & Code -->
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-secondary bg-surface-container-low px-2 py-0.5 rounded-md font-mono">PRJ-ENG-05</span>
+<span class="font-label-sm text-secondary font-medium">Hardware IoT Logistics</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight mt-1 group-hover:text-primary transition-colors">
+              Automated Self-Checkout Kiosks Integration
+            </h3>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm bg-error-container text-error font-bold">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+            On Hold
+          </span>
+</div>
+<!-- Visual Hero Thumbnail Context -->
+<div class="relative w-full h-32 rounded-lg overflow-hidden my-space-sm bg-surface-container-low">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter grayscale" data-alt="Hardware integration laboratory with touchscreen self-ordering kiosks and optical scanner components being assembled by engineers, warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSzivk9IreYM5vuuC0igrUReU2EYhxfgL1gNoRQHw-Uv9a_vqVkvj7wqEIXdbBftaJTvv324NGAYLknIyzEet3XLjA5rh9CbmCGFHPuJhyBcw1QPaWvdiSY3WzCiqt0nQ796GkWyh04Kt2qDILq3NkC4seVDMvmsSDAiwfhhgbS2rd_vgFsf7mCZbJVd_Nr1Oxnt3qv3AUkHh5K2bsd2HGYFVM7Pg7qAEOUvM_YokftQLx87tB9nxl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-space-sm">
+<div class="flex items-center gap-space-xs text-on-primary font-label-sm">
+<span class="material-symbols-outlined text-[16px] text-error">pause_circle</span>
+<span>Pending Firmware Certification</span>
+</div>
+</div>
+</div>
+<!-- Manager & Timeline Meta -->
+<div class="grid grid-cols-2 gap-space-xs py-space-xs bg-surface-container-low/50 rounded-lg px-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<img class="w-7 h-7 rounded-full object-cover shadow-sm" data-alt="Portrait of Elena Rostova, senior IoT embedded engineer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPy1O1NAcz1G0m6L5c9dn8sg83aT2iie3CjCWj9ZVQeqQgzvWL4O6kD6gRGeNLmUNIOVlyEgY2W13w3p-X9x4dy_JQNY_E9x6ZWUcV3CtCN3c4xezQZa8akyZFVMPAXrG_Z_0_X8JIcM5o02hoSeU1eSgy60CB2U1fLmxb-KyWGRiXhrmtcEs73XMbK-jdhZbFqlDXaGGCDxRYmIBZ9HQb1RF-YLOxkO51U7btLVhW9bf9rcWz6Hyj"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-secondary leading-none">Engineering Lead</span>
+<span class="font-label-md font-semibold text-on-surface truncate">Elena Rostova</span>
+</div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="font-label-sm text-secondary leading-none">Timeline</span>
+<span class="font-label-md font-medium text-on-surface">Apr 15, 2026 - Dec 15, 2026</span>
+</div>
+</div>
+<!-- Assigned Team & Attendance Metric -->
+<div class="space-y-space-xs mt-space-sm">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-secondary uppercase tracking-wider">Assigned Team (6 Members)</span>
+<span class="font-label-sm font-bold text-error">Allocation Paused</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="IoT technician portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXlTHkCEMOoc-L1wIb-6iVarY_YMcOR9WtBWL3ldkE89LYZofzr7OqhcGcpusX50thWXvlXr33y_bVoshtGMuOXVYB4Gzn6PAPvcNHJaHreCS58ils1BGlNx9ohVL6xUdkcN67oHvzHoDfx5zXzg0o3r2ZVL3HqvCxvxH-_Y-u8YaLJhni0f3fmuTHYmMA57xOqSg_Au9hQlkoGKEkCaDbPMEtmfZxxF4NdoCIWMlewFJl81MxcSYX"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover" data-alt="Embedded systems tester portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSsMUFwuf6nRBmjWxXDiiSPbdPLkP2hwguzf4dWPFPAUnifrspUI-cHorVDYzHGCHMfyKdO2Go2GG02-FEk_CHq2yRLi4TVqMj2wDoAXcr7OPmKKeAL3yf_FK6Fkq4RENHYeNEjf_NevFzqcl3Pco71EhGzDr3FMg8PrRsTEiyNI6zl_xjsuM4V4P6BGDW5JavYQ23emNDlgY_rhMO6aB5ilREt8Xxg5hUcmhj8o26F8zVCNRLAM01"/>
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary text-label-sm font-bold flex items-center justify-center border-2 border-surface-container-lowest">
+                +4
+              </div>
+</div>
+<div class="flex items-center gap-1 font-label-md text-on-surface font-semibold">
+<span class="material-symbols-outlined text-[16px] text-secondary">schedule</span>
+<span>410 hrs logged</span>
+</div>
+</div>
+<!-- Progress Bar Indicator -->
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden mt-2">
+<div class="bg-error h-full rounded-full" style="width: 32%;"></div>
+</div>
+</div>
+</div>
+<!-- Action Commands -->
+<div class="flex items-center justify-between gap-space-xs pt-space-md mt-space-md border-t border-surface-container">
+<button class="inline-flex items-center gap-1 text-secondary hover:text-on-surface font-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px]">pause</span>
+<span>Resume Allocation</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<button class="p-2 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="View Shift Timesheet">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" title="Edit Project">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Quick Project Attendance Timesheet Summary -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm mb-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">fact_check</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">
+            Quick Project Attendance Timesheet Summary
+          </h2>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+          Live daily cross-verification of clocked onsite personnel versus allocated project budget hours.
+        </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-secondary">Date: Today, Oct 24, 2026</span>
+<button class="inline-flex items-center gap-1 text-primary hover:text-primary-container font-label-md transition-colors">
+<span>View Detailed Ledger</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Responsive Timesheet Table -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[700px]">
+<thead>
+<tr class="bg-surface-container-low text-secondary font-label-sm uppercase tracking-wider">
+<th class="py-3 px-4 rounded-l-lg">Date</th>
+<th class="py-3 px-4">Project Name &amp; Code</th>
+<th class="py-3 px-4">Clocked Staff Today</th>
+<th class="py-3 px-4">Scheduled Shift Output</th>
+<th class="py-3 px-4">Punctuality SLA</th>
+<th class="py-3 px-4 text-right rounded-r-lg">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-body-md">
+<!-- Row 1 -->
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-4 font-mono text-secondary font-medium">Oct 24, 2026</td>
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">IntraEats HR Dashboard UI &amp; Kiosk Sync</span>
+<span class="font-label-sm text-secondary font-mono">PRJ-TECH-01</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-bold text-on-surface">8 / 8 Staff</span>
+<span class="text-secondary text-body-sm">(100%)</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium text-on-surface">64.0 hrs planned</span>
+<span class="text-tertiary font-label-sm block">61.5 hrs logged (On track)</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 font-label-sm text-tertiary bg-tertiary-fixed/30 px-2 py-0.5 rounded-full font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                98.2% On Time
+              </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container-high transition-colors font-label-md">
+                Verify Log
+              </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-4 font-mono text-secondary font-medium">Oct 24, 2026</td>
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Central Cloud Kitchen Hub 04 - Austin</span>
+<span class="font-label-sm text-secondary font-mono">PRJ-OPS-04</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-bold text-on-surface">22 / 24 Staff</span>
+<span class="text-secondary text-body-sm">(2 on leave)</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium text-on-surface">192.0 hrs planned</span>
+<span class="text-tertiary font-label-sm block">178.0 hrs logged</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 font-label-sm text-tertiary bg-tertiary-fixed/30 px-2 py-0.5 rounded-full font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                92.5% On Time
+              </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container-high transition-colors font-label-md">
+                Verify Log
+              </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-4 font-mono text-secondary font-medium">Oct 24, 2026</td>
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Customer Mobile Experience (iOS/Android v3)</span>
+<span class="font-label-sm text-secondary font-mono">PRJ-TECH-02</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-bold text-on-surface">11 / 12 Staff</span>
+<span class="text-secondary text-body-sm">(1 late check-in)</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium text-on-surface">96.0 hrs planned</span>
+<span class="text-secondary font-label-sm block">82.0 hrs logged</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 font-label-sm text-primary-container bg-primary-fixed px-2 py-0.5 rounded-full font-bold">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+                86.4% On Time
+              </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1.5 rounded-lg text-primary hover:bg-surface-container-high transition-colors font-label-md">
+                Verify Log
+              </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-4 font-mono text-secondary font-medium">Oct 24, 2026</td>
+<td class="py-3 px-4">
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Automated Self-Checkout Kiosks Integration</span>
+<span class="font-label-sm text-secondary font-mono">PRJ-ENG-05</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-bold text-on-surface">0 / 6 Staff</span>
+<span class="text-error font-label-sm">Shift Standby</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="font-medium text-secondary">0.0 hrs today</span>
+<span class="text-error font-label-sm block">Blocked on IoT patch</span>
+</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1 font-label-sm text-error bg-error-container px-2 py-0.5 rounded-full font-bold">
+<span class="material-symbols-outlined text-[14px]">pause</span>
+                Paused
+              </span>
+</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-high transition-colors font-label-md">
+                Audit Trail
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Interactive Slide-Over / Modal for Creating New Project -->
+<div class="fixed inset-0 bg-on-surface/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4" id="createProjectModal">
+<div class="bg-surface-container-lowest w-full max-w-xl rounded-2xl shadow-2xl p-space-lg flex flex-col gap-space-md animate-in fade-in zoom-in-95 duration-200">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">add_box</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Initiate New Project</h3>
+<span class="font-body-sm text-secondary">Allocate team rosters and set attendance billability bounds</span>
+</div>
+</div>
+<button class="p-2 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface" id="closeModalBtn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="flex flex-col gap-space-sm" id="newProjectForm" onsubmit="event.preventDefault(); submitNewProject();">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-secondary uppercase">Project Title</label>
+<input class="bg-surface-container-low px-3 py-2 rounded-xl text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" id="modalProjectName" placeholder="e.g. Ghost Kitchen Dispatch 05" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-secondary uppercase">Project Code</label>
+<input class="bg-surface-container-low px-3 py-2 rounded-xl text-body-md font-mono text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" id="modalProjectCode" placeholder="PRJ-OPS-08" required="" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-secondary uppercase">Lead / Project Manager</label>
+<input class="bg-surface-container-low px-3 py-2 rounded-xl text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" id="modalProjectLead" placeholder="e.g. Chef Anthony Rivera" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-secondary uppercase">Client / Internal Wing</label>
+<select class="bg-surface-container-low px-3 py-2 rounded-xl text-body-md text-on-surface focus:outline-none">
+<option>IntraEats Logistics</option>
+<option>Culinary Operations</option>
+<option>Digital Platforms &amp; Kiosk</option>
+<option>Enterprise Client Partnership</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-secondary uppercase">Team Size Allocation</label>
+<input class="bg-surface-container-low px-3 py-2 rounded-xl text-body-md text-on-surface focus:outline-none" max="100" min="1" type="number" value="8"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-secondary uppercase">Target Punctuality SLA</label>
+<input class="bg-surface-container-low px-3 py-2 rounded-xl text-body-md text-on-surface focus:outline-none" type="text" value="95.0%"/>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-sm border-t border-surface-container mt-2">
+<button class="px-space-md py-2 text-secondary hover:text-on-surface font-label-md" id="cancelModalBtn" type="button">
+            Cancel
+          </button>
+<button class="px-space-md py-2 bg-primary hover:bg-primary-container text-on-primary font-label-md rounded-xl shadow-md transition-all" type="submit">
+            Save &amp; Allocate Roster
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Interactive Logic -->
+<script>
+    // Tab Filtering Logic
+    function filterProjects(status) {
+      const items = document.querySelectorAll('.project-item');
+      const buttons = document.querySelectorAll('#filterTabGroup .tab-btn');
+
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-tab') === status) {
+          btn.className = "tab-btn px-space-sm py-1.5 rounded-lg font-label-md text-on-primary bg-primary shadow-sm transition-all";
+        } else {
+          btn.className = "tab-btn px-space-sm py-1.5 rounded-lg font-label-md text-secondary hover:text-on-surface hover:bg-surface-container transition-all";
+        }
+      });
+
+      items.forEach(card => {
+        if (status === 'all') {
+          card.style.display = 'flex';
+        } else if (card.classList.contains(status)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Live Card Search Logic
+    function searchProjects() {
+      const query = document.getElementById('projectSearchInput').value.toLowerCase();
+      const items = document.querySelectorAll('.project-item');
+      items.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal Interaction
+    const modal = document.getElementById('createProjectModal');
+    const openBtn = document.getElementById('openCreateModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const cancelBtn = document.getElementById('cancelModalBtn');
+
+    openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+    closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+    cancelBtn.addEventListener('click', () => modal.classList.add('hidden'));
+
+    function submitNewProject() {
+      const name = document.getElementById('modalProjectName').value;
+      modal.classList.add('hidden');
+      alert('Project "' + name + '" successfully created and synced to active kiosk allocation schedules.');
+      document.getElementById('newProjectForm').reset();
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-sm px-gutter shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full flex flex-col sm:flex-row items-center justify-between gap-space-xs font-body-sm text-body-sm text-secondary"><span>© IntraEats — HR &amp; Attendance Management System</span><div class="flex items-center gap-space-xs font-label-sm text-label-sm text-tertiary"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span><span>Real-Time Database Active</span></div></div></footer></div></body></html>

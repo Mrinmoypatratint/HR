@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-fixed-dim":"#4edea3","tertiary":"#006947","on-secondary-container":"#586377","secondary-container":"#d5e0f8","secondary-fixed":"#d8e3fb","tertiary-fixed":"#6ffbbe","surface-container-high":"#dce9ff","surface-container-lowest":"#ffffff","tertiary-container":"#00855b","surface-container-highest":"#d3e4fe","surface-tint":"#a93800","on-tertiary-fixed-variant":"#005236","secondary-fixed-dim":"#bcc7de","on-primary":"#ffffff","primary-fixed-dim":"#ffb59b","on-background":"#0b1c30","inverse-surface":"#213145","on-surface-variant":"#5b4137","surface-bright":"#f8f9ff","surface-variant":"#d3e4fe","secondary":"#545f73","error-container":"#ffdad6","error":"#ba1a1a","on-secondary":"#ffffff","on-secondary-fixed":"#111c2d","on-error":"#ffffff","inverse-primary":"#ffb59b","primary-fixed":"#ffdbcf","on-surface":"#0b1c30","on-primary-fixed-variant":"#812900","outline":"#8f7065","surface-dim":"#cbdbf5","primary":"#a53700","on-tertiary-fixed":"#002113","primary-container":"#ce4700","inverse-on-surface":"#eaf1ff","on-error-container":"#93000a","background":"#f8f9ff","surface-container":"#e5eeff","on-primary-fixed":"#380d00","on-primary-container":"#fffbff","surface":"#f8f9ff","outline-variant":"#e4beb2","surface-container-low":"#eff4ff","on-tertiary-container":"#f5fff6","on-tertiary":"#ffffff","on-secondary-fixed-variant":"#3c475a"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin":"2rem","space-xl":"2.5rem","gutter-mobile":"0.75rem","gutter":"1.25rem","space-sm":"0.5rem","space-md":"1rem","margin-mobile":"1rem","space-xs":"0.25rem","space-lg":"1.5rem"},"fontFamily":{"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"display":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"display-mobile":["Plus Jakarta Sans"]},"fontSize":{"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"800"}],"headline-sm":["18px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.005em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"display-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"800"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 bottom-0 w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold shadow-sm">IE</div><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight leading-none truncate">IntraEats</span><span class="font-label-sm text-label-sm font-bold text-primary tracking-wide uppercase truncate">HR Center</span></div></div><div class="px-space-md py-space-xs"><div class="h-px w-full bg-surface-container"></div></div><div class="px-space-md pt-space-xs"><span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-secondary">Workforce Core</span></div><nav class="flex flex-col gap-1 px-space-sm py-space-xs" data-active-classes="bg-primary text-on-primary font-bold shadow-sm"><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl transition-all bg-primary text-on-primary font-bold shadow-sm" data-path="dashboard-overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="attendance-validation" href="#"><span class="material-symbols-outlined text-[20px]">how_to_reg</span><span>Attendance</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="employees-directory" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span>Employees</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="projects-allocation" href="#"><span class="material-symbols-outlined text-[20px]">assignment</span><span>Projects</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reports-center" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span>Reports</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="admin-security" href="#"><span class="material-symbols-outlined text-[20px]">admin_panel_settings</span><span>Admin Users</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="system-settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span>Settings</span></a></nav></div><div class="flex flex-col p-space-sm gap-space-sm"><div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs text-tertiary font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-bold">Terminal Sync</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Public attendance kiosks are operational.</p><a class="mt-space-xs inline-flex items-center justify-center gap-space-xs py-2 px-space-sm bg-surface-container-lowest hover:bg-surface-container text-primary hover:text-on-surface font-label-md text-label-md rounded-lg transition-all shadow-sm" data-path="employee-portal" href="#"><span class="material-symbols-outlined text-[16px]">open_in_new</span><span>Employee Portal</span></a></div><div class="px-space-xs py-1 flex items-center justify-between text-secondary font-label-sm text-label-sm"><span>v2.4.0 Engine</span><span class="material-symbols-outlined text-[14px]">verified_user</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter"><div class="flex items-center gap-space-md"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-on-surface leading-tight tracking-tight">IntraEats HR</span><span class="font-body-sm text-body-sm text-secondary hidden xl:inline">HR &amp; Attendance Management System</span></div><div class="relative w-80 lg:w-96"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-secondary">search</span><input class="w-full bg-surface-container-low text-on-surface placeholder:text-secondary pl-9 pr-4 py-2 rounded-xl text-body-sm font-body-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search employee, ID, department, project..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1.5 bg-surface-container-low rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container"></span><span class="font-label-md text-label-md text-on-surface">09:42:15 AM EST</span><span class="font-label-sm text-label-sm text-secondary">(Live)</span></div><button class="inline-flex items-center gap-space-xs px-space-sm py-2 bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container font-label-md text-label-md rounded-xl transition-all shadow-sm"><span class="material-symbols-outlined text-[18px]">add</span><span>Add Record</span></button><button class="relative p-2 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-all"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-md text-label-md font-bold text-on-surface leading-tight">Super Admin</span><span class="font-body-sm text-body-sm text-secondary leading-tight">hr@intraeats.com</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida/AEtjO1X8-GCMEvQVmnwuKtt77xQUG2iTWpZuREwQ_4FL2d36rdWwuyirpFEKQ-dXZsKrGqhkR8cizWtGp7ikWMB1m3voIVypGLedyxB1bvkbiXNNLYai-WqG3_GgvjESxPNIcAfypyT3SqfLTbs4wgxlhJ0dh5Cv5BPkhTiqe9awoyxe2RgiZpFSRsVc_BShYh7BgI4lXGKEvVDcGUQFC-i8chDXsDBrybxkd_-BmW9lEOdOwSnV9pC2F1hBQG-3L5CcVHh9HrUVSlxdKw"/></div></div></header><main class="w-full pt-16 flex-1 bg-background px-gutter py-space-md"><div class="flex flex-col w-full gap-space-lg pb-space-xl">
+<!-- Top Header Bar with Context, Demo Tag & Quick Action Ecosystem -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface">Dashboard Overview</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+            Live Shift Cycle
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Central workforce telemetries, shift audits, and real-time attendance feeds.</p>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1.5 rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary">calendar_today</span>
+<span class="font-label-md text-label-md font-semibold">Today: 04 October 2026</span>
+<span class="text-secondary text-[12px]">|</span>
+<span class="font-label-sm text-label-sm text-secondary">Q4 Shift Cycle W40</span>
+</div>
+</div>
+<!-- Right Controls: Demo Data Status & Primary Actions -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<div class="flex items-center gap-1.5 bg-secondary-container/60 px-space-sm py-1.5 rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px] text-primary">data_exploration</span>
+<span class="font-label-sm text-label-sm font-bold tracking-wider uppercase">Demo Data Active</span>
+<button class="ml-1 text-on-surface-variant hover:text-error transition-colors font-label-sm text-label-sm underline decoration-dotted" type="button">
+          Clear Demo Data
+        </button>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="inline-flex items-center gap-1 px-3 py-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md rounded-lg transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">person_add</span>
+<span>+ Add Employee</span>
+</button>
+<button class="inline-flex items-center gap-1 px-3 py-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md rounded-lg transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">fingerprint</span>
+<span>+ Manual Attendance</span>
+</button>
+<button class="inline-flex items-center gap-1 px-3 py-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-md text-label-md rounded-lg transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">post_add</span>
+<span>+ Add Project</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md rounded-lg transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+<span>Generate Report</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Row 1: Key Metric KPI Cards (5 distinct stylized SaaS tiles) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<!-- Card 1: Total Employees -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-3 -top-3 w-16 h-16 bg-surface-container-low rounded-full pointer-events-none opacity-60"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Total Workforce</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mt-space-xs">
+<span class="font-display text-display text-on-surface tracking-tight">126</span>
+<span class="font-label-sm text-label-sm text-tertiary font-bold inline-flex items-center">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +4 this mo
+          </span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs bg-surface-container-low/50 px-2.5 py-1.5 rounded-lg flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Active Roster: <strong class="text-on-surface">121</strong></span>
+<span>Inactive: <strong class="text-secondary">5</strong></span>
+</div>
+</div>
+<!-- Card 2: Present Today -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+<div class="absolute top-0 left-0 w-1 h-full bg-tertiary"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary font-bold">Present Today</span>
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mt-space-xs">
+<span class="font-display text-display text-on-surface tracking-tight">84</span>
+<span class="font-label-sm text-label-sm text-tertiary font-bold bg-tertiary-fixed/40 px-1.5 py-0.5 rounded">66.7% rate</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-secondary">On-Time Verified</span>
+<span class="text-tertiary font-semibold">69 Staff</span>
+</div>
+</div>
+<!-- Card 3: Late Today -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Late Arrivals</span>
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]">alarm</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mt-space-xs">
+<span class="font-display text-display text-on-surface tracking-tight">15</span>
+<span class="font-label-sm text-label-sm text-primary font-bold bg-primary-fixed/40 px-1.5 py-0.5 rounded">&gt;15m buffer</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-secondary">Avg Delay</span>
+<span class="text-primary font-semibold">22.4 mins</span>
+</div>
+</div>
+<!-- Card 4: Absent Today -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error font-bold">Absent Today</span>
+<div class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined text-[18px]">person_off</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mt-space-xs">
+<span class="font-display text-display text-on-surface tracking-tight">27</span>
+<span class="font-label-sm text-label-sm text-error font-bold bg-error-container/60 px-1.5 py-0.5 rounded">21.4%</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between font-label-sm text-label-sm text-secondary">
+<span>Unexcused: <strong class="text-error">12</strong></span>
+<span>Planned: <strong class="text-on-surface">15</strong></span>
+</div>
+</div>
+<!-- Card 5: On Leave -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">On Approved Leave</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]">beach_access</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mt-space-xs">
+<span class="font-display text-display text-on-surface tracking-tight">10</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold bg-surface-container px-1.5 py-0.5 rounded">7.9%</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between font-label-sm text-label-sm text-secondary">
+<span>Sick: <strong class="text-on-surface">4</strong></span>
+<span>Casual / PTO: <strong class="text-on-surface">6</strong></span>
+</div>
+</div>
+</div>
+<!-- Row 2: Visual Charts & Analytics (60% / 40% Bento) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left Widget (7-Day Stacked Visual Trend) -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs pb-space-sm">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Weekly Attendance Trend</span>
+<p class="font-body-sm text-body-sm text-secondary">Daily shift breakdown Mon 28 Sep - Sun 04 Oct 2026</p>
+</div>
+<!-- Legend -->
+<div class="flex items-center gap-space-sm flex-wrap text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-tertiary"></span>
+<span class="text-secondary">Present (84)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-primary"></span>
+<span class="text-secondary">Late (15)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-error"></span>
+<span class="text-secondary">Absent (27)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-secondary-fixed-dim"></span>
+<span class="text-secondary">Leave (10)</span>
+</div>
+</div>
+</div>
+<!-- Inline SVG Visualization Chart -->
+<div class="w-full pt-space-sm">
+<svg class="w-full h-56" preserveaspectratio="none" viewbox="0 0 620 200">
+<!-- Gridlines -->
+<line opacity="0.6" stroke="#d5e0f8" stroke-dasharray="3 3" x1="40" x2="600" y1="20" y2="20"></line>
+<line opacity="0.6" stroke="#d5e0f8" stroke-dasharray="3 3" x1="40" x2="600" y1="65" y2="65"></line>
+<line opacity="0.6" stroke="#d5e0f8" stroke-dasharray="3 3" x1="40" x2="600" y1="110" y2="110"></line>
+<line opacity="0.6" stroke="#d5e0f8" stroke-dasharray="3 3" x1="40" x2="600" y1="155" y2="155"></line>
+<!-- Y Axis scale -->
+<text class="fill-secondary text-[10px] font-sans" x="12" y="24">140</text>
+<text class="fill-secondary text-[10px] font-sans" x="12" y="69">105</text>
+<text class="fill-secondary text-[10px] font-sans" x="12" y="114">70</text>
+<text class="fill-secondary text-[10px] font-sans" x="12" y="159">35</text>
+<!-- Day 1: Mon 28 Sep (Total 126: Present 102, Late 9, Absent 9, Leave 6) -->
+<g class="transition-all hover:opacity-85 cursor-pointer">
+<rect class="fill-tertiary" height="96" rx="3" width="34" x="75" y="40"></rect>
+<rect class="fill-primary" height="9" rx="2" width="34" x="75" y="30"></rect>
+<rect class="fill-error" height="9" rx="2" width="34" x="75" y="20"></rect>
+<rect class="fill-secondary-fixed-dim" height="5" rx="2" width="34" x="75" y="14"></rect>
+<text class="fill-on-surface font-semibold text-[11px] font-sans" text-anchor="middle" x="92" y="178">Mon 28</text>
+</g>
+<!-- Day 2: Tue 29 Sep -->
+<g class="transition-all hover:opacity-85 cursor-pointer">
+<rect class="fill-tertiary" height="92" rx="3" width="34" x="155" y="44"></rect>
+<rect class="fill-primary" height="11" rx="2" width="34" x="155" y="32"></rect>
+<rect class="fill-error" height="9" rx="2" width="34" x="155" y="22"></rect>
+<rect class="fill-secondary-fixed-dim" height="5" rx="2" width="34" x="155" y="16"></rect>
+<text class="fill-on-surface font-semibold text-[11px] font-sans" text-anchor="middle" x="172" y="178">Tue 29</text>
+</g>
+<!-- Day 3: Wed 30 Sep -->
+<g class="transition-all hover:opacity-85 cursor-pointer">
+<rect class="fill-tertiary" height="90" rx="3" width="34" x="235" y="46"></rect>
+<rect class="fill-primary" height="11" rx="2" width="34" x="235" y="34"></rect>
+<rect class="fill-error" height="12" rx="2" width="34" x="235" y="21"></rect>
+<rect class="fill-secondary-fixed-dim" height="6" rx="2" width="34" x="235" y="14"></rect>
+<text class="fill-on-surface font-semibold text-[11px] font-sans" text-anchor="middle" x="252" y="178">Wed 30</text>
+</g>
+<!-- Day 4: Thu 01 Oct -->
+<g class="transition-all hover:opacity-85 cursor-pointer">
+<rect class="fill-tertiary" height="86" rx="3" width="34" x="315" y="50"></rect>
+<rect class="fill-primary" height="11" rx="2" width="34" x="315" y="38"></rect>
+<rect class="fill-error" height="13" rx="2" width="34" x="315" y="24"></rect>
+<rect class="fill-secondary-fixed-dim" height="5" rx="2" width="34" x="315" y="18"></rect>
+<text class="fill-on-surface font-semibold text-[11px] font-sans" text-anchor="middle" x="332" y="178">Thu 01</text>
+</g>
+<!-- Day 5: Fri 02 Oct -->
+<g class="transition-all hover:opacity-85 cursor-pointer">
+<rect class="fill-tertiary" height="84" rx="3" width="34" x="395" y="52"></rect>
+<rect class="fill-primary" height="13" rx="2" width="34" x="395" y="38"></rect>
+<rect class="fill-error" height="15" rx="2" width="34" x="395" y="22"></rect>
+<rect class="fill-secondary-fixed-dim" height="4" rx="2" width="34" x="395" y="17"></rect>
+<text class="fill-on-surface font-semibold text-[11px] font-sans" text-anchor="middle" x="412" y="178">Fri 02</text>
+</g>
+<!-- Day 6: Sat 03 Oct (Weekend Shift) -->
+<g class="transition-all hover:opacity-85 cursor-pointer">
+<rect class="fill-tertiary" height="31" opacity="0.8" rx="3" width="34" x="475" y="105"></rect>
+<rect class="fill-primary" height="4" opacity="0.8" rx="2" width="34" x="475" y="100"></rect>
+<rect class="fill-error" height="5" opacity="0.8" rx="2" width="34" x="475" y="94"></rect>
+<rect class="fill-secondary-fixed-dim" height="3" rx="2" width="34" x="475" y="90"></rect>
+<text class="fill-secondary font-medium text-[11px] font-sans" text-anchor="middle" x="492" y="178">Sat 03</text>
+</g>
+<!-- Day 7: Sun 04 Oct (Current Live Day) -->
+<g class="transition-all hover:opacity-85 cursor-pointer">
+<rect class="fill-tertiary" height="76" rx="3" width="34" x="555" y="60"></rect>
+<rect class="fill-primary" height="15" rx="2" width="34" x="555" y="44"></rect>
+<rect class="fill-error" height="23" rx="2" width="34" x="555" y="20"></rect>
+<rect class="fill-secondary-fixed-dim" height="7" rx="2" width="34" x="555" y="12"></rect>
+<circle class="fill-primary" cx="572" cy="6" r="3"></circle>
+<text class="fill-primary font-bold text-[11px] font-sans" text-anchor="middle" x="572" y="178">Sun 04*</text>
+</g>
+</svg>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs bg-surface-container-low px-space-md py-2 rounded-lg flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-secondary">Average Weekly Punctuality Rate: <strong class="text-on-surface">88.2%</strong></span>
+<span class="text-tertiary font-label-md text-label-md inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span> Peak Efficiency: Tuesday 29 Sep
+        </span>
+</div>
+</div>
+<!-- Right Widget: Monthly Performance Target Card (40%) -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Monthly Performance</span>
+<p class="font-body-sm text-body-sm text-secondary">Working day quotas &amp; benchmarks</p>
+</div>
+<div class="bg-surface-container-low px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 text-on-surface font-label-md text-label-md">
+<span>October 2026</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">keyboard_arrow_down</span>
+</div>
+</div>
+<!-- Metric highlights -->
+<div class="grid grid-cols-3 gap-2 mt-space-sm text-center">
+<div class="bg-surface-container-low/70 p-2.5 rounded-xl">
+<span class="font-label-sm text-label-sm uppercase text-secondary font-bold">Work Days</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">22</div>
+<span class="text-[10px] text-secondary">4 Elapsed</span>
+</div>
+<div class="bg-surface-container-low/70 p-2.5 rounded-xl">
+<span class="font-label-sm text-label-sm uppercase text-secondary font-bold">Attendance</span>
+<div class="font-headline-sm text-headline-sm text-tertiary font-bold mt-1">91.4%</div>
+<span class="text-[10px] text-tertiary">+1.2% Target</span>
+</div>
+<div class="bg-surface-container-low/70 p-2.5 rounded-xl">
+<span class="font-label-sm text-label-sm uppercase text-secondary font-bold">Avg Hours</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold mt-1">8h 42m</div>
+<span class="text-[10px] text-secondary">Standard 8h</span>
+</div>
+</div>
+<!-- Gauge Chart / Visual Progress Indicator -->
+<div class="mt-space-md p-space-sm bg-gradient-to-r from-surface-container-low via-surface-container to-surface-container-low rounded-xl">
+<div class="flex items-center justify-between text-label-sm font-label-sm mb-1.5">
+<span class="text-on-surface font-bold">October Operational Goal</span>
+<span class="text-primary font-bold">95.0% SLA</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden flex">
+<div class="bg-tertiary h-full rounded-l-full" style="width: 78%;"></div>
+<div class="bg-primary h-full" style="width: 13.4%;"></div>
+<div class="bg-surface-container-high h-full" style="width: 8.6%;"></div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-secondary mt-1.5">
+<span>Verified Hours: 1,418 hrs</span>
+<span>Est. Deficit: 12 hrs</span>
+</div>
+</div>
+</div>
+<!-- Quick HR Insight Note -->
+<div class="mt-space-sm flex items-start gap-space-xs p-space-xs bg-surface-container-low rounded-lg text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0">info</span>
+<span>Biometric terminals at Logistics Hub 4 reported 100% on-time punch integrity today.</span>
+</div>
+</div>
+</div>
+<!-- Row 3: Quick 7-Day Report Strip & Direct Export Controls -->
+<div class="bg-surface-container-lowest px-space-md py-space-sm rounded-xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant">
+<span class="material-symbols-outlined text-[20px]">summarize</span>
+</div>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Weekly Attendance Dossier</span>
+<p class="font-body-sm text-body-sm text-secondary">Export consolidated shift punch cards, late penalties, and payroll records (28 Sep — 04 Oct 2026).</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 flex-wrap">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-error">picture_as_pdf</span>
+<span>Download PDF (Branded)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">table_view</span>
+<span>Export Excel (.xlsx)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md rounded-lg transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">csv</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Row 4: Master Attendance Table ('Live Today Records') -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Header with Search & Filter Tabs -->
+<div class="p-space-md flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface">Live Today Records</span>
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Automated real-time feed from kiosks, RFID badges, and portal check-ins.</p>
+</div>
+<!-- Search & Filters -->
+<div class="flex flex-col sm:flex-row sm:items-center gap-space-xs flex-wrap">
+<div class="relative w-full sm:w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-secondary">search</span>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-secondary pl-9 pr-3 py-2 rounded-lg text-body-sm font-body-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search employee code, name, project..." type="text"/>
+</div>
+<!-- Department selector -->
+<select class="bg-surface-container-low text-on-surface py-2 px-3 rounded-lg text-body-sm font-body-sm focus:outline-none cursor-pointer">
+<option>All Departments (6)</option>
+<option>Technology</option>
+<option>Design</option>
+<option>Operations</option>
+<option>Marketing</option>
+<option>HR</option>
+</select>
+</div>
+</div>
+<!-- Filter Tabs Pill Group -->
+<div class="px-space-md py-space-xs bg-surface-container-low flex items-center gap-space-xs overflow-x-auto">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-bold shadow-sm whitespace-nowrap" type="button">
+        All Records (126)
+      </button>
+<button class="px-3 py-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" type="button">
+        Present (84)
+      </button>
+<button class="px-3 py-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" type="button">
+        Late (15)
+      </button>
+<button class="px-3 py-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" type="button">
+        Absent (27)
+      </button>
+<button class="px-3 py-1.5 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface font-label-md text-label-md whitespace-nowrap transition-colors" type="button">
+        On Leave (10)
+      </button>
+</div>
+<!-- Responsive Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-md text-body-md">
+<thead class="bg-surface-container-low text-secondary uppercase font-label-sm text-label-sm tracking-wider">
+<tr>
+<th class="py-3 px-space-md font-bold">Date</th>
+<th class="py-3 px-space-md font-bold">Emp ID</th>
+<th class="py-3 px-space-md font-bold min-w-[200px]">Employee</th>
+<th class="py-3 px-space-md font-bold">Department</th>
+<th class="py-3 px-space-md font-bold">Role</th>
+<th class="py-3 px-space-md font-bold">Check-in</th>
+<th class="py-3 px-space-md font-bold">Check-out</th>
+<th class="py-3 px-space-md font-bold">Working Hrs</th>
+<th class="py-3 px-space-md font-bold min-w-[180px]">Assigned Project</th>
+<th class="py-3 px-space-md font-bold">Status</th>
+<th class="py-3 px-space-md font-bold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent">
+<!-- Row 1: Rahul Das (Present) -->
+<tr class="bg-surface-container-lowest hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-space-md whitespace-nowrap text-secondary font-label-sm text-label-sm">04 Oct 2026</td>
+<td class="py-3 px-space-md font-bold text-on-surface whitespace-nowrap">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm">IE001</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2.5">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Professional studio portrait of Rahul Das, an Indian male software engineer in his late 20s smiling confidently in business casual attire with modern studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVwQcklBdv8lPkBLnn2EO9nzGbpj_c80uZg49p9kssiuphSNhJIUY68Tc4eLXjJv8jzIJ_u3HTHt6bx9oc-ShqNClz8EG4rtl8XLrMDrVBojyiJFYavsKTPGfuWskE5rrjUO3eNRtm0Np_X5newWfymybTi1X3HCqfc5Vz_PRr8fSccmylzixru9CD34-Ps1jM5LZSCLHKvISFRtfnUIprO-q_pPqT7aMHaggcKzXce5_471OX5zIh"/>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Rahul Das</span>
+<span class="text-secondary font-body-sm text-body-sm">INTRA-EMP-001</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-on-surface">Technology</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">Software Developer</td>
+<td class="py-3 px-space-md whitespace-nowrap font-bold text-on-surface">09:28 AM</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">—</td>
+<td class="py-3 px-space-md whitespace-nowrap font-semibold text-on-surface">03h 24m</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                IntraEats HR Dashboard
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-ping"></span>
+                Present
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-right">
+<button class="px-2.5 py-1 text-primary hover:bg-surface-container rounded-lg font-label-md text-label-md transition-colors" type="button">
+                View / Edit
+              </button>
+</td>
+</tr>
+<!-- Row 2: Priya Sharma (Late) -->
+<tr class="bg-surface-container-lowest hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-space-md whitespace-nowrap text-secondary font-label-sm text-label-sm">04 Oct 2026</td>
+<td class="py-3 px-space-md font-bold text-on-surface whitespace-nowrap">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm">IE002</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2.5">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Portrait of Priya Sharma, an Indian woman in creative design attire with warm neutral backdrop, friendly expression and modern spectacles." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBtbszSQy89v_whFP7dhVu-NTDQO6pzD3BYLRtlhGJTB1WYPOZCB-q6lMThmX_SLreLXffG485z1RDZn2R5LHatj8Vum2EhtfH9kBdjHANjNdqy89mY3VIXoyUM3JelffnxhHsgrKOHGDfxBMAxXZUQl9dMxSqWYEKnlmmdQW1GwMLHY8XG4in_qYsI5Ms7IjQr2-rm2umxofY02jYrNV8z0g0Do4oorlTX2lBoELQqcJryhOfmbu-"/>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Priya Sharma</span>
+<span class="text-secondary font-body-sm text-body-sm">INTRA-EMP-002</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-on-surface">Design</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">UI/UX Designer</td>
+<td class="py-3 px-space-md whitespace-nowrap font-bold text-primary">09:52 AM</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">—</td>
+<td class="py-3 px-space-md whitespace-nowrap font-semibold text-on-surface">03h 00m</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Customer Mobile App
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Late (+22m)
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-right">
+<button class="px-2.5 py-1 text-primary hover:bg-surface-container rounded-lg font-label-md text-label-md transition-colors" type="button">
+                View / Edit
+              </button>
+</td>
+</tr>
+<!-- Row 3: Arjun Singh (Present) -->
+<tr class="bg-surface-container-lowest hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-space-md whitespace-nowrap text-secondary font-label-sm text-label-sm">04 Oct 2026</td>
+<td class="py-3 px-space-md font-bold text-on-surface whitespace-nowrap">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm">IE003</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center font-bold text-label-md">
+                  AS
+                </div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Arjun Singh</span>
+<span class="text-secondary font-body-sm text-body-sm">INTRA-EMP-003</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-on-surface">Operations</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">Project Coordinator</td>
+<td class="py-3 px-space-md whitespace-nowrap font-bold text-on-surface">09:15 AM</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">—</td>
+<td class="py-3 px-space-md whitespace-nowrap font-semibold text-on-surface">03h 37m</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Logistics Hub 4
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-ping"></span>
+                Present
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-right">
+<button class="px-2.5 py-1 text-primary hover:bg-surface-container rounded-lg font-label-md text-label-md transition-colors" type="button">
+                View / Edit
+              </button>
+</td>
+</tr>
+<!-- Row 4: Ananya Roy (Absent) -->
+<tr class="bg-surface-container-lowest hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-space-md whitespace-nowrap text-secondary font-label-sm text-label-sm">04 Oct 2026</td>
+<td class="py-3 px-space-md font-bold text-on-surface whitespace-nowrap">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm">IE004</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2.5">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Headshot of Ananya Roy, a young professional woman in a dark blazer with confident posture, soft studio background and warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9tex3FZyzFhVAcU_7Y_AVzM-ILei932ZQZUs3LNb0Cztu0C-vsF5-2SyxnbiDS4lYacg2VB3jKt2igelp6Cxl-aPJQ4TTDDENWPslTJ_vgmozdDGyLJ9TSAw8Kmc1-7xgyE9pJBVgjr6Zw-gySzz4FHQPKFZ6rygMsw8IPAP7Xwz2N37YR6UhxWBvB4u8X29qDGAr8ONEnecTl2-u4zHFvz7JLeMRnd2pkEazgomPG-J4b1wN4ShJ"/>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Ananya Roy</span>
+<span class="text-secondary font-body-sm text-body-sm">INTRA-EMP-004</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-on-surface">Marketing</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">Growth Lead</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">—</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">—</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">00h 00m</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Q4 Campaign Launch
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                Absent
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-right">
+<button class="px-2.5 py-1 text-on-surface hover:bg-surface-container rounded-lg font-label-md text-label-md transition-colors" type="button">
+                Manual Add
+              </button>
+</td>
+</tr>
+<!-- Row 5: Vikram Patel (Present / Complete Shift) -->
+<tr class="bg-surface-container-lowest hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-space-md whitespace-nowrap text-secondary font-label-sm text-label-sm">04 Oct 2026</td>
+<td class="py-3 px-space-md font-bold text-on-surface whitespace-nowrap">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm">IE005</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-label-md">
+                  VP
+                </div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Vikram Patel</span>
+<span class="text-secondary font-body-sm text-body-sm">INTRA-EMP-005</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-on-surface">Technology</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">DevOps Engineer</td>
+<td class="py-3 px-space-md whitespace-nowrap font-bold text-on-surface">09:10 AM</td>
+<td class="py-3 px-space-md whitespace-nowrap font-bold text-on-surface">06:15 PM</td>
+<td class="py-3 px-space-md whitespace-nowrap font-semibold text-tertiary">09h 05m</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                Cloud Migration
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+                Checked Out
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-right">
+<button class="px-2.5 py-1 text-primary hover:bg-surface-container rounded-lg font-label-md text-label-md transition-colors" type="button">
+                View / Edit
+              </button>
+</td>
+</tr>
+<!-- Row 6: Sneha Kulkarni (Leave) -->
+<tr class="bg-surface-container-lowest hover:bg-primary-fixed/20 transition-colors">
+<td class="py-3 px-space-md whitespace-nowrap text-secondary font-label-sm text-label-sm">04 Oct 2026</td>
+<td class="py-3 px-space-md font-bold text-on-surface whitespace-nowrap">
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm font-label-sm">IE006</span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-label-md">
+                  SK
+                </div>
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Sneha Kulkarni</span>
+<span class="text-secondary font-body-sm text-body-sm">INTRA-EMP-006</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-on-surface">HR</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">HR Generalist</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">—</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">—</td>
+<td class="py-3 px-space-md whitespace-nowrap text-secondary">00h 00m</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Onboarding Sprint
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                Casual Leave
+              </span>
+</td>
+<td class="py-3 px-space-md whitespace-nowrap text-right">
+<button class="px-2.5 py-1 text-secondary hover:bg-surface-container rounded-lg font-label-md text-label-md transition-colors" type="button">
+                Details
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="p-space-md bg-surface-container-lowest flex flex-col sm:flex-row items-center justify-between gap-space-xs text-body-sm font-body-sm text-secondary">
+<div>
+        Showing <span class="font-bold text-on-surface">1 — 6</span> of <span class="font-bold text-on-surface">126</span> records
+      </div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface disabled:opacity-40 transition-colors" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="px-3 py-1 rounded-lg bg-primary text-on-primary font-bold text-label-sm font-label-sm">1</span>
+<button class="px-3 py-1 rounded-lg hover:bg-surface-container text-on-surface font-label-sm font-label-sm transition-colors" type="button">2</button>
+<button class="px-3 py-1 rounded-lg hover:bg-surface-container text-on-surface font-label-sm font-label-sm transition-colors" type="button">3</button>
+<span class="px-1 text-secondary">...</span>
+<button class="px-3 py-1 rounded-lg hover:bg-surface-container text-on-surface font-label-sm font-label-sm transition-colors" type="button">21</button>
+<button class="p-1 rounded-lg hover:bg-surface-container text-secondary hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Row 5: Side-by-side Project Activity & Security Audit Logs -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+<!-- Left: Active Projects Allocation (60%) -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Workforce Project Allocation</span>
+<p class="font-body-sm text-body-sm text-secondary">Real-time attendance concentration across ongoing corporate initiatives.</p>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline" type="button">
+            Manage All
+          </button>
+</div>
+<!-- Project 1 -->
+<div class="space-y-space-md mt-space-xs">
+<div class="p-space-sm bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="font-bold text-on-surface font-label-lg text-label-lg">IntraEats HR Dashboard Engine</span>
+<span class="text-secondary text-[12px] font-mono">#PRJ-01</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">8 Devs Present <span class="text-secondary font-normal">(8/10 Assigned)</span></span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 80%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-secondary mt-2">
+<span>Lead: Rahul Das (Software Developer)</span>
+<span class="text-tertiary font-bold">80% Onsite Cadence</span>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="p-space-sm bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-bold text-on-surface font-label-lg text-label-lg">Customer Mobile Experience (iOS/Android)</span>
+<span class="text-secondary text-[12px] font-mono">#PRJ-04</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">12 Devs Present <span class="text-secondary font-normal">(12/14 Assigned)</span></span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 85.7%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-secondary mt-2">
+<span>Lead: Priya Sharma (Design Lead)</span>
+<span class="text-tertiary font-bold">85.7% Onsite Cadence</span>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="p-space-sm bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between mb-1.5">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-bold text-on-surface font-label-lg text-label-lg">Cloud Infrastructure &amp; Security Hardening</span>
+<span class="text-secondary text-[12px] font-mono">#PRJ-09</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface">4 Devs Present <span class="text-secondary font-normal">(4/5 Assigned)</span></span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 80%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-secondary mt-2">
+<span>Lead: Vikram Patel (DevOps)</span>
+<span class="text-tertiary font-bold">80% Onsite Cadence</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs text-secondary font-label-sm text-label-sm flex items-center justify-between">
+<span>Total Allocated Shifts: <strong class="text-on-surface">94 seats</strong></span>
+<span>Unallocated Pool: <strong class="text-primary">32 staff</strong></span>
+</div>
+</div>
+<!-- Right: Audit Log Trail (40%) -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Security &amp; Audit Trail</span>
+<p class="font-body-sm text-body-sm text-secondary">Verified actions &amp; administrative overrides.</p>
+</div>
+<span class="material-symbols-outlined text-[20px] text-secondary">lock_clock</span>
+</div>
+<div class="space-y-space-sm mt-space-xs">
+<!-- Log 1 -->
+<div class="flex items-start gap-space-xs p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">badge</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-bold text-on-surface font-label-md text-label-md truncate">Employee INTRA-EMP-001 Verified</span>
+<span class="text-secondary font-label-sm text-label-sm shrink-0">12:52 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary truncate">Kiosk Terminal 02 authenticated Rahul Das via QR Token.</p>
+</div>
+</div>
+<!-- Log 2 -->
+<div class="flex items-start gap-space-xs p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">edit_calendar</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-bold text-on-surface font-label-md text-label-md truncate">Manual Attendance Modified</span>
+<span class="text-secondary font-label-sm text-label-sm shrink-0">11:15 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary truncate">HR Specialist updated Vikram Patel punch-out override.</p>
+</div>
+</div>
+<!-- Log 3 -->
+<div class="flex items-start gap-space-xs p-2.5 rounded-lg bg-surface-container-low">
+<div class="w-7 h-7 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[15px]">admin_panel_settings</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center justify-between gap-1">
+<span class="font-bold text-on-surface font-label-md text-label-md truncate">Admin Session Created</span>
+<span class="text-secondary font-label-sm text-label-sm shrink-0">08:00 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary truncate">Super Admin logged in from IP 192.168.1.44 (MFA Verified).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary">Encrypted Audit Chain • SHA-256</span>
+<button class="text-primary font-label-md text-label-md hover:underline inline-flex items-center gap-1" type="button">
+<span>Full Event Log</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-sm px-gutter shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full flex flex-col sm:flex-row items-center justify-between gap-space-xs font-body-sm text-body-sm text-secondary"><span>© IntraEats — HR &amp; Attendance Management System</span><div class="flex items-center gap-space-xs font-label-sm text-label-sm text-tertiary"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span><span>Real-Time Database Active</span></div></div></footer></div></body></html>

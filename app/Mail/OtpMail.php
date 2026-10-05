@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
+
+class OtpMail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public string $otp;
+    public string $purpose;
+
+    /**
+     * Create a new message instance.
+     */
+    public function __construct(string $otp, string $purpose = 'Admin Login')
+    {
+        $this->otp = $otp;
+        $this->purpose = $purpose;
+    }
+
+    /**
+     * Get the message envelope.
+     */
+    public function envelope(): Envelope
+    {
+        return new Envelope(
+            subject: "[IntraEats HR] Security Verification Code: {$this->otp}",
+        );
+    }
+
+    /**
+     * Get the message content definition.
+     */
+    public function content(): Content
+    {
+        return new Content(
+            view: 'emails.otp',
+        );
+    }
+}

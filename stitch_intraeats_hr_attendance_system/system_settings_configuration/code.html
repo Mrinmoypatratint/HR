@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-fixed-dim":"#4edea3","tertiary":"#006947","on-secondary-container":"#586377","secondary-container":"#d5e0f8","secondary-fixed":"#d8e3fb","tertiary-fixed":"#6ffbbe","surface-container-high":"#dce9ff","surface-container-lowest":"#ffffff","tertiary-container":"#00855b","surface-container-highest":"#d3e4fe","surface-tint":"#a93800","on-tertiary-fixed-variant":"#005236","secondary-fixed-dim":"#bcc7de","on-primary":"#ffffff","primary-fixed-dim":"#ffb59b","on-background":"#0b1c30","inverse-surface":"#213145","on-surface-variant":"#5b4137","surface-bright":"#f8f9ff","surface-variant":"#d3e4fe","secondary":"#545f73","error-container":"#ffdad6","error":"#ba1a1a","on-secondary":"#ffffff","on-secondary-fixed":"#111c2d","on-error":"#ffffff","inverse-primary":"#ffb59b","primary-fixed":"#ffdbcf","on-surface":"#0b1c30","on-primary-fixed-variant":"#812900","outline":"#8f7065","surface-dim":"#cbdbf5","primary":"#a53700","on-tertiary-fixed":"#002113","primary-container":"#ce4700","inverse-on-surface":"#eaf1ff","on-error-container":"#93000a","background":"#f8f9ff","surface-container":"#e5eeff","on-primary-fixed":"#380d00","on-primary-container":"#fffbff","surface":"#f8f9ff","outline-variant":"#e4beb2","surface-container-low":"#eff4ff","on-tertiary-container":"#f5fff6","on-tertiary":"#ffffff","on-secondary-fixed-variant":"#3c475a"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin":"2rem","space-xl":"2.5rem","gutter-mobile":"0.75rem","gutter":"1.25rem","space-sm":"0.5rem","space-md":"1rem","margin-mobile":"1rem","space-xs":"0.25rem","space-lg":"1.5rem"},"fontFamily":{"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"display":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"display-mobile":["Plus Jakarta Sans"]},"fontSize":{"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.01em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"display":["40px",{"lineHeight":"48px","letterSpacing":"-0.03em","fontWeight":"800"}],"headline-sm":["18px",{"lineHeight":"26px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.005em","fontWeight":"600"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"display-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"800"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 bottom-0 w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-surface-container-lowest"><div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold shadow-sm">IE</div><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight leading-none truncate">IntraEats</span><span class="font-label-sm text-label-sm font-bold text-primary tracking-wide uppercase truncate">HR Center</span></div></div><div class="px-space-md py-space-xs"><div class="h-px w-full bg-surface-container"></div></div><div class="px-space-md pt-space-xs"><span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-secondary">Workforce Core</span></div><nav class="flex flex-col gap-1 px-space-sm py-space-xs" data-active-classes="bg-primary text-on-primary font-bold shadow-sm"><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dashboard-overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="attendance-validation" href="#"><span class="material-symbols-outlined text-[20px]">how_to_reg</span><span>Attendance</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="employees-directory" href="#"><span class="material-symbols-outlined text-[20px]">badge</span><span>Employees</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="projects-allocation" href="#"><span class="material-symbols-outlined text-[20px]">assignment</span><span>Projects</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="reports-center" href="#"><span class="material-symbols-outlined text-[20px]">analytics</span><span>Reports</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="admin-security" href="#"><span class="material-symbols-outlined text-[20px]">admin_panel_settings</span><span>Admin Users</span></a><a class="flex items-center gap-space-sm px-space-sm py-2 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="system-settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span>Settings</span></a></nav></div><div class="flex flex-col p-space-sm gap-space-sm"><div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs text-tertiary font-label-sm text-label-sm"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-bold">Terminal Sync</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Public attendance kiosks are operational.</p><a class="mt-space-xs inline-flex items-center justify-center gap-space-xs py-2 px-space-sm bg-surface-container-lowest hover:bg-surface-container text-primary hover:text-on-surface font-label-md text-label-md rounded-lg transition-all shadow-sm" data-path="employee-portal" href="#"><span class="material-symbols-outlined text-[16px]">open_in_new</span><span>Employee Portal</span></a></div><div class="px-space-xs py-1 flex items-center justify-between text-secondary font-label-sm text-label-sm"><span>v2.4.0 Engine</span><span class="material-symbols-outlined text-[14px]">verified_user</span></div></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-gutter"><div class="flex items-center gap-space-md"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-on-surface leading-tight tracking-tight">IntraEats HR</span><span class="font-body-sm text-body-sm text-secondary hidden xl:inline">HR &amp; Attendance Management System</span></div><div class="relative w-80 lg:w-96"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-secondary">search</span><input class="w-full bg-surface-container-low text-on-surface placeholder:text-secondary pl-9 pr-4 py-2 rounded-xl text-body-sm font-body-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search employee, ID, department, project..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1.5 bg-surface-container-low rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container"></span><span class="font-label-md text-label-md text-on-surface">09:42:15 AM EST</span><span class="font-label-sm text-label-sm text-secondary">(Live)</span></div><button class="inline-flex items-center gap-space-xs px-space-sm py-2 bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container font-label-md text-label-md rounded-xl transition-all shadow-sm"><span class="material-symbols-outlined text-[18px]">add</span><span>Add Record</span></button><button class="relative p-2 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-all"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><div class="flex flex-col text-right hidden sm:flex"><span class="font-label-md text-label-md font-bold text-on-surface leading-tight">Super Admin</span><span class="font-body-sm text-body-sm text-secondary leading-tight">hr@intraeats.com</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida/AEtjO1X8-GCMEvQVmnwuKtt77xQUG2iTWpZuREwQ_4FL2d36rdWwuyirpFEKQ-dXZsKrGqhkR8cizWtGp7ikWMB1m3voIVypGLedyxB1bvkbiXNNLYai-WqG3_GgvjESxPNIcAfypyT3SqfLTbs4wgxlhJ0dh5Cv5BPkhTiqe9awoyxe2RgiZpFSRsVc_BShYh7BgI4lXGKEvVDcGUQFC-i8chDXsDBrybxkd_-BmW9lEOdOwSnV9pC2F1hBQG-3L5CcVHh9HrUVSlxdKw"/></div></div></header><main class="w-full pt-16 flex-1 bg-background px-gutter py-space-md"><div class="flex flex-col w-full">
+<div class="flex flex-col gap-6 max-w-7xl mx-auto w-full pb-24">
+<!-- Breadcrumb & Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pt-2">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-secondary">
+<span>Administration</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-bold">System Configuration</span>
+</div>
+<h1 class="text-2xl lg:text-3xl font-extrabold text-on-surface tracking-tight">System Settings &amp; Operational Policies</h1>
+<p class="text-sm text-secondary max-w-3xl">Configure company identity, automated attendance rules, OTP security thresholds, and email dispatch parameters.</p>
+</div>
+<!-- Quick Environment Pill -->
+<div class="flex items-center gap-2 self-start md:self-auto px-3.5 py-1.5 rounded-full bg-surface-container text-xs font-medium text-on-surface shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-ping"></span>
+<span class="text-secondary">Node Cluster:</span>
+<span class="font-bold text-on-surface font-mono">us-central-01</span>
+<span class="px-2 py-0.5 rounded-md bg-primary/10 text-primary font-semibold text-[11px] ml-1">Live Sync</span>
+</div>
+</div>
+<!-- Sub-navigation Tabs -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none border-b-0">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-on-primary font-semibold text-xs tracking-wide shadow-sm transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">corporate_fare</span>
+<span>Company Profile</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest text-secondary hover:text-on-surface hover:bg-surface-container text-xs font-semibold tracking-wide shadow-sm transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>Attendance Rules</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary ml-0.5"></span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest text-secondary hover:text-on-surface hover:bg-surface-container text-xs font-semibold tracking-wide shadow-sm transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+<span>Security &amp; 2FA</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest text-secondary hover:text-on-surface hover:bg-surface-container text-xs font-semibold tracking-wide shadow-sm transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">outgoing_mail</span>
+<span>Notification &amp; Email</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest text-secondary hover:text-on-surface hover:bg-surface-container text-xs font-semibold tracking-wide shadow-sm transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">fingerprint</span>
+<span>Biometric Kiosks</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest text-secondary hover:text-on-surface hover:bg-surface-container text-xs font-semibold tracking-wide shadow-sm transition-all whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">database</span>
+<span>Demo Data Management</span>
+</button>
+</div>
+<!-- Main Grid Content -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6">
+<!-- Left Column: Primary Configs (8 cols) -->
+<div class="xl:col-span-8 flex flex-col gap-6">
+<!-- Section 1: Company Information & Branding -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">domain</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-on-surface">Company Information &amp; Branding</h2>
+<p class="text-xs text-secondary">Global workplace identity, contact channels, and system brand marks</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-[11px] font-bold text-secondary uppercase tracking-wider">Tenant #IE-892</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Company Name -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-on-surface">Company Legal Name</label>
+<input class="w-full bg-surface-container-low text-on-surface px-3.5 py-2.5 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" type="text" value="IntraEats Logistics &amp; Workforce"/>
+</div>
+<!-- Admin Email -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-on-surface">HR Operations Email</label>
+<input class="w-full bg-surface-container-low text-on-surface px-3.5 py-2.5 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" type="email" value="hr@intraeats.com"/>
+</div>
+<!-- Phone -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-on-surface">Contact Phone</label>
+<input class="w-full bg-surface-container-low text-on-surface px-3.5 py-2.5 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" type="tel" value="+1 (555) 019-2834"/>
+</div>
+<!-- HQ Operational Address -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-on-surface">HQ Operational Address</label>
+<input class="w-full bg-surface-container-low text-on-surface px-3.5 py-2.5 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" type="text" value="742 Evergreen Terrace, Austin, TX 78701"/>
+</div>
+</div>
+<!-- Logo Branding Component -->
+<div class="bg-surface-container-low rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<!-- IntraEats Orange Badge as Logo Graphic -->
+<div class="w-24 h-16 rounded-xl bg-primary flex items-center justify-center p-2 shadow-sm text-on-primary">
+<div class="flex items-center font-black tracking-tighter text-xl">
+<span class="mr-1 tracking-widest text-sm font-extrabold opacity-90">☰</span>
+<span>intra<span class="font-light">eats</span></span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Primary System Logo</span>
+<span class="text-[12px] text-secondary">SVG, PNG or WebP up to 2MB (recommended 400x120px)</span>
+<span class="text-[11px] text-tertiary font-semibold mt-0.5">Vector asset verified • High DPI Active</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container text-xs font-bold text-on-surface transition-all shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">upload</span>
+<span>Upload New Logo</span>
+</button>
+<button class="p-2 rounded-xl text-secondary hover:text-error hover:bg-error-container/40 transition-all" title="Remove custom logo">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Section 2: Attendance & Shift Parameters -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-on-surface">Attendance &amp; Shift Parameters</h2>
+<p class="text-xs text-secondary">Workforce punctuality thresholds, standard schedule hours &amp; penalty logic</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-[11px] font-bold text-on-secondary-container">Shift Policy: Standard AM</span>
+</div>
+<!-- Schedule Timers Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Office Start Time -->
+<div class="bg-surface-container-low p-3.5 rounded-xl flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="text-xs font-bold text-on-surface">Default Start Time</label>
+<span class="material-symbols-outlined text-[16px] text-secondary">login</span>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-full bg-surface-container-lowest px-3 py-2 rounded-lg font-mono font-bold text-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" type="text" value="09:00 AM"/>
+<span class="text-xs font-semibold text-secondary">EST</span>
+</div>
+</div>
+<!-- Office End Time -->
+<div class="bg-surface-container-low p-3.5 rounded-xl flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="text-xs font-bold text-on-surface">Default End Time</label>
+<span class="material-symbols-outlined text-[16px] text-secondary">logout</span>
+</div>
+<div class="flex items-center gap-2">
+<input class="w-full bg-surface-container-lowest px-3 py-2 rounded-lg font-mono font-bold text-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20" type="text" value="06:00 PM"/>
+<span class="text-xs font-semibold text-secondary">EST</span>
+</div>
+</div>
+<!-- Grace Period -->
+<div class="bg-surface-container-low p-3.5 rounded-xl flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="text-xs font-bold text-on-surface">Late Grace Period</label>
+<span class="material-symbols-outlined text-[16px] text-primary">hourglass_top</span>
+</div>
+<div class="flex items-center gap-2">
+<select class="w-full bg-surface-container-lowest px-3 py-2 rounded-lg font-bold text-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option>10 Minutes</option>
+<option selected="">15 Minutes</option>
+<option>20 Minutes</option>
+<option>30 Minutes</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Calculation Threshold Note -->
+<div class="px-4 py-3 rounded-xl bg-surface-container text-xs text-on-surface flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0 mt-0.5">info</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-bold">Automated Attendance Tagging Active:</span>
+<span class="text-secondary">Punches logged between <strong>09:01 AM - 09:15 AM</strong> mark as "Present (Grace)". Check-ins at <strong>09:16 AM</strong> or later automatically log as "Late Arrival" and notify team supervisor.</span>
+</div>
+</div>
+<!-- Working Hours Thresholds & Weekends -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-on-surface uppercase tracking-wider">Payroll Minimums</span>
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Full-Day Credit</span>
+<span class="text-[11px] text-secondary">Minimum clocked work threshold</span>
+</div>
+<span class="px-3 py-1 bg-surface-container-lowest rounded-lg font-mono font-bold text-xs text-primary shadow-sm">08h 00m</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Half-Day Minimum</span>
+<span class="text-[11px] text-secondary">Clocked interval required</span>
+</div>
+<span class="px-3 py-1 bg-surface-container-lowest rounded-lg font-mono font-bold text-xs text-secondary shadow-sm">04h 00m</span>
+</div>
+</div>
+</div>
+<!-- Weekend Configuration -->
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-on-surface uppercase tracking-wider">Weekend Policy (Non-Working)</span>
+<div class="flex flex-col gap-2">
+<!-- Saturday Toggle -->
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-all">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-lowest flex items-center justify-center text-xs font-bold text-on-surface">Sa</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Saturday</span>
+<span class="text-[11px] text-secondary">Off-schedule non-working day</span>
+</div>
+</div>
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox"/>
+</label>
+<!-- Sunday Toggle -->
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low cursor-pointer hover:bg-surface-container transition-all">
+<div class="flex items-center gap-2.5">
+<span class="w-7 h-7 rounded-lg bg-surface-container-lowest flex items-center justify-center text-xs font-bold text-on-surface">Su</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Sunday</span>
+<span class="text-[11px] text-secondary">Standard weekly company off-day</span>
+</div>
+</div>
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Security, OTP & Authentication Limits -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">encrypted</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-on-surface">Security, OTP &amp; Authentication Limits</h2>
+<p class="text-xs text-secondary">Brute-force prevention, dynamic 2FA verification windows, and administrative guardrails</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-[11px] font-bold text-on-tertiary-fixed">Zero-Trust Configured</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- OTP Expiry Window -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-on-surface">OTP Token Expiry Window</label>
+<select class="w-full bg-surface-container-low text-on-surface px-3 py-2.5 rounded-xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option>3 Minutes</option>
+<option selected="">5 Minutes (Recommended)</option>
+<option>10 Minutes</option>
+</select>
+<span class="text-[11px] text-secondary">Dispatched via AWS SNS SMS &amp; Mailgun</span>
+</div>
+<!-- Login Rate Limiting -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-on-surface">Max Failed Login Attempts</label>
+<select class="w-full bg-surface-container-low text-on-surface px-3 py-2.5 rounded-xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option>2 Attempts</option>
+<option selected="">3 Attempts (15m Lockout)</option>
+<option>5 Attempts (30m Lockout)</option>
+</select>
+<span class="text-[11px] text-secondary">Enforces temporary IP &amp; account cooldown</span>
+</div>
+<!-- Session Inactivity Timeout -->
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-on-surface">Idle Session Timeout</label>
+<select class="w-full bg-surface-container-low text-on-surface px-3 py-2.5 rounded-xl text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary/20">
+<option>15 Minutes</option>
+<option selected="">30 Minutes</option>
+<option>60 Minutes</option>
+</select>
+<span class="text-[11px] text-secondary">Auto-clears JWT auth bearer token</span>
+</div>
+</div>
+<!-- IP Whitelisting Subnet Section -->
+<div class="flex flex-col sm:flex-row items-center justify-between p-4 rounded-xl bg-surface-container-low gap-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[20px]">lan</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Restrict Super Admin to Whitelisted Subnets</span>
+<span class="text-[12px] text-secondary">Requires corporate VPN gateway (Austin HQ: 192.168.4.0/24, Secondary: 10.0.12.0/20)</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Right Column: Demo Data Management & Visual Status Panels (4 cols) -->
+<div class="xl:col-span-4 flex flex-col gap-6">
+<!-- Section 4: Demo Data & Database Administration (Item #52) -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-error-container/60 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">storage</span>
+</div>
+<div>
+<h2 class="text-sm font-bold text-on-surface">Demo Data Sandbox</h2>
+<span class="text-[11px] text-secondary">Spec Item #52 Environment</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-error-container text-on-error-container text-[11px] font-bold">Staging Active</span>
+</div>
+<!-- Amber Warning Notice Card -->
+<div class="p-3.5 rounded-xl bg-amber-500/10 text-on-surface flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-amber-600 shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col text-xs gap-1">
+<span class="font-bold text-amber-900">Demo Seed Data Environment Active</span>
+<p class="text-amber-800 leading-relaxed text-[11.5px]">This workspace currently loads synthetic workforce models for testing shift logic and automated reports.</p>
+</div>
+</div>
+<!-- Dataset Statistics Tiles -->
+<div class="grid grid-cols-3 gap-2 py-1">
+<div class="flex flex-col p-3 rounded-xl bg-surface-container-low text-center">
+<span class="font-black text-lg text-primary">10</span>
+<span class="text-[10px] uppercase font-bold text-secondary tracking-wider">Demo Staff</span>
+</div>
+<div class="flex flex-col p-3 rounded-xl bg-surface-container-low text-center">
+<span class="font-black text-lg text-on-surface">5</span>
+<span class="text-[10px] uppercase font-bold text-secondary tracking-wider">Projects</span>
+</div>
+<div class="flex flex-col p-3 rounded-xl bg-surface-container-low text-center">
+<span class="font-black text-lg text-tertiary">30d</span>
+<span class="text-[10px] uppercase font-bold text-secondary tracking-wider">Punches</span>
+</div>
+</div>
+<!-- Danger Zone Actions -->
+<div class="flex flex-col gap-2.5 pt-2">
+<span class="text-xs font-bold uppercase tracking-wider text-error flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">dangerous</span>
+<span>Danger Zone Operations</span>
+</span>
+<button class="w-full py-2.5 px-4 rounded-xl bg-error-container/40 hover:bg-error-container text-error font-bold text-xs transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+<span>Clear Demo Data Records</span>
+</button>
+<button class="w-full py-2.5 px-4 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Reset to Production Baseline</span>
+</button>
+</div>
+</div>
+<!-- Biometric Kiosk Terminal Status Panel -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">tablet_mac</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-on-surface">Public Kiosks Synced</h3>
+<span class="text-[11px] text-secondary">3 Terminals Operational</span>
+</div>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse"></span>
+</div>
+<!-- Kiosks Mini-list -->
+<div class="flex flex-col gap-2">
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary">check_circle</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Kiosk #1 - HQ Lobby Austin</span>
+<span class="text-[10px] text-secondary font-mono">IP: 192.168.4.112 • QR + PIN</span>
+</div>
+</div>
+<span class="text-[11px] font-bold text-tertiary">Online</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary">check_circle</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Kiosk #2 - Austin Kitchen A</span>
+<span class="text-[10px] text-secondary font-mono">IP: 192.168.4.115 • Face ID</span>
+</div>
+</div>
+<span class="text-[11px] font-bold text-tertiary">Online</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-[18px] text-primary">sync</span>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Kiosk #3 - Logistics Warehouse</span>
+<span class="text-[10px] text-secondary font-mono">IP: 192.168.4.140 • Biometric</span>
+</div>
+</div>
+<span class="text-[11px] font-bold text-primary">Syncing</span>
+</div>
+</div>
+<button class="w-full py-2 rounded-xl bg-surface-container text-xs font-bold text-on-surface hover:bg-surface-container-high transition-all flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">add_circle</span>
+<span>Register New Kiosk Terminal</span>
+</button>
+</div>
+<!-- Audit Log Summary Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h3 class="text-xs font-bold text-on-surface uppercase tracking-wider">Recent System Audit</h3>
+<span class="text-[11px] text-primary font-bold cursor-pointer hover:underline">View All Logs</span>
+</div>
+<div class="flex flex-col gap-2.5 text-xs">
+<div class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5"></span>
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Super Admin changed grace period to 15m</span>
+<span class="text-[10px] text-secondary">Today, 09:12 AM • IP 72.14.201.8</span>
+</div>
+</div>
+<div class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-1.5"></span>
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Automated daily attendance seed synced</span>
+<span class="text-[10px] text-secondary">Today, 06:00 AM • CRON daemon</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Floating / Sticky Save Configuration Bar -->
+<div class="fixed bottom-0 left-64 right-0 bg-surface-container-lowest/95 backdrop-blur-md px-8 py-3.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] z-30 flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">edit_notifications</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Unsaved changes detected in Attendance Rules</span>
+<span class="text-[11px] text-secondary">Late grace threshold modified • Subnet lockdown active</span>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+<button class="px-4 py-2 rounded-xl bg-surface-container text-xs font-bold text-secondary hover:text-on-surface hover:bg-surface-container-high transition-all">
+        Discard Changes
+      </button>
+<button class="px-5 py-2 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-bold text-xs shadow-sm transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Save Configurations</span>
+</button>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-lowest py-space-sm px-gutter shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="w-full flex flex-col sm:flex-row items-center justify-between gap-space-xs font-body-sm text-body-sm text-secondary"><span>© IntraEats — HR &amp; Attendance Management System</span><div class="flex items-center gap-space-xs font-label-sm text-label-sm text-tertiary"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span><span>Real-Time Database Active</span></div></div></footer></div></body></html>
