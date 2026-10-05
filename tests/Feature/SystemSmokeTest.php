@@ -173,8 +173,21 @@ class SystemSmokeTest extends TestCase
         $today = Carbon::today()->format('Y-m-d');
         Attendance::where('employee_id', $employee->id)->whereDate('date', $today)->delete();
 
-        // 1. Initial Punch In
-        $punchInRes = $this->postJson('/employee/punch', [
+        // 1. Unauthenticated punch is rejected (Login Required)
+        $guestRes = $this->postJson('/employee/punch', [
+            'employee_code' => $employee->employee_code,
+            'action' => 'checkin',
+            'work_category' => 'Core Platform',
+            'task_description' => 'Morning sprint tasks',
+        ]);
+        $guestRes->assertStatus(401);
+        $guestRes->assertJson([
+            'success' => false,
+            'requires_auth' => true,
+        ]);
+
+        // 2. Initial Punch In with authenticated employee
+        $punchInRes = $this->actingAs($employee, 'employee')->postJson('/employee/punch', [
             'employee_code' => $employee->employee_code,
             'action' => 'checkin',
             'work_category' => 'Core Platform',
@@ -187,8 +200,8 @@ class SystemSmokeTest extends TestCase
             'action' => 'checkin',
         ]);
 
-        // 2. Duplicate Punch In Protection (Same Day)
-        $dupRes = $this->postJson('/employee/punch', [
+        // 3. Duplicate Punch In Protection (Same Day)
+        $dupRes = $this->actingAs($employee, 'employee')->postJson('/employee/punch', [
             'employee_code' => $employee->employee_code,
             'action' => 'checkin',
             'work_category' => 'Core Platform',
@@ -200,8 +213,8 @@ class SystemSmokeTest extends TestCase
             'is_duplicate' => true,
         ]);
 
-        // 3. Punch Out
-        $punchOutRes = $this->postJson('/employee/punch', [
+        // 4. Punch Out
+        $punchOutRes = $this->actingAs($employee, 'employee')->postJson('/employee/punch', [
             'employee_code' => $employee->employee_code,
             'action' => 'checkout',
         ]);

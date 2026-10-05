@@ -102,31 +102,21 @@ class EmployeePortalController extends Controller
     {
         $authEmployee = \Illuminate\Support\Facades\Auth::guard('employee')->user();
 
-        if ($authEmployee) {
-            $employee = $authEmployee;
-            $request->validate([
-                'action' => 'required|in:checkin,checkout',
-                'work_category' => 'nullable|string',
-                'task_description' => 'nullable|string',
-            ]);
-        } else {
-            $request->validate([
-                'employee_code' => 'required|string',
-                'action' => 'required|in:checkin,checkout',
-                'work_category' => 'nullable|string',
-                'task_description' => 'nullable|string',
-            ]);
-
-            $code = trim($request->input('employee_code'));
-            $employee = Employee::where('employee_code', $code)->first();
-
-            if (!$employee) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Employee Code not found.',
-                ], 404);
-            }
+        if (!$authEmployee) {
+            return response()->json([
+                'success' => false,
+                'requires_auth' => true,
+                'message' => 'Login Required: You cannot mark attendance without logging in. Please sign in to your employee account.',
+                'login_url' => route('employee.login'),
+            ], 401);
         }
+
+        $employee = $authEmployee;
+        $request->validate([
+            'action' => 'required|in:checkin,checkout',
+            'work_category' => 'nullable|string',
+            'task_description' => 'nullable|string',
+        ]);
 
         $today = Carbon::today()->format('Y-m-d');
         $currentTime = Carbon::now()->format('h:i A');

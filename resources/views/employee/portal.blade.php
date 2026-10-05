@@ -43,8 +43,8 @@
                         <span class="w-2 h-2 rounded-full bg-[#4ADE80] animate-pulse"></span>
                         SYSTEM SERVER TIME SYNCHRONIZED
                     </div>
-                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Mark Your Attendance</h1>
-                    <p class="text-xs sm:text-sm text-[#D4D4D8] mt-1">Geo-validated bi-directional workforce punch module for food &amp; logistics operations.</p>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Daily Attendance &amp; Shift Status</h1>
+                    <p class="text-xs sm:text-sm text-[#D4D4D8] mt-1">Verify employee credentials and check today's real-time attendance status.</p>
                 </div>
 
                 <!-- Big Live Clock Widget -->
@@ -101,14 +101,14 @@
                             </div>
                         </div>
 
-                        <!-- One-Click Check-out Button (if not yet checked out) -->
+                        <!-- Login Required to Punch Out -->
                         <template x-if="!todayAttendance?.check_out_time">
                             <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-amber-200/60">
-                                <span class="text-xs text-amber-800 font-medium">Ready to end your shift? Punch out to auto-calculate your working hours.</span>
-                                <button type="button" @click="submitPunch('checkout')" :disabled="submitting" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#1C1C1E] hover:bg-black text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all">
-                                    <i data-lucide="log-out" class="w-4 h-4 text-[#FF6B1A]"></i>
-                                    <span x-text="submitting ? 'Recording Check-out...' : 'Punch Check-Out Now'"></span>
-                                </button>
+                                <span class="text-xs text-amber-800 font-medium">Ready to end your shift? Login to your employee workspace to punch out.</span>
+                                <a :href="'{{ route('employee.login') }}?code=' + encodeURIComponent(employeeCode)" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#1C1C1E] hover:bg-black text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all">
+                                    <i data-lucide="lock" class="w-4 h-4 text-[#FF6B1A]"></i>
+                                    <span>Sign In to Punch Out &rarr;</span>
+                                </a>
                             </div>
                         </template>
                     </div>
@@ -119,9 +119,9 @@
                     <div class="flex items-center justify-between">
                         <label class="font-bold text-sm text-[#1C1C1E] flex items-center gap-2">
                             <span class="w-6 h-6 rounded-full bg-[#FF6B1A] text-white flex items-center justify-center text-xs font-bold">1</span>
-                            <span>Enter Employee Code to Continue</span>
+                            <span>Enter Employee Code to Check Status</span>
                         </label>
-                        <span class="text-xs text-[#64748B]">Step 1 of 2: ID Match</span>
+                        <span class="text-xs text-[#64748B]">ID &amp; Shift Verification</span>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-3">
@@ -134,7 +134,7 @@
 
                         <button type="button" @click="verifyEmployee()" :disabled="verifying" class="px-6 py-3 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 shrink-0 disabled:opacity-50">
                             <i data-lucide="search" class="w-4 h-4"></i>
-                            <span x-text="verifying ? 'Verifying...' : 'Continue'"></span>
+                            <span x-text="verifying ? 'Checking...' : 'Check Status'"></span>
                         </button>
                     </div>
 
@@ -188,150 +188,63 @@
                     </template>
                 </div>
 
-                <!-- STEP 2: Work Context & Punch Submission (Active when verified) -->
+                <!-- Shift Status: Not Marked Yet + Login Required to Give Attendance -->
                 <div x-show="verified && !isDuplicate" x-cloak class="bg-white border border-[#E2E8F0] p-6 rounded-2xl space-y-5">
-                    <div class="flex items-center justify-between">
-                        <label class="font-bold text-sm text-[#1C1C1E] flex items-center gap-2">
-                            <span class="w-6 h-6 rounded-full bg-[#16A34A] text-white flex items-center justify-center text-xs font-bold">2</span>
-                            <span>What are you working on today? (Required)</span>
-                        </label>
-                        <span class="text-xs text-[#64748B]">Step 2 of 2: Shift Context</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- Category Dropdown -->
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-[#64748B] mb-1.5">Project Category</label>
-                            <select x-model="workCategory" class="w-full bg-[#F8FAFC] border border-[#CBD5E1] text-[#1C1C1E] text-sm rounded-xl px-4 py-2.5 focus:border-[#FF6B1A] focus:ring-2 focus:ring-[#FF6B1A]/20">
-                                @foreach($categories as $cat)
-                                    <option value="{{ $cat->name }}" {{ $cat->is_default ? 'selected' : '' }}>{{ $cat->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <!-- Current Time Auto-captured -->
-                        <div>
-                            <label class="block text-xs font-bold uppercase tracking-wider text-[#64748B] mb-1.5">Punch Timestamp (Auto-captured)</label>
-                            <div class="w-full bg-[#F1F5F9] border border-[#E2E8F0] text-[#1E293B] font-mono text-sm rounded-xl px-4 py-2.5 flex items-center justify-between">
-                                <span x-text="liveClock">{{ $currentTime }}</span>
-                                <span class="text-[10px] font-bold text-[#16A34A] uppercase bg-[#ECFDF5] px-2 py-0.5 rounded">Server Locked</span>
+                    <div class="flex items-center justify-between border-b border-[#F1F5F9] pb-4">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-extrabold text-base text-[#1C1C1E]">Today's Shift Status: Not Marked Yet</h2>
+                                <p class="text-xs text-[#64748B]">Official check-in record has not been logged for today</p>
                             </div>
                         </div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span> Awaiting Punch-In
+                        </span>
                     </div>
 
-                    <!-- Task Description Field -->
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-[#64748B] mb-1.5">Task Description &amp; Details *</label>
-                        <textarea x-model="taskDescription" rows="2" placeholder="e.g. Completed KOT real-time socket connection, tested billing printout, sprint review." class="w-full bg-[#F8FAFC] border border-[#CBD5E1] text-[#1C1C1E] text-sm rounded-xl p-3 focus:border-[#FF6B1A] focus:ring-2 focus:ring-[#FF6B1A]/20"></textarea>
-                    </div>
+                    <!-- Security & Login Required Notice -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-br from-[#FFF8F3] to-[#FFF1E8] border border-[#FFE0CC] space-y-4">
+                        <div class="flex items-start gap-3.5">
+                            <div class="w-11 h-11 rounded-xl bg-[#FF6B1A] text-white flex items-center justify-center shrink-0 shadow-md">
+                                <i data-lucide="lock" class="w-5 h-5"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h3 class="font-extrabold text-base text-[#1C1C1E]">Employee Login Required to Give Attendance</h3>
+                                <p class="text-xs text-[#475569] leading-relaxed">
+                                    Attendance cannot be given without logging in. To ensure verified tracking and accurate task logging, employees must sign in to their personal workspace.
+                                </p>
+                            </div>
+                        </div>
 
-                    <!-- Submit / Punch Button -->
-                    <button type="button" @click="openConfirmModal()" :disabled="submitting || !taskDescription.trim()" class="w-full py-4 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white font-extrabold text-base tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-[#16A34A]/20 hover:shadow-xl transition-all disabled:opacity-50">
-                        <i data-lucide="check-circle" class="w-5 h-5"></i>
-                        <span>Mark Attendance</span>
-                    </button>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 text-xs border-t border-[#FFE0CC]">
+                            <div class="flex items-center gap-2 text-[#475569]">
+                                <i data-lucide="clock" class="w-4 h-4 text-[#FF6B1A]"></i>
+                                <span>Official Shift Start: <strong class="text-[#1C1C1E]">{{ $officeStart }}</strong></span>
+                            </div>
+                            <div class="flex items-center gap-2 text-[#475569]">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-[#16A34A]"></i>
+                                <span>Verified Employee: <strong class="text-[#1C1C1E]" x-text="employee?.full_name"></strong></span>
+                            </div>
+                        </div>
+
+                        <!-- Sign In to Give Attendance CTA -->
+                        <div class="pt-2">
+                            <a :href="'{{ route('employee.login') }}?code=' + encodeURIComponent(employeeCode)" class="w-full py-4 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white font-extrabold text-base tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-[#FF6B1A]/20 hover:shadow-xl transition-all">
+                                <i data-lucide="log-in" class="w-5 h-5"></i>
+                                <span>Sign In to Give Attendance &rarr;</span>
+                            </a>
+                            <p class="text-[11px] text-center text-[#94A3B8] mt-2">
+                                Your Employee Code (<span class="font-mono text-[#FF6B1A] font-semibold" x-text="employeeCode"></span>) will be automatically prefilled.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
-
-    <!-- Confirmation Modal -->
-    <div x-show="confirmModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div @click="confirmModal = false" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-[#E2E8F0] p-6 z-10 space-y-4">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-[#FFF3EB] text-[#FF6B1A] flex items-center justify-center">
-                    <i data-lucide="help-circle" class="w-6 h-6"></i>
-                </div>
-                <div>
-                    <h3 class="font-extrabold text-base text-[#1C1C1E]">Confirm Attendance Punch</h3>
-                    <p class="text-xs text-[#64748B]">Please verify your details before confirming.</p>
-                </div>
-            </div>
-
-            <div class="bg-[#F8FAFC] rounded-xl p-4 border border-[#E2E8F0] space-y-2 text-xs">
-                <div class="flex justify-between"><span class="text-[#64748B]">Employee:</span><strong class="text-[#1C1C1E]" x-text="employee?.full_name"></strong></div>
-                <div class="flex justify-between"><span class="text-[#64748B]">Employee Code:</span><strong class="text-[#FF6B1A] font-mono" x-text="employee?.employee_code"></strong></div>
-                <div class="flex justify-between"><span class="text-[#64748B]">Current Date:</span><strong class="text-[#1C1C1E]" x-text="currentDate"></strong></div>
-                <div class="flex justify-between"><span class="text-[#64748B]">Punch Time:</span><strong class="text-[#16A34A] font-mono" x-text="liveClock"></strong></div>
-                <div class="flex justify-between"><span class="text-[#64748B]">Category:</span><strong class="text-[#1C1C1E]" x-text="workCategory"></strong></div>
-                <div class="border-t border-[#E2E8F0] pt-2">
-                    <span class="text-[#64748B] block mb-1">Task Summary:</span>
-                    <p class="text-[#1E293B] italic" x-text="taskDescription"></p>
-                </div>
-            </div>
-
-            <div class="flex gap-3">
-                <button type="button" @click="confirmModal = false" class="flex-1 py-2.5 rounded-xl border border-[#CBD5E1] text-[#64748B] font-bold text-xs hover:bg-[#F8FAFC]">Cancel</button>
-                <button type="button" @click="submitPunch('checkin')" class="flex-1 py-2.5 rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white font-bold text-xs shadow-md">Confirm Attendance</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Punch Receipt Modal -->
-    <div x-show="receiptModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#E2E8F0] overflow-hidden z-10">
-            <!-- Receipt Top Header -->
-            <div class="bg-[#16A34A] text-white p-6 text-center space-y-2">
-                <div class="w-14 h-14 mx-auto rounded-full bg-white text-[#16A34A] flex items-center justify-center shadow-lg">
-                    <i data-lucide="check" class="w-8 h-8 stroke-[3]"></i>
-                </div>
-                <h2 class="text-xl font-extrabold">Attendance Marked Successfully ✓</h2>
-                <p class="text-xs text-[#DCFCE7]" x-text="receiptData?.message"></p>
-            </div>
-
-            <!-- Receipt Content -->
-            <div class="p-6 space-y-4">
-                <div class="bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-5 space-y-2.5 text-xs font-mono">
-                    <div class="flex justify-between border-b border-[#E2E8F0] pb-2">
-                        <span class="text-[#64748B]">Receipt Ref:</span>
-                        <strong class="text-[#1C1C1E]" x-text="'IE-REC-' + (receiptData?.attendance?.id || '9842')"></strong>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-[#64748B]">Employee:</span>
-                        <strong class="text-[#1C1C1E]" x-text="receiptData?.attendance?.employee_name"></strong>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-[#64748B]">Employee Code:</span>
-                        <strong class="text-[#FF6B1A]" x-text="receiptData?.attendance?.employee_code"></strong>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-[#64748B]">Date:</span>
-                        <span class="text-[#1C1C1E]" x-text="receiptData?.attendance?.date"></span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-[#64748B]">Punch Time:</span>
-                        <strong class="text-[#16A34A]" x-text="receiptData?.attendance?.check_in_time"></strong>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-[#64748B]">Status:</span>
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#ECFDF5] text-[#059669]" x-text="receiptData?.attendance?.status"></span>
-                    </div>
-                    <div class="flex justify-between">
-                        <span class="text-[#64748B]">Work Category:</span>
-                        <span class="text-[#1C1C1E]" x-text="receiptData?.attendance?.work_category"></span>
-                    </div>
-                </div>
-
-                <template x-if="receiptData?.attendance?.email">
-                    <p class="text-xs text-[#64748B] text-center">
-                        A confirmation punch receipt was sent to <strong x-text="receiptData?.attendance?.email"></strong>.
-                    </p>
-                </template>
-
-                <div class="flex gap-3">
-                    <button type="button" onclick="window.print()" class="flex-1 py-3 rounded-xl border border-[#CBD5E1] text-[#1C1C1E] font-bold text-xs hover:bg-[#F8FAFC] flex items-center justify-center gap-1.5">
-                        <i data-lucide="printer" class="w-4 h-4"></i>
-                        <span>Print Receipt</span>
-                    </button>
-                    <button type="button" @click="resetPortal()" class="flex-1 py-3 rounded-xl bg-[#1C1C1E] hover:bg-black text-white font-bold text-xs shadow-md">
-                        Done / Next Punch
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Help Modal -->
     <div x-show="helpModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -340,7 +253,7 @@
             <div class="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
                 <h3 class="font-extrabold text-base text-[#1C1C1E] flex items-center gap-2">
                     <i data-lucide="help-circle" class="w-5 h-5 text-[#FF6B1A]"></i>
-                    <span>Attendance Kiosk Guide</span>
+                    <span>Attendance &amp; Shift Guide</span>
                 </h3>
                 <button @click="helpModal = false" class="text-[#94A3B8] hover:text-[#1C1C1E]">
                     <i data-lucide="x" class="w-5 h-5"></i>
@@ -348,9 +261,9 @@
             </div>
 
             <div class="space-y-3 text-xs text-[#475569] leading-relaxed">
-                <p><strong>1. Punch In:</strong> Enter your unique Employee Code (e.g. <code>INTRA-EMP-001</code>) and tap <strong>Continue</strong>. Your digital ID card will verify instantly.</p>
-                <p><strong>2. Work Context:</strong> Select your project category and briefly describe your daily tasks. Tap <strong>Mark Attendance</strong>.</p>
-                <p><strong>3. Duplicate Protection:</strong> If you try to punch in twice in one day, the system protects against duplicates and provides a <strong>Check-Out</strong> option to auto-calculate your shift duration.</p>
+                <p><strong>1. Check Status:</strong> Enter your unique Employee Code (e.g. <code>INTRA-EMP-001</code>) and tap <strong>Check Status</strong> to verify your digital ID and check whether you have already punched in today.</p>
+                <p><strong>2. Login Required to Give Attendance:</strong> Employees cannot mark attendance without logging in. Tap <strong>Sign In to Give Attendance</strong> to open your secure employee workspace.</p>
+                <p><strong>3. Punch In &amp; Shift Management:</strong> In your employee dashboard, select your project category, log daily goals, and record server-locked timestamps.</p>
                 <p><strong>4. Questions or Issues?</strong> Contact HR Operations at <a href="mailto:hr@intraeats.com" class="text-[#FF6B1A] font-semibold underline">hr@intraeats.com</a>.</p>
             </div>
 
@@ -381,12 +294,6 @@ function employeeAttendancePortal() {
         todayAttendance: null,
         isDuplicate: false,
         errorMessage: '',
-        workCategory: 'Internal Project',
-        taskDescription: 'Refactored kitchen order routing socket connection.',
-        submitting: false,
-        confirmModal: false,
-        receiptModal: false,
-        receiptData: null,
         helpModal: false,
         liveClock: '{{ $currentTime }}',
         currentDate: '{{ now()->format('d M Y') }}',
@@ -401,7 +308,6 @@ function employeeAttendancePortal() {
             // Re-render icons on state changes
             this.$watch('verified', () => { setTimeout(() => window.createIcons({ icons: window.lucideIcons }), 50); });
             this.$watch('isDuplicate', () => { setTimeout(() => window.createIcons({ icons: window.lucideIcons }), 50); });
-            this.$watch('receiptModal', () => { setTimeout(() => window.createIcons({ icons: window.lucideIcons }), 50); });
         },
 
         async verifyEmployee() {
@@ -446,65 +352,12 @@ function employeeAttendancePortal() {
             }
         },
 
-        openConfirmModal() {
-            if (!this.taskDescription.trim()) return;
-            this.confirmModal = true;
-            setTimeout(() => window.createIcons({ icons: window.lucideIcons }), 50);
-        },
-
-        async submitPunch(action = 'checkin') {
-            this.confirmModal = false;
-            this.submitting = true;
-            this.errorMessage = '';
-
-            try {
-                const res = await fetch('{{ route('employee.punch') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        employee_code: this.employeeCode.trim(),
-                        action: action,
-                        work_category: this.workCategory,
-                        task_description: this.taskDescription
-                    })
-                });
-
-                const data = await res.json();
-
-                if (res.ok && data.success) {
-                    this.receiptData = data;
-                    this.receiptModal = true;
-                    if (action === 'checkout') {
-                        this.todayAttendance.check_out_time = data.attendance.check_out_time;
-                        this.todayAttendance.working_hours_formatted = data.attendance.working_hours_formatted;
-                    }
-                } else if (res.status === 409) {
-                    this.isDuplicate = true;
-                    this.todayAttendance = data.attendance;
-                    this.errorMessage = data.message;
-                } else {
-                    this.errorMessage = data.message || 'Failed to submit attendance.';
-                }
-            } catch (err) {
-                this.errorMessage = 'Network error while punching attendance.';
-            } finally {
-                this.submitting = false;
-                setTimeout(() => window.createIcons({ icons: window.lucideIcons }), 50);
-            }
-        },
-
         resetPortal() {
-            this.receiptModal = false;
             this.employeeCode = '';
             this.verified = false;
             this.employee = null;
             this.todayAttendance = null;
             this.isDuplicate = false;
-            this.taskDescription = '';
         }
     };
 }

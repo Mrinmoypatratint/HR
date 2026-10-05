@@ -65,7 +65,7 @@
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#94A3B8]">
                             <i data-lucide="badge-check" class="w-5 h-5"></i>
                         </div>
-                        <input id="login" name="login" type="text" value="{{ old('login') }}" required autofocus
+                        <input id="login" name="login" type="text" value="{{ old('login', request('code')) }}" required autofocus
                             placeholder="e.g. INTRA-EMP-001 or name@intraeats.com"
                             class="w-full bg-[#F8FAFC] border border-[#CBD5E1] text-[#1C1C1E] text-sm rounded-xl pl-11 pr-4 py-3 focus:border-[#FF6B1A] focus:ring-2 focus:ring-[#FF6B1A]/20 transition-all font-mono">
                     </div>
