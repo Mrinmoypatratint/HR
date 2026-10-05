@@ -3,17 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Employee extends Model
+class Employee extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'employee_id',
         'employee_code',
         'full_name',
         'email',
+        'password',
+        'password_reset_token',
+        'password_reset_sent_at',
+        'last_login_at',
         'mobile',
         'photo_url',
         'joining_date',
@@ -29,9 +34,18 @@ class Employee extends Model
         'is_demo',
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+        'password_reset_token',
+    ];
+
     protected $casts = [
         'joining_date' => 'date',
         'is_demo' => 'boolean',
+        'password' => 'hashed',
+        'password_reset_sent_at' => 'datetime',
+        'last_login_at' => 'datetime',
     ];
 
     public function attendances()

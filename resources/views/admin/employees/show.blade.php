@@ -46,16 +46,39 @@
             </div>
         </div>
 
-        <div class="flex items-center gap-3 self-stretch sm:self-auto justify-end">
+        <div class="flex flex-wrap items-center gap-2.5 self-stretch sm:self-auto justify-end">
+            @if($employee->email)
+            <form method="POST" action="{{ route('admin.employees.send-password-link', $employee->id) }}" onsubmit="return confirm('Send activation/password setup link to {{ $employee->email }}?');">
+                @csrf
+                <button type="submit" class="px-4 py-2.5 rounded-xl bg-indigo-50 border border-indigo-200 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition-all flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Email Password Link</span>
+                </button>
+            </form>
+            @endif
+
             <form method="POST" action="{{ route('admin.employees.toggle', $employee->id) }}">
                 @csrf
                 <button type="submit" class="px-4 py-2.5 rounded-xl border border-[#CBD5E1] text-xs font-bold {{ $employee->status === 'ACTIVE' ? 'text-amber-700 hover:bg-amber-50' : 'text-emerald-700 hover:bg-emerald-50' }} transition-all flex items-center gap-1.5">
                     <i data-lucide="{{ $employee->status === 'ACTIVE' ? 'user-minus' : 'user-check' }}" class="w-4 h-4"></i>
-                    <span>{{ $employee->status === 'ACTIVE' ? 'Deactivate Employee' : 'Activate Employee' }}</span>
+                    <span>{{ $employee->status === 'ACTIVE' ? 'Deactivate' : 'Activate' }}</span>
                 </button>
             </form>
         </div>
     </div>
+
+    @if(session('sent_activation_url'))
+        <div class="p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
+            <div class="flex items-center gap-2">
+                <i data-lucide="key" class="w-4 h-4 text-amber-600 shrink-0"></i>
+                <span><strong>Employee Setup Link:</strong> <code class="font-mono text-[11px] text-amber-800 break-all">{{ session('sent_activation_url') }}</code></span>
+            </div>
+            <button type="button" onclick="navigator.clipboard.writeText('{{ session('sent_activation_url') }}'); alert('Activation Link Copied to Clipboard!');" class="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shrink-0 flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Link</span>
+            </button>
+        </div>
+    @endif
 
     <!-- Stat KPI Tiles -->
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">

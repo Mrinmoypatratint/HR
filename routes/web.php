@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeePortalController;
+use App\Http\Controllers\Auth\EmployeeAuthController;
+use App\Http\Controllers\Employee\EmployeeDashboardController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AttendanceController;
@@ -19,7 +21,7 @@ use App\Http\Controllers\Admin\AuditController;
 */
 
 // ==========================================
-// 1. Employee Portal (Mobile-First / Kiosk)
+// 1. Employee Portal & Attendance Punch (Public / Kiosk Mode)
 // ==========================================
 Route::get('/', [EmployeePortalController::class, 'index'])->name('employee.portal');
 Route::get('/attendance', function () {
@@ -29,7 +31,31 @@ Route::post('/employee/verify', [EmployeePortalController::class, 'verify'])->na
 Route::post('/employee/punch', [EmployeePortalController::class, 'punch'])->name('employee.punch');
 
 // ==========================================
-// 2. Admin Authentication Flow (2FA with OTP)
+// 2. Employee Authentication Flow
+// ==========================================
+Route::prefix('employee')->group(function () {
+    Route::get('/login', [EmployeeAuthController::class, 'showLogin'])->name('employee.login');
+    Route::post('/login', [EmployeeAuthController::class, 'login'])->name('employee.login.submit');
+
+    Route::get('/set-password', [EmployeeAuthController::class, 'showSetPassword'])->name('employee.password.set');
+    Route::post('/set-password', [EmployeeAuthController::class, 'setPassword'])->name('employee.password.set.submit');
+
+    Route::get('/forgot-password', [EmployeeAuthController::class, 'showForgotPassword'])->name('employee.password.forgot');
+    Route::post('/forgot-password', [EmployeeAuthController::class, 'sendResetLink'])->name('employee.password.email');
+
+    Route::post('/logout', [EmployeeAuthController::class, 'logout'])->name('employee.logout');
+});
+
+// ==========================================
+// 3. Employee Authenticated Workspace & Ledger
+// ==========================================
+Route::prefix('employee')->middleware(['auth:employee'])->group(function () {
+    Route::get('/dashboard', [EmployeeDashboardController::class, 'index'])->name('employee.dashboard');
+    Route::post('/update-password', [EmployeeDashboardController::class, 'updatePassword'])->name('employee.password.update');
+});
+
+// ==========================================
+// 4. Admin Authentication Flow (2FA with OTP)
 // ==========================================
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
@@ -48,7 +74,7 @@ Route::prefix('admin')->group(function () {
 });
 
 // ==========================================
-// 3. Admin Protected Management Suite
+// 5. Admin Protected Management Suite
 // ==========================================
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     // Dashboard
@@ -68,6 +94,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/employees/{id}', [EmployeeController::class, 'show'])->name('admin.employees.show');
     Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('admin.employees.update');
     Route::post('/employees/{id}/toggle-status', [EmployeeController::class, 'toggleStatus'])->name('admin.employees.toggle');
+    Route::post('/employees/{id}/send-password-link', [EmployeeController::class, 'sendPasswordLink'])->name('admin.employees.send-password-link');
     Route::delete('/employees/{id}', [EmployeeController::class, 'destroy'])->name('admin.employees.destroy');
 
     // Project Management

@@ -235,4 +235,167 @@ class SystemSmokeTest extends TestCase
         // Re-seed for local development session
         \Illuminate\Support\Facades\Artisan::call('db:seed');
     }
+
+    /**
+     * Test admin adds employee and password setup email is dispatched.
+     */
+    public function test_admin_adds_employee_and_password_setup_mail_dispatched(): void
+    {
+        \Illuminate\Support\Facades\Mail::fake();
+
+        $admin = User::where('email', 'hr@intraeats.com')->first();
+        $this->assertNotNull($admin);
+
+        Employee::where('employee_code', 'INTRA-EMP-999')->orWhere('employee_id', 'IE999')->delete();
+
+        $employeeData = [
+            'employee_id' => 'IE999',
+            'employee_code' => 'INTRA-EMP-999',
+            'full_name' => 'Aarav Mehta',
+            'email' => 'aarav.mehta@intraeats.com',
+            'mobile' => '+91 98765 88999',
+            'department' => 'Technology',
+            'designation' => 'Frontend Architect',
+            'role' => 'Principal UI Engineer',
+            'employment_type' => 'Full-time',
+            'joining_date' => '2026-10-01',
+            'status' => 'ACTIVE',
+        ];
+
+        $response = $this->actingAs($admin)->post('/admin/employees', $employeeData);
+        $response->assertRedirect('/admin/employees');
+
+        $employee = Employee::where('employee_code', 'INTRA-EMP-999')->first();
+        $this->assertNotNull($employee, 'Employee must be created.');
+        $this->assertNotNull($employee->password_reset_token, 'Reset token must be generated.');
+        $this->assertNotNull($employee->password_reset_sent_at);
+
+        \Illuminate\Support\Facades\Mail::assertSent(\App\Mail\EmployeeSetPasswordMail::class, function ($mail) use ($employee) {
+            return $mail->hasTo('aarav.mehta@intraeats.com')
+                && $mail->token === $employee->password_reset_token
+                && $mail->isNewAccount === true;
+        });
+    }
+
+    /**
+     * Test employee sets password via token link and is automatically logged in.
+     */
+    public function test_employee_sets_password_via_token_link(): void
+    {
+        $employee = Employee::where('employee_code', 'INTRA-EMP-999')->first();
+        $this->assertNotNull($employee);
+
+        // 1. Visit Set Password Page with token
+        $viewRes = $this->get('/employee/set-password?token=' . $employee->password_reset_token . '&email=' . urlencode($employee->email));
+        $viewRes->assertStatus(200);
+        $viewRes->assertSee('Set Your Account Password');
+        $viewRes->assertSee($employee->full_name);
+
+        // 2. Submit new password
+        $setRes = $this->post('/employee/set-password', [
+            'token' => $employee->password_reset_token,
+            'email' => $employee->email,
+            'password' => 'NewSecurePassword123!',
+            'password_confirmation' => 'NewSecurePassword123!',
+        ]);
+
+        $setRes->assertRedirect(route('employee.dashboard'));
+        $this->assertAuthenticatedAs($employee, 'employee');
+
+        // Verify token cleared and password hashed in DB
+        $employee->refresh();
+        $this->assertNull($employee->password_reset_token);
+        $this->assertTrue(Hash::check('NewSecurePassword123!', $employee->password));
+    }
+
+    /**
+     * Test employee login with credentials and access to dashboard & personal data.
+     */
+    public function test_employee_login_and_dashboard_data_visibility(): void
+    {
+        $employee = Employee::where('employee_code', 'INTRA-EMP-999')->first();
+        $this->assertNotNull($employee);
+
+        // Log out first
+        $this->post('/employee/logout');
+        $this->assertGuest('employee');
+
+        // Test login page renders
+        $this->get('/employee/login')
+            ->assertStatus(200)
+            ->assertSee('Sign In to Employee Portal');
+
+        // Login with Employee Code
+        $loginRes = $this->post('/employee/login', [
+            'login' => $employee->employee_code,
+            'password' => 'NewSecurePassword123!',
+        ]);
+
+        $loginRes->assertRedirect(route('employee.dashboard'));
+        $this->assertAuthenticatedAs($employee, 'employee');
+
+        // View Employee Dashboard (Their own data only)
+        $dashRes = $this->actingAs($employee, 'employee')->get('/employee/dashboard');
+        $dashRes->assertStatus(200);
+        $dashRes->assertSee($employee->full_name);
+        $dashRes->assertSee($employee->employee_code);
+        $dashRes->assertSee("Punch Station");
+        $dashRes->assertSee("My Personal Attendance Ledger");
+        $dashRes->assertSee("Digital Employee ID Card");
+    }
+
+    /**
+     * Test authenticated employee marks attendance and views ledger updates.
+     */
+    public function test_authenticated_employee_punch_attendance_lifecycle(): void
+    {
+        $employee = Employee::where('employee_code', 'INTRA-EMP-999')->first();
+        $this->assertNotNull($employee);
+
+        $today = Carbon::today()->format('Y-m-d');
+        Attendance::where('employee_id', $employee->id)->whereDate('date', $today)->delete();
+
+        // 1. Authenticated Punch In
+        $punchIn = $this->actingAs($employee, 'employee')->postJson('/employee/punch', [
+            'action' => 'checkin',
+            'work_category' => 'Technology',
+            'task_description' => 'Implementing new employee onboarding flow',
+        ]);
+
+        $punchIn->assertStatus(200);
+        $punchIn->assertJson([
+            'success' => true,
+            'action' => 'checkin',
+        ]);
+
+        // Verify record in DB
+        $this->assertDatabaseHas('attendances', [
+            'employee_id' => $employee->id,
+            'work_category' => 'Technology',
+        ]);
+
+        // 2. Authenticated Punch Out
+        $punchOut = $this->actingAs($employee, 'employee')->postJson('/employee/punch', [
+            'action' => 'checkout',
+        ]);
+
+        $punchOut->assertStatus(200);
+        $punchOut->assertJson([
+            'success' => true,
+            'action' => 'checkout',
+        ]);
+
+        // 3. Dashboard shows completed shift
+        $dashRes = $this->actingAs($employee, 'employee')->get('/employee/dashboard');
+        $dashRes->assertStatus(200);
+        $dashRes->assertSee('Implementing new employee onboarding flow');
+
+        // 4. Employee Logout
+        $logoutRes = $this->actingAs($employee, 'employee')->post('/employee/logout');
+        $logoutRes->assertRedirect(route('employee.login'));
+        $this->assertGuest('employee');
+
+        // Cleanup created test employee
+        $employee->delete();
+    }
 }

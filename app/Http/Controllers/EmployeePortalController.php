@@ -19,6 +19,10 @@ class EmployeePortalController extends Controller
      */
     public function index()
     {
+        if (\Illuminate\Support\Facades\Auth::guard('employee')->check()) {
+            return redirect()->route('employee.dashboard');
+        }
+
         $categories = ProjectCategory::orderBy('is_default', 'desc')->orderBy('name')->get();
         $currentTime = Carbon::now()->format('d F Y | h:i:s A');
         $officeStart = Setting::get('office_start_time', '09:30 AM');
@@ -96,21 +100,32 @@ class EmployeePortalController extends Controller
      */
     public function punch(Request $request)
     {
-        $request->validate([
-            'employee_code' => 'required|string',
-            'action' => 'required|in:checkin,checkout',
-            'work_category' => 'nullable|string',
-            'task_description' => 'nullable|string',
-        ]);
+        $authEmployee = \Illuminate\Support\Facades\Auth::guard('employee')->user();
 
-        $code = trim($request->input('employee_code'));
-        $employee = Employee::where('employee_code', $code)->first();
+        if ($authEmployee) {
+            $employee = $authEmployee;
+            $request->validate([
+                'action' => 'required|in:checkin,checkout',
+                'work_category' => 'nullable|string',
+                'task_description' => 'nullable|string',
+            ]);
+        } else {
+            $request->validate([
+                'employee_code' => 'required|string',
+                'action' => 'required|in:checkin,checkout',
+                'work_category' => 'nullable|string',
+                'task_description' => 'nullable|string',
+            ]);
 
-        if (!$employee) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Employee Code not found.',
-            ], 404);
+            $code = trim($request->input('employee_code'));
+            $employee = Employee::where('employee_code', $code)->first();
+
+            if (!$employee) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Employee Code not found.',
+                ], 404);
+            }
         }
 
         $today = Carbon::today()->format('Y-m-d');

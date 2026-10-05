@@ -21,6 +21,19 @@
         </button>
     </div>
 
+    @if(session('sent_activation_url'))
+        <div class="p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm">
+            <div class="flex items-center gap-2">
+                <i data-lucide="key" class="w-4 h-4 text-amber-600 shrink-0"></i>
+                <span><strong>Employee Activation Link Dispatched:</strong> <code class="font-mono text-[11px] text-amber-800 break-all">{{ session('sent_activation_url') }}</code></span>
+            </div>
+            <button type="button" onclick="navigator.clipboard.writeText('{{ session('sent_activation_url') }}'); alert('Activation Link Copied to Clipboard!');" class="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shrink-0 flex items-center gap-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Setup Link</span>
+            </button>
+        </div>
+    @endif
+
     <!-- Filter Bar -->
     <div class="bg-white p-5 rounded-2xl border border-[#E2E8F0] shadow-sm">
         <form method="GET" action="{{ route('admin.employees.index') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
@@ -114,6 +127,15 @@
                         <i data-lucide="eye" class="w-4 h-4"></i>
                     </a>
 
+                    @if($emp->email)
+                    <form method="POST" action="{{ route('admin.employees.send-password-link', $emp->id) }}" class="inline" onsubmit="return confirm('Send activation/password reset link to {{ $emp->email }}?');">
+                        @csrf
+                        <button type="submit" class="p-1.5 rounded-lg text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50" title="Send Setup/Reset Password Email">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                    @endif
+
                     <form method="POST" action="{{ route('admin.employees.toggle', $emp->id) }}" class="inline">
                         @csrf
                         <button type="submit" class="p-1.5 rounded-lg {{ $emp->status === 'ACTIVE' ? 'text-amber-600 hover:bg-amber-50' : 'text-emerald-600 hover:bg-emerald-50' }}" title="{{ $emp->status === 'ACTIVE' ? 'Deactivate' : 'Activate' }}">
@@ -183,8 +205,9 @@
                     </div>
 
                     <div>
-                        <label class="block font-bold text-[#64748B] uppercase mb-1">Email Address</label>
-                        <input type="email" name="email" placeholder="tanmay@intraeats.com" class="w-full px-3 py-2 rounded-xl bg-[#F8FAFC] border border-[#CBD5E1] text-[#1C1C1E]">
+                        <label class="block font-bold text-[#64748B] uppercase mb-1">Email Address * (For Password Setup Mail)</label>
+                        <input type="email" name="email" required placeholder="tanmay@intraeats.com" class="w-full px-3 py-2 rounded-xl bg-[#F8FAFC] border border-[#CBD5E1] text-[#1C1C1E]">
+                        <span class="text-[10px] text-[#FF6B1A] mt-0.5 block">Employee receives an activation link to set their password.</span>
                     </div>
                 </div>
 

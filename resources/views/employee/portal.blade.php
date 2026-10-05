@@ -21,7 +21,10 @@
                 <a href="#home" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-[#1C1C1E] hover:bg-[#F1F5F9]">Home</a>
                 <a href="#attendance" class="px-3 py-1.5 rounded-lg text-xs font-bold text-[#FF6B1A] bg-[#FFF3EB]">Attendance</a>
                 <button @click="helpModal = true" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-[#64748B] hover:bg-[#F1F5F9]">Help</button>
-                <div class="h-4 w-px bg-[#E2E8F0] mx-1"></div>
+                <a href="{{ route('employee.login') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FF6B1A] text-white text-xs font-bold hover:bg-[#E55607] transition-all shadow-sm">
+                    <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
+                    <span>Employee Login</span>
+                </a>
                 <a href="{{ route('admin.login') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-[#E2E8F0] text-xs font-bold text-[#1C1C1E] hover:border-[#FF6B1A] hover:text-[#FF6B1A] transition-all shadow-sm">
                     <i data-lucide="shield" class="w-3.5 h-3.5 text-[#FF6B1A]"></i>
                     <span>Admin Login</span>

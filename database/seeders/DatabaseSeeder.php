@@ -303,6 +303,7 @@ class DatabaseSeeder extends Seeder
 
         $createdEmployees = [];
         foreach ($employeesData as $emp) {
+            $emp['password'] = Hash::make('Password123!');
             $createdEmployees[] = Employee::updateOrCreate(['employee_code' => $emp['employee_code']], $emp);
         }
         $this->command?->info("✓ Seeded 10 employees.");
@@ -379,6 +380,7 @@ class DatabaseSeeder extends Seeder
 
         // 7. 30 Days Realistic Attendance
         $this->command?->info("Generating 30 days of realistic attendance history...");
+        Attendance::where('is_demo', true)->delete();
         $now = Carbon::today();
         $tasksList = [
             "Refactored kitchen order routing socket connection.",

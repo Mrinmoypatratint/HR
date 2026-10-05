@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Project;
 use App\Models\AuditLog;
+use App\Mail\EmployeeSetPasswordMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 
 class EmployeeController extends Controller
@@ -67,11 +70,15 @@ class EmployeeController extends Controller
             'photo_url' => 'nullable|string',
         ]);
 
+        $token = Str::random(64);
+
         $employee = Employee::create([
             'employee_id' => trim($request->input('employee_id')),
             'employee_code' => trim($request->input('employee_code')),
             'full_name' => trim($request->input('full_name')),
             'email' => $request->input('email') ? trim($request->input('email')) : null,
+            'password_reset_token' => $token,
+            'password_reset_sent_at' => Carbon::now(),
             'mobile' => $request->input('mobile'),
             'department' => $request->input('department'),
             'designation' => $request->input('designation'),
@@ -87,13 +94,31 @@ class EmployeeController extends Controller
             'is_demo' => false,
         ]);
 
+        $activationUrl = null;
+        if ($employee->email) {
+            $activationUrl = url('/employee/set-password?token=' . $token . '&email=' . urlencode($employee->email));
+            try {
+                Mail::to($employee->email)->send(new EmployeeSetPasswordMail($employee, $token, true));
+                logger()->info("EMPLOYEE ACTIVATION MAIL SENT to {$employee->email} with URL: " . $activationUrl);
+            } catch (\Throwable $e) {
+                logger()->warning("Could not send activation mail: " . $e->getMessage());
+            }
+        }
+
         AuditLog::log('CREATE', 'EMPLOYEE', (string) $employee->id, [
             'name' => $employee->full_name,
             'code' => $employee->employee_code,
             'dept' => $employee->department,
         ]);
 
-        return redirect()->route('admin.employees.index')->with('success', "Employee {$employee->full_name} ({$employee->employee_code}) created successfully!");
+        $message = "Employee {$employee->full_name} ({$employee->employee_code}) created successfully!";
+        if ($employee->email) {
+            $message .= " A password activation email has been dispatched to {$employee->email}.";
+        }
+
+        return redirect()->route('admin.employees.index')
+            ->with('success', $message)
+            ->with('sent_activation_url', $activationUrl);
     }
 
     public function show($id)
@@ -202,5 +227,38 @@ class EmployeeController extends Controller
         ]);
 
         return redirect()->route('admin.employees.index')->with('success', "Employee {$name} ({$code}) deleted.");
+    }
+
+    public function sendPasswordLink($id)
+    {
+        $employee = Employee::findOrFail($id);
+
+        if (!$employee->email) {
+            return redirect()->back()->with('error', "Employee {$employee->full_name} does not have an email address configured.");
+        }
+
+        $token = Str::random(64);
+        $employee->update([
+            'password_reset_token' => $token,
+            'password_reset_sent_at' => Carbon::now(),
+        ]);
+
+        $url = url('/employee/set-password?token=' . $token . '&email=' . urlencode($employee->email));
+
+        try {
+            Mail::to($employee->email)->send(new EmployeeSetPasswordMail($employee, $token, $employee->password === null));
+            logger()->info("EMPLOYEE PASSWORD RESET/ACTIVATION MAIL DISPATCHED to {$employee->email}: " . $url);
+        } catch (\Throwable $e) {
+            logger()->warning("Could not dispatch password mail: " . $e->getMessage());
+        }
+
+        AuditLog::log('PASSWORD_LINK_SENT', 'EMPLOYEE', (string) $employee->id, [
+            'name' => $employee->full_name,
+            'email' => $employee->email,
+        ]);
+
+        return redirect()->back()
+            ->with('success', "Password setup/reset email successfully sent to {$employee->email}!")
+            ->with('sent_activation_url', $url);
     }
 }
