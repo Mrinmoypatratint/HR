@@ -56,3 +56,14 @@ h1, h2, h3, h4, h5, h6 {
   outline: 2px solid #FF6B1A;
   outline-offset: 2px;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

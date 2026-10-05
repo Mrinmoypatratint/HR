@@ -3,32 +3,32 @@
 @section('title', 'Admin Two-Factor Verification — IntraEats HR')
 
 @section('content')
-<div class="min-h-screen flex items-center justify-center p-4 sm:p-6 bg-[#FAFAF8]" x-data="otpVerificationHandler({{ $expiresIn }}, '{{ $devOtp }}')">
-    <div class="w-full max-w-lg bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl overflow-hidden relative">
+<div class="min-h-screen flex items-center justify-center p-3 sm:p-6 bg-[#FAFAF8]" x-data="otpVerificationHandler({{ $expiresIn }}, '{{ $devOtp }}')">
+    <div class="w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl border border-[#E2E8F0] shadow-2xl overflow-hidden relative">
         <!-- Top Expiry Progress Bar -->
         <div class="h-1.5 w-full bg-[#F1F5F9]">
             <div class="h-full bg-[#FF6B1A] transition-all duration-1000 ease-linear" :style="'width: ' + progressPercent + '%'"></div>
         </div>
 
-        <div class="p-8 sm:p-10 flex flex-col items-center text-center">
+        <div class="p-5 sm:p-10 flex flex-col items-center text-center">
             <!-- Icon Chip -->
-            <div class="w-16 h-16 rounded-2xl bg-[#FFF3EB] text-[#FF6B1A] flex items-center justify-center mb-4 shadow-sm">
-                <i data-lucide="shield-alert" class="w-8 h-8"></i>
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#FFF3EB] text-[#FF6B1A] flex items-center justify-center mb-3 sm:mb-4 shadow-sm shrink-0">
+                <i data-lucide="shield-alert" class="w-7 h-7 sm:w-8 sm:h-8"></i>
             </div>
 
             <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#F1F5F9] text-[#475569] mb-2">Admin Security Verification</span>
-            <h1 class="text-2xl font-extrabold text-[#1C1C1E] tracking-tight">Two-Factor Authentication</h1>
+            <h1 class="text-xl sm:text-2xl font-extrabold text-[#1C1C1E] tracking-tight">Two-Factor Authentication</h1>
             <p class="text-xs sm:text-sm text-[#64748B] mt-1 max-w-sm">
                 A 6-digit one-time password has been sent to your registered email:
-                <strong class="text-[#1C1C1E] block font-mono mt-1">{{ $email }}</strong>
+                <strong class="text-[#1C1C1E] block font-mono mt-1 break-all">{{ $email }}</strong>
             </p>
 
             <!-- Quick Passcode Notice & Auto-Fill Helper -->
             @if($devOtp)
             <div class="mt-4 p-3 rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] text-xs flex items-center justify-between w-full">
                 <div class="flex items-center gap-2">
-                    <i data-lucide="key" class="w-4 h-4 text-[#10B981]"></i>
-                    <span>Security Passcode: <strong class="font-mono text-sm tracking-wider text-[#047857]">{{ $devOtp }}</strong></span>
+                    <i data-lucide="key" class="w-4 h-4 text-[#10B981] shrink-0"></i>
+                    <span>Passcode: <strong class="font-mono text-sm tracking-wider text-[#047857]">{{ $devOtp }}</strong></span>
                 </div>
                 <button type="button" @click="autoFill('{{ $devOtp }}')" class="px-2.5 py-1 rounded-lg bg-[#10B981] hover:bg-[#059669] text-white font-bold text-[11px] transition-all">Auto-fill</button>
             </div>
@@ -59,15 +59,15 @@
             @endif
 
             <!-- Verification Form -->
-            <form method="POST" action="{{ route('admin.otp.verify') }}" class="w-full mt-6 space-y-5">
+            <form method="POST" action="{{ route('admin.otp.verify') }}" class="w-full mt-6 space-y-4 sm:space-y-5">
                 @csrf
 
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-wider text-[#64748B] mb-2">Enter 6-Digit Passcode</label>
-                    <input type="text" name="otp" x-model="otpValue" maxlength="6" inputmode="numeric" autofocus placeholder="123456" required class="w-full text-center tracking-[10px] font-mono text-3xl font-extrabold py-3.5 rounded-2xl bg-[#F8FAFC] border-2 border-[#CBD5E1] text-[#1C1C1E] focus:border-[#FF6B1A] focus:ring-4 focus:ring-[#FF6B1A]/10 shadow-inner">
+                    <input type="text" name="otp" x-model="otpValue" maxlength="6" inputmode="numeric" autofocus placeholder="123456" required class="w-full text-center tracking-[6px] sm:tracking-[10px] font-mono text-2xl sm:text-3xl font-extrabold py-3 sm:py-3.5 rounded-2xl bg-[#F8FAFC] border-2 border-[#CBD5E1] text-[#1C1C1E] focus:border-[#FF6B1A] focus:ring-4 focus:ring-[#FF6B1A]/10 shadow-inner">
                 </div>
 
-                <button type="submit" class="w-full py-4 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white font-extrabold text-sm shadow-lg shadow-[#FF6B1A]/25 hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                <button type="submit" class="w-full py-3.5 sm:py-4 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white font-extrabold text-sm shadow-lg shadow-[#FF6B1A]/25 hover:shadow-xl transition-all flex items-center justify-center gap-2">
                     <i data-lucide="lock" class="w-4 h-4"></i>
                     <span>Verify &amp; Access HR Dashboard</span>
                 </button>

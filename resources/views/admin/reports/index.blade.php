@@ -16,26 +16,26 @@
         </div>
 
         <!-- Export Action Buttons -->
-        <div class="flex flex-wrap items-center gap-2">
+        <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 w-full lg:w-auto">
             <a href="{{ route('admin.reports.index', array_merge(request()->query(), ['export' => 'pdf'])) }}" 
-               class="px-3.5 py-2 rounded-xl bg-white hover:bg-[#FEF2F2] text-[#DC2626] border border-[#FECACA] text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 hover:border-[#DC2626]">
+               class="px-3.5 py-2 rounded-xl bg-white hover:bg-[#FEF2F2] text-[#DC2626] border border-[#FECACA] text-xs font-bold shadow-sm transition-all flex items-center justify-center gap-1.5 hover:border-[#DC2626]">
                 <i data-lucide="file-text" class="w-4 h-4"></i>
                 <span>Download PDF</span>
             </a>
 
             <a href="{{ route('admin.reports.index', array_merge(request()->query(), ['export' => 'excel'])) }}" 
-               class="px-3.5 py-2 rounded-xl bg-white hover:bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0] text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 hover:border-[#059669]">
+               class="px-3.5 py-2 rounded-xl bg-white hover:bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0] text-xs font-bold shadow-sm transition-all flex items-center justify-center gap-1.5 hover:border-[#059669]">
                 <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
-                <span>Export Excel (.xlsx)</span>
+                <span>Export Excel</span>
             </a>
 
             <a href="{{ route('admin.reports.index', array_merge(request()->query(), ['export' => 'csv'])) }}" 
-               class="px-3.5 py-2 rounded-xl bg-white hover:bg-[#F8FAFC] text-[#1E293B] border border-[#CBD5E1] text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 hover:border-[#94A3B8]">
+               class="px-3.5 py-2 rounded-xl bg-white hover:bg-[#F8FAFC] text-[#1E293B] border border-[#CBD5E1] text-xs font-bold shadow-sm transition-all flex items-center justify-center gap-1.5 hover:border-[#94A3B8]">
                 <i data-lucide="download" class="w-4 h-4 text-[#64748B]"></i>
                 <span>Export CSV</span>
             </a>
 
-            <button type="button" onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0] text-xs font-bold transition-all flex items-center gap-1.5">
+            <button type="button" onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#475569] border border-[#E2E8F0] text-xs font-bold transition-all flex items-center justify-center gap-1.5">
                 <i data-lucide="printer" class="w-4 h-4"></i>
                 <span>Print</span>
             </button>
@@ -234,7 +234,7 @@
         </div>
 
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="w-full text-left border-collapse min-w-[850px] whitespace-nowrap">
                 <thead>
                     <tr class="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[11px] font-bold uppercase tracking-wider text-[#64748B]">
                         <th class="py-3 px-4">Date</th>

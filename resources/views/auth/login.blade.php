@@ -3,25 +3,25 @@
 @section('title', 'Admin Login — IntraEats HR')
 
 @section('content')
-<div class="min-h-screen flex items-center justify-center p-4 sm:p-6 bg-[#FAFAF8]">
-    <div class="w-full max-w-4xl bg-white rounded-3xl border border-[#E2E8F0] shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+<div class="min-h-screen flex items-center justify-center p-3 sm:p-6 bg-[#FAFAF8]">
+    <div class="w-full max-w-4xl bg-white rounded-2xl sm:rounded-3xl border border-[#E2E8F0] shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
         <!-- Left Panel: Branding & Security Overview -->
-        <div class="bg-gradient-to-br from-[#1C1C1E] to-[#2E2E33] text-white p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden">
+        <div class="bg-gradient-to-br from-[#1C1C1E] to-[#2E2E33] text-white p-5 sm:p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
             <div class="absolute -right-16 -top-16 w-56 h-56 bg-[#FF6B1A]/10 rounded-full blur-3xl pointer-events-none"></div>
 
             <div>
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-[#FF6B1A] flex items-center justify-center text-white shadow-md font-extrabold text-lg">
-                        <i data-lucide="utensils" class="w-5 h-5"></i>
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FF6B1A] flex items-center justify-center text-white shadow-md font-extrabold text-base sm:text-lg shrink-0">
+                        <i data-lucide="utensils" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                     </div>
-                    <div class="flex flex-col">
-                        <span class="font-extrabold text-lg text-white leading-tight">IntraEats Admin</span>
-                        <span class="text-[11px] font-bold text-[#FF6B1A] uppercase tracking-wider">HR &amp; Attendance Management</span>
+                    <div class="flex flex-col min-w-0">
+                        <span class="font-extrabold text-base sm:text-lg text-white leading-tight truncate">IntraEats &amp; Talisha HR</span>
+                        <span class="text-[10px] sm:text-[11px] font-bold text-[#FF6B1A] uppercase tracking-wider truncate">Enterprise Admin Access</span>
                     </div>
                 </div>
 
-                <div class="mt-12 space-y-4">
-                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                <div class="mt-4 sm:mt-8 md:mt-12 space-y-2 sm:space-y-4">
+                    <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white leading-tight">
                         Workforce Security &amp; Attendance Control Center
                     </h2>
                     <p class="text-xs sm:text-sm text-[#D4D4D8] leading-relaxed">
@@ -29,7 +29,7 @@
                     </p>
                 </div>
 
-                <div class="mt-8 space-y-3">
+                <div class="hidden sm:block mt-6 md:mt-8 space-y-3">
                     <div class="flex items-center gap-3 text-xs text-[#E4E4E7]">
                         <span class="w-5 h-5 rounded-full bg-[#16A34A]/20 text-[#4ADE80] flex items-center justify-center shrink-0">
                             <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-[#3E3E46] text-[11px] text-[#A1A1AA] flex items-center justify-between">
+            <div class="pt-5 sm:pt-8 border-t border-[#3E3E46] text-[11px] text-[#A1A1AA] flex items-center justify-between mt-4 md:mt-0">
                 <span>IntraEats &bull; Talisha Software</span>
                 <a href="{{ route('employee.portal') }}" class="text-[#FF6B1A] hover:underline font-semibold flex items-center gap-1">
                     <span>Employee Kiosk</span>
@@ -61,7 +61,7 @@
         </div>
 
         <!-- Right Panel: Sign-In Form -->
-        <div class="p-8 sm:p-10 flex flex-col justify-center bg-white">
+        <div class="p-5 sm:p-8 md:p-10 flex flex-col justify-center bg-white">
             <div class="mb-6">
                 <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#FFF3EB] text-[#FF6B1A] border border-[#FFD4BD]">Step 1 of 2</span>
                 <h3 class="text-2xl font-extrabold text-[#1C1C1E] mt-2">Sign in to Admin Hub</h3>

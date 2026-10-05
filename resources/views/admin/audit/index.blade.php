@@ -81,7 +81,7 @@
         </div>
 
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="w-full text-left border-collapse min-w-[850px] whitespace-nowrap">
                 <thead>
                     <tr class="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[11px] font-bold uppercase tracking-wider text-[#64748B]">
                         <th class="py-3 px-4">Timestamp</th>

@@ -3,29 +3,29 @@
 @section('title', 'Employee Sign In — IntraEats & Talisha Software')
 
 @section('content')
-<div class="min-h-screen bg-[#FAFAF8] flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen bg-[#FAFAF8] flex flex-col justify-center py-8 sm:py-12 px-3 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
         <!-- Logo & Branding -->
-        <div class="flex items-center justify-center gap-3">
-            <div class="w-12 h-12 rounded-2xl bg-[#FF6B1A] flex items-center justify-center text-white shadow-lg shadow-[#FF6B1A]/20">
-                <i data-lucide="utensils" class="w-6 h-6"></i>
+        <div class="flex items-center justify-center gap-2.5 sm:gap-3">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#FF6B1A] flex items-center justify-center text-white shadow-lg shadow-[#FF6B1A]/20 shrink-0">
+                <i data-lucide="utensils" class="w-5 h-5 sm:w-6 sm:h-6"></i>
             </div>
             <div>
-                <span class="font-extrabold text-2xl text-[#1C1C1E] tracking-tight block leading-tight">IntraEats X Talisha Software</span>
-                <span class="text-[11px] font-bold text-[#FF6B1A] uppercase tracking-wider block">Employee Attendance Portal</span>
+                <span class="font-extrabold text-xl sm:text-2xl text-[#1C1C1E] tracking-tight block leading-tight">IntraEats X Talisha Software</span>
+                <span class="text-[10px] sm:text-[11px] font-bold text-[#FF6B1A] uppercase tracking-wider block">Employee Attendance Portal</span>
             </div>
         </div>
 
-        <h2 class="mt-6 text-center text-2xl font-extrabold text-[#1C1C1E] tracking-tight">
+        <h2 class="mt-4 sm:mt-6 text-center text-xl sm:text-2xl font-extrabold text-[#1C1C1E] tracking-tight">
             Sign In to Employee Portal
         </h2>
-        <p class="mt-2 text-center text-xs sm:text-sm text-[#64748B]">
+        <p class="mt-1.5 sm:mt-2 text-center text-xs sm:text-sm text-[#64748B]">
             Punch attendance, record project work, and view your personal ledger.
         </p>
     </div>
 
-    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div class="bg-white py-8 px-6 sm:px-10 shadow-xl rounded-2xl border border-[#E2E8F0]">
+    <div class="mt-6 sm:mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="bg-white py-6 sm:py-8 px-5 sm:px-10 shadow-xl rounded-2xl border border-[#E2E8F0]">
             <!-- Status Notifications -->
             @if(session('success'))
                 <div class="mb-5 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-3">

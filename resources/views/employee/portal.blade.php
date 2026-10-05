@@ -5,19 +5,20 @@
 @section('content')
 <div class="min-h-screen flex flex-col justify-between bg-[#FAFAF8]" x-data="employeeAttendancePortal()">
     <!-- Header Navigation -->
-    <header class="w-full bg-white border-b border-[#E2E8F0] shadow-sm sticky top-0 z-40">
+    <header class="w-full bg-white border-b border-[#E2E8F0] shadow-sm sticky top-0 z-40" x-data="{ mobileNavOpen: false }">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-[#FF6B1A] flex items-center justify-center text-white shadow-sm font-extrabold text-lg">
-                    <i data-lucide="utensils" class="w-5 h-5"></i>
+            <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FF6B1A] flex items-center justify-center text-white shadow-sm font-extrabold text-base sm:text-lg shrink-0">
+                    <i data-lucide="utensils" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                 </div>
-                <div class="flex flex-col">
-                    <span class="font-extrabold text-lg text-[#1C1C1E] leading-tight tracking-tight">IntraEats X Talisha Software</span>
-                    <span class="text-[11px] font-bold text-[#FF6B1A] uppercase tracking-wider">Employee Attendance Portal</span>
+                <div class="flex flex-col min-w-0">
+                    <span class="font-extrabold text-sm sm:text-base md:text-lg text-[#1C1C1E] leading-tight tracking-tight truncate">IntraEats X Talisha Software</span>
+                    <span class="text-[10px] sm:text-[11px] font-bold text-[#FF6B1A] uppercase tracking-wider truncate">Employee Attendance Portal</span>
                 </div>
             </div>
 
-            <nav class="flex items-center gap-2 sm:gap-4">
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-2 sm:gap-3">
                 <a href="#home" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-[#1C1C1E] hover:bg-[#F1F5F9]">Home</a>
                 <a href="#attendance" class="px-3 py-1.5 rounded-lg text-xs font-bold text-[#FF6B1A] bg-[#FFF3EB]">Attendance</a>
                 <button @click="helpModal = true" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-[#64748B] hover:bg-[#F1F5F9]">Help</button>
@@ -30,25 +31,64 @@
                     <span>Admin Login</span>
                 </a>
             </nav>
+
+            <!-- Mobile Controls -->
+            <div class="flex md:hidden items-center gap-2">
+                <a href="{{ route('employee.login') }}" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-[#FF6B1A] text-white text-xs font-bold hover:bg-[#E55607] transition-all shadow-sm">
+                    <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
+                    <span>Login</span>
+                </a>
+                <button @click="mobileNavOpen = !mobileNavOpen; $nextTick(() => window.createIcons({ icons: window.lucideIcons }))" aria-label="Toggle Navigation" class="p-2 rounded-lg text-[#1C1C1E] hover:bg-[#F1F5F9] focus:outline-none">
+                    <i :data-lucide="mobileNavOpen ? 'x' : 'menu'" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer / Dropdown -->
+        <div x-show="mobileNavOpen" @click.away="mobileNavOpen = false" x-cloak class="md:hidden border-t border-[#E2E8F0] bg-white px-4 py-3 shadow-lg space-y-2">
+            <div class="grid grid-cols-2 gap-2">
+                <a href="#home" @click="mobileNavOpen = false" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[#1C1C1E] bg-[#F8FAFC] hover:bg-[#F1F5F9]">
+                    <i data-lucide="home" class="w-3.5 h-3.5 text-[#FF6B1A]"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#attendance" @click="mobileNavOpen = false" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-[#FF6B1A] bg-[#FFF3EB]">
+                    <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                    <span>Attendance</span>
+                </a>
+            </div>
+            <button @click="helpModal = true; mobileNavOpen = false" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[#64748B] bg-[#F8FAFC] hover:bg-[#F1F5F9]">
+                <i data-lucide="help-circle" class="w-3.5 h-3.5 text-[#FF6B1A]"></i>
+                <span>Help &amp; Shift Guide</span>
+            </button>
+            <div class="pt-2 border-t border-[#F1F5F9] flex flex-col gap-2">
+                <a href="{{ route('employee.login') }}" class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-[#FF6B1A] text-white text-xs font-bold shadow-sm">
+                    <i data-lucide="log-in" class="w-3.5 h-3.5"></i>
+                    <span>Employee Workspace Login</span>
+                </a>
+                <a href="{{ route('admin.login') }}" class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white border border-[#E2E8F0] text-xs font-bold text-[#1C1C1E] hover:border-[#FF6B1A]">
+                    <i data-lucide="shield" class="w-3.5 h-3.5 text-[#FF6B1A]"></i>
+                    <span>Admin Security Sign In</span>
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Main Attendance Kiosk Container -->
-    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-8 sm:py-12">
+    <main class="flex-1 max-w-4xl w-full mx-auto px-3 sm:px-6 py-4 sm:py-8">
         <div class="bg-white rounded-2xl border border-[#E2E8F0] shadow-xl overflow-hidden">
             <!-- Terminal Header Banner -->
-            <div class="bg-gradient-to-r from-[#1C1C1E] to-[#2E2E33] text-white p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="bg-gradient-to-r from-[#1C1C1E] to-[#2E2E33] text-white p-4 sm:p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#16A34A]/20 border border-[#16A34A]/40 text-[#4ADE80] text-xs font-bold uppercase tracking-wider mb-2">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#16A34A]/20 border border-[#16A34A]/40 text-[#4ADE80] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-2">
                         <span class="w-2 h-2 rounded-full bg-[#4ADE80] animate-pulse"></span>
                         SYSTEM SERVER TIME SYNCHRONIZED
                     </div>
-                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Daily Attendance &amp; Shift Status</h1>
+                    <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white">Daily Attendance &amp; Shift Status</h1>
                     <p class="text-xs sm:text-sm text-[#D4D4D8] mt-1">Verify employee credentials and check today's real-time attendance status.</p>
                 </div>
 
                 <!-- Big Live Clock Widget -->
-                <div class="bg-[#121214] border border-[#3E3E46] p-4 rounded-xl shadow-inner flex flex-col md:items-end min-w-[240px]">
+                <div class="bg-[#121214] border border-[#3E3E46] p-3.5 sm:p-4 rounded-xl shadow-inner flex flex-col md:items-end w-full md:w-auto md:min-w-[240px]">
                     <span class="text-[10px] font-bold uppercase tracking-wider text-[#A1A1AA] flex items-center gap-1.5">
                         <i data-lucide="clock" class="w-3.5 h-3.5 text-[#FF6B1A]"></i>
                         Live Precision Clock
@@ -163,39 +203,39 @@
                     <!-- Digital ID Card (Appears upon verification) -->
                     <template x-if="verified && employee">
                         <div class="mt-4 pt-4 border-t border-[#E2E8F0] space-y-4">
-                            <div class="p-4 rounded-xl bg-white border border-[#E2E8F0] shadow-sm flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
-                                <div class="flex items-center gap-4">
+                            <div class="p-4 rounded-xl bg-white border border-[#E2E8F0] shadow-sm flex flex-col sm:flex-row items-start justify-between gap-4">
+                                <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4 w-full sm:w-auto">
                                     <template x-if="employee.photo_url">
-                                        <img :src="employee.photo_url" class="w-16 h-16 rounded-2xl object-cover ring-2 ring-[#FF6B1A]/20 shadow" alt="ID Photo">
+                                        <img :src="employee.photo_url" class="w-16 h-16 rounded-2xl object-cover ring-2 ring-[#FF6B1A]/20 shadow shrink-0" alt="ID Photo">
                                     </template>
                                     <template x-if="!employee.photo_url">
-                                        <div class="w-16 h-16 rounded-2xl bg-[#FF6B1A] text-white flex items-center justify-center font-extrabold text-xl shadow" x-text="employee.initials"></div>
+                                        <div class="w-16 h-16 rounded-2xl bg-[#FF6B1A] text-white flex items-center justify-center font-extrabold text-xl shadow shrink-0" x-text="employee.initials"></div>
                                     </template>
-                                    <div>
-                                        <div class="flex items-center gap-2">
+                                    <div class="space-y-1">
+                                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
                                             <h3 class="font-extrabold text-base text-[#1C1C1E]" x-text="employee.full_name"></h3>
                                             <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]">
-                                                <i data-lucide="check" class="w-3 h-3"></i> Employee Verified
+                                                <i data-lucide="check" class="w-3 h-3"></i> Verified
                                             </span>
                                         </div>
-                                        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-[#64748B] mt-1 font-mono">
+                                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-x-2.5 gap-y-1 text-xs text-[#64748B] font-mono">
                                             <span>ID: <strong class="text-[#1C1C1E]" x-text="employee.employee_id"></strong></span>
                                             <span>&bull;</span>
                                             <span>Code: <strong class="text-[#FF6B1A]" x-text="employee.employee_code"></strong></span>
                                             <span>&bull;</span>
                                             <span>Dept: <strong class="text-[#1C1C1E]" x-text="employee.department"></strong></span>
                                         </div>
-                                        <div class="text-xs text-[#64748B] mt-1">
+                                        <div class="text-xs text-[#64748B]">
                                             Role: <strong class="text-[#1C1C1E]" x-text="employee.role"></strong> &bull;
                                             Designation: <span x-text="employee.designation"></span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="text-right sm:text-right shrink-0">
+                                <div class="w-full sm:w-auto flex sm:flex-col justify-between sm:text-right shrink-0 pt-3 sm:pt-0 border-t sm:border-t-0 border-[#F1F5F9]">
                                     <span class="text-[10px] uppercase font-bold text-[#94A3B8]">Joined Date</span>
                                     <p class="text-xs font-semibold text-[#1C1C1E]" x-text="employee.joining_date"></p>
-                                    <span class="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-[#F1F5F9] text-[#475569] uppercase" x-text="employee.employment_type"></span>
+                                    <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[10px] font-bold bg-[#F1F5F9] text-[#475569] uppercase" x-text="employee.employment_type"></span>
                                 </div>
                             </div>
                         </div>
@@ -203,10 +243,10 @@
                 </div>
 
                 <!-- Shift Status: Not Marked Yet + Login Required to Give Attendance -->
-                <div x-show="verified && !isDuplicate" x-cloak class="bg-white border border-[#E2E8F0] p-6 rounded-2xl space-y-5">
-                    <div class="flex items-center justify-between border-b border-[#F1F5F9] pb-4">
+                <div x-show="verified && !isDuplicate" x-cloak class="bg-white border border-[#E2E8F0] p-5 sm:p-6 rounded-2xl space-y-5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#F1F5F9] pb-4">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+                            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold shrink-0">
                                 <i data-lucide="clock" class="w-5 h-5"></i>
                             </div>
                             <div>
@@ -214,7 +254,7 @@
                                 <p class="text-xs text-[#64748B]">Official check-in record has not been logged for today</p>
                             </div>
                         </div>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200 self-start sm:self-auto">
                             <span class="w-2 h-2 rounded-full bg-amber-500"></span> Awaiting Punch-In
                         </span>
                     </div>

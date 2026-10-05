@@ -29,38 +29,38 @@
     </div>
 
     <!-- Navigation Tabs -->
-    <div class="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 shadow-sm flex flex-wrap gap-1">
+    <div class="bg-white rounded-2xl border border-[#E2E8F0] p-1.5 shadow-sm flex flex-nowrap sm:flex-wrap overflow-x-auto no-scrollbar gap-1">
         <button type="button" @click="tab = 'company'" 
                 :class="tab === 'company' ? 'bg-[#FF6B1A] text-white shadow-sm' : 'text-[#64748B] hover:text-[#1C1C1E] hover:bg-[#F8FAFC]'"
-                class="px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+                class="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
             <i data-lucide="building-2" class="w-4 h-4"></i>
             <span>Company Profile</span>
         </button>
 
         <button type="button" @click="tab = 'attendance'" 
                 :class="tab === 'attendance' ? 'bg-[#FF6B1A] text-white shadow-sm' : 'text-[#64748B] hover:text-[#1C1C1E] hover:bg-[#F8FAFC]'"
-                class="px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+                class="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
             <i data-lucide="clock" class="w-4 h-4"></i>
             <span>Attendance Policies</span>
         </button>
 
         <button type="button" @click="tab = 'security'" 
                 :class="tab === 'security' ? 'bg-[#FF6B1A] text-white shadow-sm' : 'text-[#64748B] hover:text-[#1C1C1E] hover:bg-[#F8FAFC]'"
-                class="px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+                class="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
             <i data-lucide="shield-check" class="w-4 h-4"></i>
             <span>2FA & Security</span>
         </button>
 
         <button type="button" @click="tab = 'profile'" 
                 :class="tab === 'profile' ? 'bg-[#FF6B1A] text-white shadow-sm' : 'text-[#64748B] hover:text-[#1C1C1E] hover:bg-[#F8FAFC]'"
-                class="px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+                class="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
             <i data-lucide="user" class="w-4 h-4"></i>
             <span>My Profile</span>
         </button>
 
         <button type="button" @click="tab = 'maintenance'" 
                 :class="tab === 'maintenance' ? 'bg-[#FF6B1A] text-white shadow-sm' : 'text-[#64748B] hover:text-[#1C1C1E] hover:bg-[#F8FAFC]'"
-                class="px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+                class="px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 whitespace-nowrap">
             <i data-lucide="server" class="w-4 h-4"></i>
             <span>Hostinger & Maintenance</span>
         </button>

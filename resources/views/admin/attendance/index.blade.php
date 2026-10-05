@@ -15,13 +15,13 @@
             <p class="text-xs text-[#64748B] mt-0.5">Comprehensive workforce punch ledger, time audits, and manual adjustment logs.</p>
         </div>
 
-        <div class="flex items-center gap-2">
-            <button type="button" @click="bulkModal = true" class="px-3.5 py-2 rounded-xl bg-white hover:bg-[#F8FAFC] text-[#1E293B] border border-[#CBD5E1] text-xs font-bold shadow-sm transition-all flex items-center gap-1.5">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full md:w-auto">
+            <button type="button" @click="bulkModal = true" class="w-full sm:w-auto justify-center px-3.5 py-2.5 rounded-xl bg-white hover:bg-[#F8FAFC] text-[#1E293B] border border-[#CBD5E1] text-xs font-bold shadow-sm transition-all flex items-center gap-1.5">
                 <i data-lucide="upload-cloud" class="w-4 h-4 text-[#2563EB]"></i>
                 <span>Bulk Upload (CSV/Excel)</span>
             </button>
 
-            <button type="button" @click="manualModal = true" class="px-3.5 py-2 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white text-xs font-bold shadow-md shadow-[#FF6B1A]/20 transition-all flex items-center gap-1.5">
+            <button type="button" @click="manualModal = true" class="w-full sm:w-auto justify-center px-3.5 py-2.5 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white text-xs font-bold shadow-md shadow-[#FF6B1A]/20 transition-all flex items-center gap-1.5">
                 <i data-lucide="plus" class="w-4 h-4"></i>
                 <span>+ Manual Attendance</span>
             </button>
@@ -119,7 +119,7 @@
     <!-- Attendance Table -->
     <div class="bg-white rounded-2xl border border-[#E2E8F0] shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="w-full text-left border-collapse min-w-[900px] whitespace-nowrap">
                 <thead>
                     <tr class="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[10px] uppercase font-bold text-[#64748B]">
                         <th class="py-3.5 px-4">Date</th>
@@ -259,7 +259,7 @@
     <!-- Modal: Manual Attendance Add -->
     <div x-show="manualModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div @click="manualModal = false" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#E2E8F0] p-6 z-10 space-y-4">
+        <div class="relative w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-[#E2E8F0] p-5 sm:p-6 z-10 space-y-4 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
                 <h3 class="font-extrabold text-base text-[#1C1C1E] flex items-center gap-2">
                     <i data-lucide="plus-circle" class="w-5 h-5 text-[#FF6B1A]"></i>
@@ -342,7 +342,7 @@
     <!-- Modal: Edit Attendance -->
     <div x-show="editModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div @click="editModal = false" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#E2E8F0] p-6 z-10 space-y-4">
+        <div class="relative w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-[#E2E8F0] p-5 sm:p-6 z-10 space-y-4 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
                 <h3 class="font-extrabold text-base text-[#1C1C1E] flex items-center gap-2">
                     <i data-lucide="edit-3" class="w-5 h-5 text-[#FF6B1A]"></i>
@@ -419,7 +419,7 @@
     <!-- Modal: Bulk Upload CSV / Excel -->
     <div x-show="bulkModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div @click="bulkModal = false" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-[#E2E8F0] p-6 z-10 space-y-4">
+        <div class="relative w-full max-w-lg bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-[#E2E8F0] p-5 sm:p-6 z-10 space-y-4 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
                 <h3 class="font-extrabold text-base text-[#1C1C1E] flex items-center gap-2">
                     <i data-lucide="upload-cloud" class="w-5 h-5 text-[#2563EB]"></i>

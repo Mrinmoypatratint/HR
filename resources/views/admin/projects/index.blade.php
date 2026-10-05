@@ -15,7 +15,7 @@
             <p class="text-xs text-[#64748B] mt-0.5">Manage food-tech operational initiatives, client deliverables, and team sprint allocations.</p>
         </div>
 
-        <button type="button" @click="addModal = true" class="px-4 py-2.5 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white text-xs font-bold shadow-md shadow-[#FF6B1A]/20 transition-all flex items-center gap-1.5 self-start md:self-auto">
+        <button type="button" @click="addModal = true" class="w-full md:w-auto justify-center px-4 py-2.5 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white text-xs font-bold shadow-md shadow-[#FF6B1A]/20 transition-all flex items-center gap-1.5">
             <i data-lucide="folder-plus" class="w-4 h-4"></i>
             <span>+ Add New Project</span>
         </button>

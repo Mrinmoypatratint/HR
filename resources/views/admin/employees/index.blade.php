@@ -15,7 +15,7 @@
             <p class="text-xs text-[#64748B] mt-0.5">Manage digital employee profiles, department roles, shift assignments, and credentials.</p>
         </div>
 
-        <button type="button" @click="addModal = true" class="px-4 py-2.5 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white text-xs font-bold shadow-md shadow-[#FF6B1A]/20 transition-all flex items-center gap-1.5 self-start md:self-auto">
+        <button type="button" @click="addModal = true" class="w-full md:w-auto justify-center px-4 py-2.5 rounded-xl bg-[#FF6B1A] hover:bg-[#E55607] text-white text-xs font-bold shadow-md shadow-[#FF6B1A]/20 transition-all flex items-center gap-1.5">
             <i data-lucide="user-plus" class="w-4 h-4"></i>
             <span>+ Add New Employee</span>
         </button>
@@ -27,7 +27,7 @@
                 <i data-lucide="key" class="w-4 h-4 text-amber-600 shrink-0"></i>
                 <span><strong>Employee Activation Link Dispatched:</strong> <code class="font-mono text-[11px] text-amber-800 break-all">{{ session('sent_activation_url') }}</code></span>
             </div>
-            <button type="button" onclick="navigator.clipboard.writeText('{{ session('sent_activation_url') }}'); alert('Activation Link Copied to Clipboard!');" class="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shrink-0 flex items-center gap-1">
+            <button type="button" onclick="navigator.clipboard.writeText('{{ session('sent_activation_url') }}'); alert('Activation Link Copied to Clipboard!');" class="w-full sm:w-auto justify-center px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs shrink-0 flex items-center gap-1">
                 <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                 <span>Copy Setup Link</span>
             </button>
@@ -172,7 +172,7 @@
     <!-- Modal: Add Employee -->
     <div x-show="addModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div @click="addModal = false" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#E2E8F0] p-6 sm:p-8 z-10 space-y-4 max-h-[90vh] overflow-y-auto">
+        <div class="relative w-full max-w-2xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-[#E2E8F0] p-5 sm:p-8 z-10 space-y-4 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
                 <h3 class="font-extrabold text-base text-[#1C1C1E] flex items-center gap-2">
                     <i data-lucide="user-plus" class="w-5 h-5 text-[#FF6B1A]"></i>

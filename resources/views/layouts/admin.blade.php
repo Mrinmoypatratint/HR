@@ -117,16 +117,16 @@
     <!-- Main Content Area -->
     <div class="lg:pl-64 flex flex-col flex-1 min-h-screen">
         <!-- Top Sticky Header -->
-        <header class="sticky top-0 bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] h-16 z-40 px-4 sm:px-8 flex items-center justify-between shadow-sm">
-            <div class="flex items-center gap-3">
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 rounded-lg text-[#64748B] hover:bg-[#F1F5F9]">
+        <header class="sticky top-0 bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] h-16 z-40 px-3 sm:px-8 flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <button @click="mobileMenuOpen = !mobileMenuOpen; $nextTick(() => window.createIcons({ icons: window.lucideIcons }))" class="lg:hidden p-2 rounded-lg text-[#1C1C1E] hover:bg-[#F1F5F9] shrink-0" aria-label="Toggle Navigation">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
 
-                <div class="flex flex-col">
+                <div class="flex flex-col min-w-0">
                     <div class="flex items-center gap-2">
-                        <span class="font-extrabold text-base sm:text-lg text-[#1C1C1E] tracking-tight">IntraEats &amp; Talisha HR</span>
-                        <span class="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#FFF3EB] text-[#FF6B1A] uppercase border border-[#FFD4BD]">Enterprise</span>
+                        <span class="font-extrabold text-sm sm:text-base md:text-lg text-[#1C1C1E] tracking-tight truncate">IntraEats &amp; Talisha HR</span>
+                        <span class="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#FFF3EB] text-[#FF6B1A] uppercase border border-[#FFD4BD] shrink-0">Enterprise</span>
                     </div>
                     <span class="hidden md:inline-block text-xs text-[#64748B]">Automated Workforce Telemetry &bull; Asia/Kolkata</span>
                 </div>
@@ -232,8 +232,8 @@
 
     <!-- Mobile Navigation Drawer -->
     <div x-show="mobileMenuOpen" x-cloak class="fixed inset-0 z-50 lg:hidden flex">
-        <div @click="mobileMenuOpen = false" class="fixed inset-0 bg-black/60 backdrop-blur-sm"></div>
-        <div class="relative w-72 bg-[#1C1C1E] text-white flex flex-col justify-between p-5 z-10">
+        <div @click="mobileMenuOpen = false" class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+        <div class="relative w-72 max-w-[85vw] bg-[#1C1C1E] text-white flex flex-col justify-between p-5 z-10 shadow-2xl overflow-y-auto">
             <div class="flex flex-col">
                 <div class="flex items-center justify-between pb-4 border-b border-[#2E2E33]">
                     <div class="flex items-center gap-2.5">
@@ -242,40 +242,52 @@
                         </div>
                         <span class="font-extrabold text-white text-base">IntraEats HR</span>
                     </div>
-                    <button @click="mobileMenuOpen = false" class="text-[#A1A1AA] hover:text-white">
+                    <button @click="mobileMenuOpen = false" class="text-[#A1A1AA] hover:text-white p-1">
                         <i data-lucide="x" class="w-5 h-5"></i>
                     </button>
                 </div>
 
                 <nav class="flex flex-col gap-1.5 mt-5">
-                    <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm {{ request()->routeIs('admin.dashboard') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8]' }}">
+                    <a href="{{ route('admin.dashboard') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm {{ request()->routeIs('admin.dashboard') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8] hover:bg-[#2E2E33]' }}">
                         <i data-lucide="layout-grid" class="w-4 h-4"></i> Dashboard
                     </a>
-                    <a href="{{ route('admin.attendance.index') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm {{ request()->routeIs('admin.attendance.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8]' }}">
+                    <a href="{{ route('admin.attendance.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm {{ request()->routeIs('admin.attendance.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8] hover:bg-[#2E2E33]' }}">
                         <i data-lucide="user-check" class="w-4 h-4"></i> Attendance
                     </a>
-                    <a href="{{ route('admin.employees.index') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm {{ request()->routeIs('admin.employees.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8]' }}">
+                    <a href="{{ route('admin.employees.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm {{ request()->routeIs('admin.employees.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8] hover:bg-[#2E2E33]' }}">
                         <i data-lucide="users" class="w-4 h-4"></i> Employees
                     </a>
-                    <a href="{{ route('admin.projects.index') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm {{ request()->routeIs('admin.projects.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8]' }}">
+                    <a href="{{ route('admin.projects.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm {{ request()->routeIs('admin.projects.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8] hover:bg-[#2E2E33]' }}">
                         <i data-lucide="briefcase" class="w-4 h-4"></i> Projects
                     </a>
-                    <a href="{{ route('admin.reports.index') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm {{ request()->routeIs('admin.reports.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8]' }}">
+                    <a href="{{ route('admin.reports.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm {{ request()->routeIs('admin.reports.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8] hover:bg-[#2E2E33]' }}">
                         <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Reports
                     </a>
-                    <a href="{{ route('admin.settings.index') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm {{ request()->routeIs('admin.settings.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8]' }}">
+                    @if(auth()->user()->hasRole('Super Admin'))
+                    <a href="{{ route('admin.users.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm {{ request()->routeIs('admin.users.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8] hover:bg-[#2E2E33]' }}">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i> Admin Users
+                    </a>
+                    @endif
+                    <a href="{{ route('admin.settings.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm {{ request()->routeIs('admin.settings.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8] hover:bg-[#2E2E33]' }}">
                         <i data-lucide="sliders" class="w-4 h-4"></i> Settings
                     </a>
-                    <a href="{{ route('admin.audit.index') }}" class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm {{ request()->routeIs('admin.audit.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8]' }}">
+                    <a href="{{ route('admin.audit.index') }}" @click="mobileMenuOpen = false" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm {{ request()->routeIs('admin.audit.*') ? 'bg-[#FF6B1A] text-white font-bold' : 'text-[#D4D4D8] hover:bg-[#2E2E33]' }}">
                         <i data-lucide="file-text" class="w-4 h-4"></i> Audit Logs
                     </a>
                 </nav>
+
+                <div class="mt-4 pt-3 border-t border-[#2E2E33]">
+                    <a href="{{ route('employee.portal') }}" target="_blank" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[#A1A1AA] hover:text-white hover:bg-[#2E2E33]">
+                        <i data-lucide="external-link" class="w-4 h-4 text-[#FF6B1A]"></i>
+                        <span>Open Attendance Kiosk</span>
+                    </a>
+                </div>
             </div>
 
-            <div class="pt-4 border-t border-[#2E2E33]">
+            <div class="pt-4 border-t border-[#2E2E33] mt-4">
                 <form method="POST" action="{{ route('admin.logout') }}">
                     @csrf
-                    <button type="submit" class="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white text-xs font-bold transition-all">
+                    <button type="submit" class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white text-xs font-bold transition-all">
                         <i data-lucide="log-out" class="w-4 h-4"></i>
                         <span>Logout</span>
                     </button>

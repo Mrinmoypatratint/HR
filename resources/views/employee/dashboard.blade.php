@@ -7,15 +7,15 @@
 
     <!-- Top Sticky Header -->
     <header class="w-full bg-white border-b border-[#E2E8F0] shadow-sm sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
             <!-- Brand -->
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-[#FF6B1A] flex items-center justify-center text-white shadow-sm font-extrabold text-lg">
-                    <i data-lucide="utensils" class="w-5 h-5"></i>
+            <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FF6B1A] flex items-center justify-center text-white shadow-sm font-extrabold text-base sm:text-lg shrink-0">
+                    <i data-lucide="utensils" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                 </div>
-                <div class="flex flex-col">
-                    <span class="font-extrabold text-lg text-[#1C1C1E] leading-tight tracking-tight">IntraEats X Talisha Software</span>
-                    <span class="text-[10px] font-bold text-[#FF6B1A] uppercase tracking-wider">Employee Attendance Portal</span>
+                <div class="flex flex-col min-w-0">
+                    <span class="font-extrabold text-sm sm:text-base lg:text-lg text-[#1C1C1E] leading-tight tracking-tight truncate">IntraEats X Talisha Software</span>
+                    <span class="text-[10px] font-bold text-[#FF6B1A] uppercase tracking-wider truncate">Employee Workspace</span>
                 </div>
             </div>
 
@@ -28,8 +28,8 @@
             </nav>
 
             <!-- User Profile & Logout -->
-            <div class="flex items-center gap-3">
-                <div class="flex items-center gap-2.5 bg-[#F8FAFC] border border-[#E2E8F0] py-1 px-3 rounded-full">
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <div class="flex items-center gap-2 bg-[#F8FAFC] border border-[#E2E8F0] py-1 px-2.5 sm:px-3 rounded-full">
                     @if($employee->photo_url)
                         <img src="{{ $employee->photo_url }}" class="w-7 h-7 rounded-full object-cover ring-1 ring-[#FF6B1A]/40" alt="Avatar">
                     @else
@@ -46,26 +46,46 @@
                 <!-- Sign Out Form -->
                 <form action="{{ route('employee.logout') }}" method="POST">
                     @csrf
-                    <button type="submit" title="Sign Out" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E2E8F0] hover:border-red-300 text-xs font-bold text-[#64748B] hover:text-red-600 hover:bg-red-50 transition-all shadow-sm">
+                    <button type="submit" title="Sign Out" class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl border border-[#E2E8F0] hover:border-red-300 text-xs font-bold text-[#64748B] hover:text-red-600 hover:bg-red-50 transition-all shadow-sm">
                         <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
                         <span class="hidden sm:inline">Sign Out</span>
                     </button>
                 </form>
             </div>
         </div>
+
+        <!-- Mobile Horizontal Quick Anchor Scroller -->
+        <div class="md:hidden border-t border-[#F1F5F9] bg-[#FAFAF8] px-3 py-2 overflow-x-auto no-scrollbar flex items-center gap-2 text-xs font-bold text-[#64748B]">
+            <a href="#punch" class="px-3 py-1.5 rounded-lg bg-white border border-[#E2E8F0] text-[#1C1C1E] hover:text-[#FF6B1A] shadow-sm whitespace-nowrap flex items-center gap-1.5 shrink-0">
+                <i data-lucide="fingerprint" class="w-3.5 h-3.5 text-[#FF6B1A]"></i>
+                <span>Punch Station</span>
+            </a>
+            <a href="#ledger" class="px-3 py-1.5 rounded-lg bg-white border border-[#E2E8F0] hover:text-[#1C1C1E] shadow-sm whitespace-nowrap flex items-center gap-1.5 shrink-0">
+                <i data-lucide="table-2" class="w-3.5 h-3.5 text-[#2563EB]"></i>
+                <span>My Ledger</span>
+            </a>
+            <a href="#projects" class="px-3 py-1.5 rounded-lg bg-white border border-[#E2E8F0] hover:text-[#1C1C1E] shadow-sm whitespace-nowrap flex items-center gap-1.5 shrink-0">
+                <i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#16A34A]"></i>
+                <span>My Projects</span>
+            </a>
+            <a href="#idcard" class="px-3 py-1.5 rounded-lg bg-white border border-[#E2E8F0] hover:text-[#1C1C1E] shadow-sm whitespace-nowrap flex items-center gap-1.5 shrink-0">
+                <i data-lucide="contact-2" class="w-3.5 h-3.5 text-[#D97706]"></i>
+                <span>Digital ID</span>
+            </a>
+        </div>
     </header>
 
     <!-- Main Container -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+    <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-8 space-y-6 sm:space-y-8">
 
         <!-- Welcome Banner with Live Time -->
-        <div class="bg-gradient-to-r from-[#1C1C1E] via-[#28282E] to-[#1C1C1E] text-white rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6 border border-[#383842]">
+        <div class="bg-gradient-to-r from-[#1C1C1E] via-[#28282E] to-[#1C1C1E] text-white rounded-2xl p-4 sm:p-7 lg:p-8 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6 border border-[#383842]">
             <div class="space-y-2">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B1A]/20 border border-[#FF6B1A]/40 text-[#FF8542] text-xs font-bold tracking-wider uppercase">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF6B1A]/20 border border-[#FF6B1A]/40 text-[#FF8542] text-[11px] sm:text-xs font-bold tracking-wider uppercase">
                     <span class="w-2 h-2 rounded-full bg-[#FF6B1A] animate-pulse"></span>
                     Verified Employee Session
                 </div>
-                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                <h1 class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-white">
                     Welcome back, {{ $employee->full_name }}!
                 </h1>
                 <p class="text-xs sm:text-sm text-[#A1A1AA] max-w-2xl">
@@ -75,12 +95,12 @@
             </div>
 
             <!-- Big Live Clock -->
-            <div class="bg-[#121214] border border-[#3E3E46] p-4 sm:p-5 rounded-2xl shadow-inner flex flex-col lg:items-end min-w-[260px] shrink-0">
+            <div class="bg-[#121214] border border-[#3E3E46] p-4 sm:p-5 rounded-2xl shadow-inner flex flex-col lg:items-end w-full lg:w-auto lg:min-w-[260px] shrink-0">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-[#A1A1AA] flex items-center gap-1.5">
                     <i data-lucide="clock" class="w-3.5 h-3.5 text-[#FF6B1A]"></i>
                     Live Attendance Time (IST)
                 </span>
-                <div class="font-mono text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1" x-text="liveClock">
+                <div class="font-mono text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight mt-1" x-text="liveClock">
                     {{ $currentTime }}
                 </div>
                 <span class="text-[11px] text-[#4ADE80] font-semibold flex items-center gap-1 mt-1">
@@ -228,16 +248,16 @@
                         <p class="text-xs text-[#64748B] mt-0.5">Your attendance has been fully registered for today.</p>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-3 p-4 rounded-xl bg-white border border-[#E2E8F0] text-center font-mono">
-                        <div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 p-3.5 sm:p-4 rounded-xl bg-white border border-[#E2E8F0] text-center font-mono">
+                        <div class="p-2 sm:p-0 bg-[#F8FAFC] sm:bg-transparent rounded-lg">
                             <span class="text-[10px] uppercase font-bold text-[#94A3B8] block">Check In</span>
                             <span class="text-sm font-bold text-[#1C1C1E]" x-text="currentAttendance?.check_in_time">{{ $todayAttendance?->check_in_time }}</span>
                         </div>
-                        <div>
+                        <div class="p-2 sm:p-0 bg-[#F8FAFC] sm:bg-transparent rounded-lg">
                             <span class="text-[10px] uppercase font-bold text-[#94A3B8] block">Check Out</span>
                             <span class="text-sm font-bold text-[#1C1C1E]" x-text="currentAttendance?.check_out_time">{{ $todayAttendance?->check_out_time }}</span>
                         </div>
-                        <div>
+                        <div class="p-2 sm:p-0 bg-[#F8FAFC] sm:bg-transparent rounded-lg">
                             <span class="text-[10px] uppercase font-bold text-[#94A3B8] block">Duration</span>
                             <span class="text-sm font-bold text-[#FF6B1A]" x-text="currentAttendance?.working_hours_formatted">{{ $todayAttendance?->working_hours_formatted }}</span>
                         </div>
@@ -255,73 +275,73 @@
                     <span class="text-xs text-[#64748B] font-mono">{{ date('F Y') }}</span>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3.5">
+                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3 sm:gap-3.5">
                     <!-- Present -->
-                    <div class="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-bold uppercase tracking-wider text-[#64748B]">Days Present</span>
-                            <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                            <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold shrink-0">
                                 <i data-lucide="user-check" class="w-4 h-4"></i>
                             </div>
                         </div>
-                        <div class="text-2xl font-extrabold text-[#1C1C1E] mt-2 font-mono">{{ $stats['presentCount'] }}</div>
-                        <span class="text-[11px] text-emerald-600 font-semibold mt-0.5 block">&bull; Full shift attended</span>
+                        <div class="text-xl sm:text-2xl font-extrabold text-[#1C1C1E] mt-2 font-mono">{{ $stats['presentCount'] }}</div>
+                        <span class="text-[10px] sm:text-[11px] text-emerald-600 font-semibold mt-0.5 block truncate">&bull; Full shift attended</span>
                     </div>
 
                     <!-- Late -->
-                    <div class="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-bold uppercase tracking-wider text-[#64748B]">Late Check-ins</span>
-                            <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+                            <div class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold shrink-0">
                                 <i data-lucide="clock" class="w-4 h-4"></i>
                             </div>
                         </div>
-                        <div class="text-2xl font-extrabold text-[#1C1C1E] mt-2 font-mono">{{ $stats['lateCount'] }}</div>
-                        <span class="text-[11px] text-amber-600 font-semibold mt-0.5 block">&bull; Past {{ $officeStart }}</span>
+                        <div class="text-xl sm:text-2xl font-extrabold text-[#1C1C1E] mt-2 font-mono">{{ $stats['lateCount'] }}</div>
+                        <span class="text-[10px] sm:text-[11px] text-amber-600 font-semibold mt-0.5 block truncate">&bull; Past {{ $officeStart }}</span>
                     </div>
 
                     <!-- Hours -->
-                    <div class="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-bold uppercase tracking-wider text-[#64748B]">Hours Logged</span>
-                            <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold">
+                            <div class="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold shrink-0">
                                 <i data-lucide="hourglass" class="w-4 h-4"></i>
                             </div>
                         </div>
-                        <div class="text-2xl font-extrabold text-[#1C1C1E] mt-2 font-mono">{{ $stats['totalHours'] }}h</div>
-                        <span class="text-[11px] text-indigo-600 font-semibold mt-0.5 block">&bull; Productive time</span>
+                        <div class="text-xl sm:text-2xl font-extrabold text-[#1C1C1E] mt-2 font-mono">{{ $stats['totalHours'] }}h</div>
+                        <span class="text-[10px] sm:text-[11px] text-indigo-600 font-semibold mt-0.5 block truncate">&bull; Productive time</span>
                     </div>
 
                     <!-- Punctuality -->
-                    <div class="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
+                    <div class="p-3.5 sm:p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
                         <div class="flex items-center justify-between">
                             <span class="text-xs font-bold uppercase tracking-wider text-[#64748B]">Punctuality</span>
-                            <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                            <div class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold shrink-0">
                                 <i data-lucide="target" class="w-4 h-4"></i>
                             </div>
                         </div>
-                        <div class="text-2xl font-extrabold text-emerald-600 mt-2 font-mono">{{ $stats['punctualityRate'] }}%</div>
-                        <span class="text-[11px] text-[#64748B] font-semibold mt-0.5 block">&bull; On-time score</span>
+                        <div class="text-xl sm:text-2xl font-extrabold text-emerald-600 mt-2 font-mono">{{ $stats['punctualityRate'] }}%</div>
+                        <span class="text-[10px] sm:text-[11px] text-[#64748B] font-semibold mt-0.5 block truncate">&bull; On-time score</span>
                     </div>
                 </div>
 
                 <!-- Digital ID Compact Pill Card -->
-                <div class="p-5 rounded-2xl bg-gradient-to-r from-[#1C1C1E] to-[#2E2E33] text-white shadow-md flex items-center justify-between gap-4">
-                    <div class="flex items-center gap-3.5">
+                <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#1C1C1E] to-[#2E2E33] text-white shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+                    <div class="flex items-center gap-3 min-w-0">
                         @if($employee->photo_url)
-                            <img src="{{ $employee->photo_url }}" class="w-12 h-12 rounded-xl object-cover ring-2 ring-[#FF6B1A]/40" alt="ID">
+                            <img src="{{ $employee->photo_url }}" class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl object-cover ring-2 ring-[#FF6B1A]/40 shrink-0" alt="ID">
                         @else
-                            <div class="w-12 h-12 rounded-xl bg-[#FF6B1A] text-white font-extrabold flex items-center justify-center text-base">
+                            <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#FF6B1A] text-white font-extrabold flex items-center justify-center text-sm sm:text-base shrink-0">
                                 {{ $employee->initials }}
                             </div>
                         @endif
-                        <div>
+                        <div class="min-w-0">
                             <span class="text-[10px] font-bold uppercase tracking-wider text-[#FF6B1A]">Digital ID Verified</span>
-                            <h4 class="font-bold text-sm text-white">{{ $employee->full_name }}</h4>
-                            <div class="text-[11px] text-[#A1A1AA] font-mono">{{ $employee->employee_code }} &bull; {{ $employee->designation }}</div>
+                            <h4 class="font-bold text-sm text-white truncate">{{ $employee->full_name }}</h4>
+                            <div class="text-[11px] text-[#A1A1AA] font-mono truncate">{{ $employee->employee_code }} &bull; {{ $employee->designation }}</div>
                         </div>
                     </div>
-                    <a href="#idcard" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all shrink-0">
+                    <a href="#idcard" class="w-full sm:w-auto text-center px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all shrink-0">
                         View ID &rarr;
                     </a>
                 </div>
@@ -362,7 +382,7 @@
 
             <!-- Ledger Table -->
             <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
+                <table class="w-full text-left border-collapse min-w-[700px] whitespace-nowrap">
                     <thead>
                         <tr class="bg-[#F8FAFC] border-b border-[#E2E8F0] text-[11px] font-bold text-[#64748B] uppercase tracking-wider">
                             <th class="py-3.5 px-6">Date &amp; Day</th>
@@ -477,7 +497,7 @@
             </div>
 
             <!-- Digital ID Card Display -->
-            <div class="bg-white rounded-2xl border border-[#E2E8F0] shadow-sm p-6 space-y-4" id="idcard">
+            <div class="bg-white rounded-2xl border border-[#E2E8F0] shadow-sm p-4 sm:p-6 space-y-4" id="idcard">
                 <div class="flex items-center justify-between border-b border-[#F1F5F9] pb-3">
                     <h3 class="font-extrabold text-base text-[#1C1C1E] flex items-center gap-2">
                         <i data-lucide="contact-2" class="w-5 h-5 text-[#FF6B1A]"></i>
@@ -486,34 +506,34 @@
                     <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#ECFDF5] text-[#059669]">OFFICIAL</span>
                 </div>
 
-                <div class="p-5 rounded-2xl bg-gradient-to-br from-[#1C1C1E] via-[#2A2A30] to-[#1C1C1E] text-white shadow-xl border border-[#3E3E48] relative overflow-hidden">
-                    <div class="flex items-start justify-between gap-4">
-                        <div class="flex items-center gap-4">
+                <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-[#1C1C1E] via-[#2A2A30] to-[#1C1C1E] text-white shadow-xl border border-[#3E3E48] relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
+                        <div class="flex items-center gap-3.5 min-w-0">
                             @if($employee->photo_url)
-                                <img src="{{ $employee->photo_url }}" class="w-16 h-16 rounded-2xl object-cover ring-2 ring-[#FF6B1A] shadow-md" alt="Employee Photo">
+                                <img src="{{ $employee->photo_url }}" class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover ring-2 ring-[#FF6B1A] shadow-md shrink-0" alt="Employee Photo">
                             @else
-                                <div class="w-16 h-16 rounded-2xl bg-[#FF6B1A] text-white font-extrabold text-xl flex items-center justify-center shadow-md">
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#FF6B1A] text-white font-extrabold text-lg sm:text-xl flex items-center justify-center shadow-md shrink-0">
                                     {{ $employee->initials }}
                                 </div>
                             @endif
-                            <div>
-                                <h3 class="font-extrabold text-base text-white tracking-tight">{{ $employee->full_name }}</h3>
+                            <div class="min-w-0">
+                                <h3 class="font-extrabold text-base text-white tracking-tight truncate">{{ $employee->full_name }}</h3>
                                 <div class="font-mono text-xs font-bold text-[#FF6B1A]">{{ $employee->employee_code }}</div>
-                                <div class="text-xs text-[#D4D4D8] mt-0.5">{{ $employee->designation }} &bull; {{ $employee->department }}</div>
+                                <div class="text-xs text-[#D4D4D8] mt-0.5 truncate">{{ $employee->designation }} &bull; {{ $employee->department }}</div>
                             </div>
                         </div>
 
-                        <div class="text-right">
+                        <div class="w-full sm:w-auto flex sm:flex-col justify-between sm:text-right shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#3E3E48]">
                             <span class="text-[9px] uppercase font-bold text-[#A1A1AA] block">Joined Date</span>
                             <span class="text-xs font-mono font-semibold text-white">{{ $employee->joining_date->format('d M Y') }}</span>
-                            <span class="inline-block mt-1 px-2 py-0.5 rounded text-[9px] font-bold bg-white/10 text-white uppercase">{{ $employee->employment_type }}</span>
+                            <span class="inline-block mt-0.5 px-2 py-0.5 rounded text-[9px] font-bold bg-white/10 text-white uppercase">{{ $employee->employment_type }}</span>
                         </div>
                     </div>
 
-                    <div class="mt-4 pt-3 border-t border-[#3E3E48] grid grid-cols-2 gap-2 text-[11px] text-[#A1A1AA]">
-                        <div>Email: <span class="text-white">{{ $employee->email ?: 'N/A' }}</span></div>
-                        <div>Phone: <span class="text-white">{{ $employee->mobile ?: 'N/A' }}</span></div>
-                        <div>Emergency: <span class="text-white">{{ $employee->emergency_contact ?: 'HR Desk' }}</span></div>
+                    <div class="mt-4 pt-3 border-t border-[#3E3E48] grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-[#A1A1AA]">
+                        <div class="truncate">Email: <span class="text-white">{{ $employee->email ?: 'N/A' }}</span></div>
+                        <div class="truncate">Phone: <span class="text-white">{{ $employee->mobile ?: 'N/A' }}</span></div>
+                        <div class="truncate">Emergency: <span class="text-white">{{ $employee->emergency_contact ?: 'HR Desk' }}</span></div>
                         <div>Status: <span class="text-emerald-400 font-bold">{{ $employee->status }}</span></div>
                     </div>
                 </div>
