@@ -1,17 +1,18 @@
-# Production Dockerfile for IntraEats HR on Render / Cloud
+# Production Dockerfile for IntraEats HR on Render
 FROM php:8.4-apache
 
-# Set Apache document root to Laravel public directory
+# Configure Apache Document Root to Laravel public
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
+    && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf \
+    && sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 
-# Enable Apache mod_rewrite for Laravel clean routing
+# Enable Apache rewrite and headers modules
 RUN a2enmod rewrite headers
 
-# Install required system dependencies and PHP extensions
-RUN apt-get update && apt-get install -y \
+# Install system dependencies and PHP extensions
+RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     curl \
     unzip \
@@ -22,7 +23,7 @@ RUN apt-get update && apt-get install -y \
     libsqlite3-dev \
     sqlite3 \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd zip pdo pdo_mysql pdo_sqlite bcmath opcache \
+    && docker-php-ext-install -j$(nproc) gd zip pdo_mysql bcmath opcache \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
@@ -35,20 +36,26 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-interaction --optimize-autoloader --no-scripts
 
-# Copy all application source code (including pre-built public/build assets)
+# Copy application files (including pre-built public/build assets and database/seed_template.db)
 COPY . .
 
-# Set file permissions
-RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache \
+# Run composer dump-autoload to ensure full classmap
+RUN composer dump-autoload --optimize --no-dev
+
+# Set permissions
+RUN chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database \
     && chown -R www-data:www-data /var/www/html
 
-# Copy entrypoint script and make executable
+# Copy entrypoint script and ensure Unix line endings
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN tr -d '\r' < /usr/local/bin/docker-entrypoint.sh > /usr/local/bin/docker-entrypoint-clean.sh \
+    && mv /usr/local/bin/docker-entrypoint-clean.sh /usr/local/bin/docker-entrypoint.sh \
+    && chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Environment defaults for Render deployment
+# Environment defaults
 ENV APP_ENV=production
 ENV APP_DEBUG=false
+ENV APP_TIMEZONE=Asia/Kolkata
 ENV LOG_CHANNEL=stderr
 ENV DB_CONNECTION=sqlite
 ENV DB_DATABASE=/var/www/html/database/database.sqlite
@@ -57,4 +64,4 @@ ENV QUEUE_CONNECTION=database
 
 EXPOSE 80 10000
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
