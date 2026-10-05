@@ -14,8 +14,8 @@
                     <i data-lucide="utensils" class="w-5 h-5"></i>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-extrabold text-lg text-[#1C1C1E] leading-tight tracking-tight">IntraEats</span>
-                    <span class="text-[10px] font-bold text-[#FF6B1A] uppercase tracking-wider">Employee Workspace</span>
+                    <span class="font-extrabold text-lg text-[#1C1C1E] leading-tight tracking-tight">IntraEats X Talisha Software</span>
+                    <span class="text-[10px] font-bold text-[#FF6B1A] uppercase tracking-wider">Employee Attendance Portal</span>
                 </div>
             </div>
 

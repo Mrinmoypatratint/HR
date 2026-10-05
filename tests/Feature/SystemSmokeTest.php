@@ -19,7 +19,7 @@ class SystemSmokeTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-        $response->assertSee('IntraEats');
+        $response->assertSee('IntraEats X Talisha Software');
         $response->assertSee('Employee Attendance Portal');
     }
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'IntraEats — Employee Attendance Portal')
+@section('title', 'IntraEats X Talisha Software — Employee Attendance Portal')
 
 @section('content')
 <div class="min-h-screen flex flex-col justify-between bg-[#FAFAF8]" x-data="employeeAttendancePortal()">
@@ -12,7 +12,7 @@
                     <i data-lucide="utensils" class="w-5 h-5"></i>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-extrabold text-lg text-[#1C1C1E] leading-tight tracking-tight">IntraEats</span>
+                    <span class="font-extrabold text-lg text-[#1C1C1E] leading-tight tracking-tight">IntraEats X Talisha Software</span>
                     <span class="text-[11px] font-bold text-[#FF6B1A] uppercase tracking-wider">Employee Attendance Portal</span>
                 </div>
             </div>

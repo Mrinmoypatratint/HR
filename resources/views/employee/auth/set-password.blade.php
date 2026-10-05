@@ -11,8 +11,8 @@
                 <i data-lucide="shield-check" class="w-6 h-6"></i>
             </div>
             <div>
-                <span class="font-extrabold text-2xl text-[#1C1C1E] tracking-tight block leading-tight">IntraEats</span>
-                <span class="text-[11px] font-bold text-[#FF6B1A] uppercase tracking-wider block">Account Activation</span>
+                <span class="font-extrabold text-2xl text-[#1C1C1E] tracking-tight block leading-tight">IntraEats X Talisha Software</span>
+                <span class="text-[11px] font-bold text-[#FF6B1A] uppercase tracking-wider block">Employee Attendance Portal</span>
             </div>
         </div>
 
