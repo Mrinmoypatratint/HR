@@ -1,5 +1,5 @@
 # Production Dockerfile for IntraEats HR on Render / Cloud
-FROM php:8.2-apache
+FROM php:8.4-apache
 
 # Set Apache document root to Laravel public directory
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
