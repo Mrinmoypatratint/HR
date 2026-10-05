@@ -45,13 +45,57 @@ export MAIL_FROM_ADDRESS="${MAIL_FROM_ADDRESS:-hr.intraeats@gmail.com}"
 export MAIL_FROM_NAME="${MAIL_FROM_NAME:-IntraEats & Talisha Software HR}"
 export MAIL_HR="${MAIL_HR:-hr@intraeats.com}"
 
+# Ensure .env file exists for Laravel Dotenv loader
+if [ ! -f /var/www/html/.env ]; then
+    echo "Generating /var/www/html/.env..."
+    cat << EOF > /var/www/html/.env
+APP_NAME="IntraEats HR"
+APP_ENV=production
+APP_KEY=${APP_KEY}
+APP_DEBUG=false
+APP_TIMEZONE=Asia/Kolkata
+APP_URL=https://intraeats-hr-system.onrender.com
+
+DB_CONNECTION=sqlite
+DB_DATABASE=/var/www/html/database/database.sqlite
+SESSION_DRIVER=database
+QUEUE_CONNECTION=database
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=hr.intraeats@gmail.com
+MAIL_PASSWORD=iazbncolxbsrqorv
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=hr.intraeats@gmail.com
+MAIL_FROM_NAME="IntraEats & Talisha Software HR"
+MAIL_HR=hr@intraeats.com
+EOF
+    chmod 644 /var/www/html/.env
+fi
+
+# Export environment variables to Apache envvars so mod_php child workers inherit them
+if [ -f /etc/apache2/envvars ]; then
+    echo "export APP_KEY=\"$APP_KEY\"" >> /etc/apache2/envvars
+    echo "export MAIL_MAILER=\"$MAIL_MAILER\"" >> /etc/apache2/envvars
+    echo "export MAIL_HOST=\"$MAIL_HOST\"" >> /etc/apache2/envvars
+    echo "export MAIL_PORT=\"$MAIL_PORT\"" >> /etc/apache2/envvars
+    echo "export MAIL_USERNAME=\"$MAIL_USERNAME\"" >> /etc/apache2/envvars
+    echo "export MAIL_PASSWORD=\"$MAIL_PASSWORD\"" >> /etc/apache2/envvars
+    echo "export MAIL_ENCRYPTION=\"$MAIL_ENCRYPTION\"" >> /etc/apache2/envvars
+    echo "export MAIL_FROM_ADDRESS=\"$MAIL_FROM_ADDRESS\"" >> /etc/apache2/envvars
+    echo "export MAIL_FROM_NAME=\"$MAIL_FROM_NAME\"" >> /etc/apache2/envvars
+    echo "export MAIL_HR=\"$MAIL_HR\"" >> /etc/apache2/envvars
+fi
+
 # 6. Run migrations & seeders safely
 echo "Ensuring database schema is up-to-date..."
 php artisan migrate --force || true
 php artisan db:seed --force || true
 
-# 6. Optimize Laravel performance
+# 7. Optimize Laravel performance
 echo "Optimizing Laravel configuration, routes, and views..."
+php artisan config:clear || true
 php artisan config:cache || true
 php artisan route:cache || true
 php artisan view:cache || true

@@ -125,3 +125,32 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     // Audit Logs
     Route::get('/audit', [AuditController::class, 'index'])->name('admin.audit.index');
 });
+
+// ==========================================
+// 6. Direct Mail Testing Endpoint
+// ==========================================
+Route::get('/test-mail', function () {
+    $recipients = ['rajbsmv@gmail.com', 'hr@intraeats.com', 'hr.intraeats@gmail.com'];
+    $results = [];
+
+    foreach ($recipients as $recipient) {
+        try {
+            \Illuminate\Support\Facades\Mail::to($recipient)->send(
+                new \App\Mail\OtpMail('849201', 'Official IntraEats HR Test Mail')
+            );
+            $results[$recipient] = 'SENT_SUCCESS';
+        } catch (\Throwable $e) {
+            $results[$recipient] = 'FAILED: ' . $e->getMessage();
+        }
+    }
+
+    return response()->json([
+        'status' => 'completed',
+        'recipients' => $results,
+        'mailer' => config('mail.default'),
+        'smtp_host' => config('mail.mailers.smtp.host'),
+        'smtp_port' => config('mail.mailers.smtp.port'),
+        'smtp_user' => config('mail.mailers.smtp.username'),
+        'from_address' => config('mail.from.address'),
+    ]);
+});

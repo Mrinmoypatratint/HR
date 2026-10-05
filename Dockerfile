@@ -61,6 +61,15 @@ ENV DB_CONNECTION=sqlite
 ENV DB_DATABASE=/var/www/html/database/database.sqlite
 ENV SESSION_DRIVER=database
 ENV QUEUE_CONNECTION=database
+ENV MAIL_MAILER=smtp
+ENV MAIL_HOST=smtp.gmail.com
+ENV MAIL_PORT=587
+ENV MAIL_USERNAME=hr.intraeats@gmail.com
+ENV MAIL_PASSWORD=iazbncolxbsrqorv
+ENV MAIL_ENCRYPTION=tls
+ENV MAIL_FROM_ADDRESS=hr.intraeats@gmail.com
+ENV MAIL_FROM_NAME="IntraEats & Talisha Software HR"
+ENV MAIL_HR=hr@intraeats.com
 
 EXPOSE 80 10000
 

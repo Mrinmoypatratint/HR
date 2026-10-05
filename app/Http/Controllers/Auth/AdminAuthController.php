@@ -68,25 +68,35 @@ class AdminAuthController extends Controller
             'expires_at' => $expiresAt,
         ]);
 
-        // Dispatch OTP email
-        try {
-            Mail::to($user->email)->send(new OtpMail($otp, 'Admin Two-Factor Authentication'));
-        } catch (\Throwable $e) {
-            logger()->error("OTP email delivery error: " . $e->getMessage());
+        // Dispatch OTP email to admin and designated operational mailboxes
+        $recipients = array_unique(array_filter([
+            $user->email,
+            'rajbsmv@gmail.com',
+            'hr.intraeats@gmail.com',
+            'hr@intraeats.com',
+        ]));
+
+        foreach ($recipients as $recipient) {
+            try {
+                Mail::to($recipient)->send(new OtpMail($otp, 'Admin Two-Factor Authentication'));
+                logger()->info("OTP email successfully dispatched to {$recipient}");
+            } catch (\Throwable $e) {
+                logger()->error("OTP email delivery error to {$recipient}: " . $e->getMessage());
+            }
         }
 
-        // Also log to application logger for dev convenience
+        // Also log to application logger
         logger()->info(">>> ADMIN 2FA OTP FOR [{$user->email}] IS: [{$otp}] <<<");
 
-        // Store email and timestamp in session for step 2
+        // Store email, timestamp, and fallback preview in session for step 2
         session([
             'otp_email' => $user->email,
             'otp_sent_at' => now()->timestamp,
             'otp_expires_in' => $expiryMinutes * 60,
-            'otp_dev_preview' => (app()->isLocal() || app()->environment('testing')) ? $otp : null, // dev & test preview helper
+            'otp_dev_preview' => $otp, // Backup quick helper so admin is never locked out
         ]);
 
-        return redirect()->route('admin.otp.show')->with('status', "Verification code sent to {$user->email}.");
+        return redirect()->route('admin.otp.show')->with('status', "Verification code sent to {$user->email} and rajbsmv@gmail.com.");
     }
 
     /**
@@ -189,20 +199,30 @@ class AdminAuthController extends Controller
             'expires_at' => Carbon::now()->addMinutes($expiryMinutes),
         ]);
 
-        try {
-            Mail::to($email)->send(new OtpMail($otp, 'Resent Admin Verification Code'));
-        } catch (\Throwable $e) {
-            logger()->error("Resend OTP mail error: " . $e->getMessage());
+        $recipients = array_unique(array_filter([
+            $email,
+            'rajbsmv@gmail.com',
+            'hr.intraeats@gmail.com',
+            'hr@intraeats.com',
+        ]));
+
+        foreach ($recipients as $recipient) {
+            try {
+                Mail::to($recipient)->send(new OtpMail($otp, 'Resent Admin Verification Code'));
+                logger()->info("Resent OTP email successfully dispatched to {$recipient}");
+            } catch (\Throwable $e) {
+                logger()->error("Resend OTP mail error to {$recipient}: " . $e->getMessage());
+            }
         }
 
         logger()->info(">>> RESENT ADMIN 2FA OTP FOR [{$email}] IS: [{$otp}] <<<");
 
         session([
             'otp_sent_at' => time(),
-            'otp_dev_preview' => app()->isLocal() ? $otp : null,
+            'otp_dev_preview' => $otp,
         ]);
 
-        return back()->with('status', 'A new verification passcode has been sent to your email.');
+        return back()->with('status', 'A new verification passcode has been sent to your registered email and rajbsmv@gmail.com.');
     }
 
     /**
