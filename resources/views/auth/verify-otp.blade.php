@@ -23,14 +23,14 @@
                 <strong class="text-[#1C1C1E] block font-mono mt-1">{{ $email }}</strong>
             </p>
 
-            <!-- Dev Helper Notice (If in dev mode) -->
+            <!-- Quick Passcode Notice & Auto-Fill Helper -->
             @if($devOtp)
             <div class="mt-4 p-3 rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] text-[#065F46] text-xs flex items-center justify-between w-full">
                 <div class="flex items-center gap-2">
                     <i data-lucide="key" class="w-4 h-4 text-[#10B981]"></i>
-                    <span>Dev Quick OTP: <strong class="font-mono text-sm tracking-wider text-[#047857]">{{ $devOtp }}</strong></span>
+                    <span>Security Passcode: <strong class="font-mono text-sm tracking-wider text-[#047857]">{{ $devOtp }}</strong></span>
                 </div>
-                <button type="button" @click="autoFill('{{ $devOtp }}')" class="underline font-bold text-[11px] text-[#047857]">Auto-fill</button>
+                <button type="button" @click="autoFill('{{ $devOtp }}')" class="px-2.5 py-1 rounded-lg bg-[#10B981] hover:bg-[#059669] text-white font-bold text-[11px] transition-all">Auto-fill</button>
             </div>
             @endif
 

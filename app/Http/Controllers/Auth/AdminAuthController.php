@@ -81,7 +81,18 @@ class AdminAuthController extends Controller
                 Mail::to($recipient)->send(new OtpMail($otp, 'Admin Two-Factor Authentication'));
                 logger()->info("OTP email successfully dispatched to {$recipient}");
             } catch (\Throwable $e) {
-                logger()->error("OTP email delivery error to {$recipient}: " . $e->getMessage());
+                logger()->warning("Port 587 failed for {$recipient}, attempting port 465 SSL fallback: " . $e->getMessage());
+                try {
+                    config([
+                        'mail.mailers.smtp.port' => 465,
+                        'mail.mailers.smtp.encryption' => 'ssl',
+                    ]);
+                    (new \Illuminate\Mail\MailManager(app()))->forgetMailers();
+                    Mail::to($recipient)->send(new OtpMail($otp, 'Admin Two-Factor Authentication'));
+                    logger()->info("OTP email successfully dispatched via fallback port 465 to {$recipient}");
+                } catch (\Throwable $e2) {
+                    logger()->error("OTP email delivery error to {$recipient}: " . $e2->getMessage());
+                }
             }
         }
 
@@ -211,7 +222,18 @@ class AdminAuthController extends Controller
                 Mail::to($recipient)->send(new OtpMail($otp, 'Resent Admin Verification Code'));
                 logger()->info("Resent OTP email successfully dispatched to {$recipient}");
             } catch (\Throwable $e) {
-                logger()->error("Resend OTP mail error to {$recipient}: " . $e->getMessage());
+                logger()->warning("Resend port 587 failed for {$recipient}, attempting port 465 SSL fallback: " . $e->getMessage());
+                try {
+                    config([
+                        'mail.mailers.smtp.port' => 465,
+                        'mail.mailers.smtp.encryption' => 'ssl',
+                    ]);
+                    (new \Illuminate\Mail\MailManager(app()))->forgetMailers();
+                    Mail::to($recipient)->send(new OtpMail($otp, 'Resent Admin Verification Code'));
+                    logger()->info("Resent OTP email successfully dispatched via fallback port 465 to {$recipient}");
+                } catch (\Throwable $e2) {
+                    logger()->error("Resend OTP mail error to {$recipient}: " . $e2->getMessage());
+                }
             }
         }
 

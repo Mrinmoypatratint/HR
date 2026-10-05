@@ -130,8 +130,27 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 // 6. Direct Mail Testing Endpoint
 // ==========================================
 Route::get('/test-mail', function () {
-    $recipients = ['rajbsmv@gmail.com', 'hr@intraeats.com', 'hr.intraeats@gmail.com'];
+    $recipients = ['rajbsmv@gmail.com', 'hr@intraeats.com'];
     $results = [];
+
+    // Test socket reachability
+    $errno = 0; $errstr = '';
+    $sock587 = @fsockopen('smtp.gmail.com', 587, $errno, $errstr, 3);
+    $port587_open = is_resource($sock587);
+    if ($sock587) fclose($sock587);
+
+    $sock465 = @fsockopen('ssl://smtp.gmail.com', 465, $errno, $errstr, 3);
+    $port465_open = is_resource($sock465);
+    if ($sock465) fclose($sock465);
+
+    // If 465 is open and 587 is blocked, dynamically use 465 SSL
+    if ($port465_open && !$port587_open) {
+        config([
+            'mail.mailers.smtp.port' => 465,
+            'mail.mailers.smtp.encryption' => 'ssl',
+        ]);
+        (new \Illuminate\Mail\MailManager(app()))->forgetMailers();
+    }
 
     foreach ($recipients as $recipient) {
         try {
@@ -146,11 +165,12 @@ Route::get('/test-mail', function () {
 
     return response()->json([
         'status' => 'completed',
+        'connectivity' => [
+            'port_587_open' => $port587_open,
+            'port_465_open' => $port465_open,
+        ],
         'recipients' => $results,
-        'mailer' => config('mail.default'),
-        'smtp_host' => config('mail.mailers.smtp.host'),
-        'smtp_port' => config('mail.mailers.smtp.port'),
-        'smtp_user' => config('mail.mailers.smtp.username'),
-        'from_address' => config('mail.from.address'),
+        'effective_port' => config('mail.mailers.smtp.port'),
+        'effective_encryption' => config('mail.mailers.smtp.encryption'),
     ]);
 });
