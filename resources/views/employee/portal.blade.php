@@ -65,6 +65,20 @@
             <!-- Portal Interaction Form -->
             <div class="p-6 sm:p-8 space-y-6">
 
+                @if(session('info'))
+                    <div class="p-4 rounded-xl bg-blue-50 border border-blue-200 text-blue-800 flex items-center gap-3">
+                        <i data-lucide="info" class="w-5 h-5 text-blue-600 shrink-0"></i>
+                        <span class="text-xs font-semibold">{{ session('info') }}</span>
+                    </div>
+                @endif
+
+                @if(session('success'))
+                    <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 flex items-center gap-3">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 shrink-0"></i>
+                        <span class="text-xs font-semibold">{{ session('success') }}</span>
+                    </div>
+                @endif
+
                 <!-- Verification Error Alert -->
                 <template x-if="errorMessage">
                     <div class="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 flex items-start gap-3">

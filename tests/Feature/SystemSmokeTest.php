@@ -403,9 +403,14 @@ class SystemSmokeTest extends TestCase
         $dashRes->assertStatus(200);
         $dashRes->assertSee('Implementing new employee onboarding flow');
 
-        // 4. Employee Logout
+        // 4. Employee Logout redirects to Home Page
         $logoutRes = $this->actingAs($employee, 'employee')->post('/employee/logout');
-        $logoutRes->assertRedirect(route('employee.login'));
+        $logoutRes->assertRedirect(route('employee.portal'));
+        $this->assertGuest('employee');
+
+        // 5. GET /employee/logout also logs out gracefully and redirects to Home Page without 419 error
+        $getLogoutRes = $this->actingAs($employee, 'employee')->get('/employee/logout');
+        $getLogoutRes->assertRedirect(route('employee.portal'));
         $this->assertGuest('employee');
 
         // Cleanup created test employee

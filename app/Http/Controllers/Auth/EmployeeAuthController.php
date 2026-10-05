@@ -202,7 +202,7 @@ class EmployeeAuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('employee.login')
-            ->with('info', 'You have been safely signed out of the Employee Portal.');
+        return redirect()->route('employee.portal')
+            ->with('info', 'You have been safely signed out.');
     }
 }

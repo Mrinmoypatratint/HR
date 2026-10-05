@@ -43,7 +43,7 @@ Route::prefix('employee')->group(function () {
     Route::get('/forgot-password', [EmployeeAuthController::class, 'showForgotPassword'])->name('employee.password.forgot');
     Route::post('/forgot-password', [EmployeeAuthController::class, 'sendResetLink'])->name('employee.password.email');
 
-    Route::post('/logout', [EmployeeAuthController::class, 'logout'])->name('employee.logout');
+    Route::match(['get', 'post'], '/logout', [EmployeeAuthController::class, 'logout'])->name('employee.logout');
 });
 
 // ==========================================
@@ -70,7 +70,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/reset-password', [AdminAuthController::class, 'showResetPassword'])->name('admin.password.reset.show');
     Route::post('/reset-password', [AdminAuthController::class, 'resetPassword'])->name('admin.password.reset.submit');
 
-    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    Route::match(['get', 'post'], '/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });
 
 // ==========================================
