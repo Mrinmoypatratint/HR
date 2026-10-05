@@ -16,8 +16,13 @@ mkdir -p /var/www/html/database
 
 # 3. Check and initialize SQLite database if needed
 if [ ! -f /var/www/html/database/database.sqlite ]; then
-    echo "Creating SQLite database file..."
-    touch /var/www/html/database/database.sqlite
+    if [ -f /var/www/html/database/seed_template.db ]; then
+        echo "Copying pre-seeded SQLite database template..."
+        cp /var/www/html/database/seed_template.db /var/www/html/database/database.sqlite
+    else
+        echo "Creating fresh SQLite database file..."
+        touch /var/www/html/database/database.sqlite
+    fi
 fi
 
 chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database

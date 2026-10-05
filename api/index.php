@@ -24,9 +24,9 @@ foreach ($dirs as $dir) {
 // Prepare SQLite database in /tmp if running SQLite in serverless
 $dbPath = '/tmp/database.sqlite';
 if (!file_exists($dbPath)) {
-    $sourceDb = __DIR__ . '/../database/database.sqlite';
-    if (file_exists($sourceDb) && filesize($sourceDb) > 0) {
-        @copy($sourceDb, $dbPath);
+    $templateDb = __DIR__ . '/../database/seed_template.db';
+    if (file_exists($templateDb) && filesize($templateDb) > 0) {
+        @copy($templateDb, $dbPath);
     } else {
         @touch($dbPath);
     }
