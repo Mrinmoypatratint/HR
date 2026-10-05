@@ -40,6 +40,9 @@ class EmployeeSetPasswordMail extends Mailable
 
         return new Envelope(
             subject: $subject,
+            replyTo: [
+                new \Illuminate\Mail\Mailables\Address(env('MAIL_HR', 'hr@intraeats.com'), 'IntraEats & Talisha Software HR'),
+            ],
         );
     }
 

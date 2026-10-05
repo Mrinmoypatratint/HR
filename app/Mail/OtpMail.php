@@ -31,6 +31,9 @@ class OtpMail extends Mailable
     {
         return new Envelope(
             subject: "[IntraEats HR] Security Verification Code: {$this->otp}",
+            replyTo: [
+                new \Illuminate\Mail\Mailables\Address(env('MAIL_HR', 'hr@intraeats.com'), 'IntraEats & Talisha Software HR'),
+            ],
         );
     }
 

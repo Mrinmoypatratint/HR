@@ -30,6 +30,9 @@ class AttendanceReceiptMail extends Mailable
     {
         return new Envelope(
             subject: "[IntraEats HR] Attendance Punch Receipt - {$this->attendance->date->format('d M Y')}",
+            replyTo: [
+                new \Illuminate\Mail\Mailables\Address(env('MAIL_HR', 'hr@intraeats.com'), 'IntraEats & Talisha Software HR'),
+            ],
         );
     }
 

@@ -34,7 +34,18 @@ if [ -z "$APP_KEY" ] || [[ "$APP_KEY" != base64:* ]] || [ ${#APP_KEY} -lt 40 ]; 
     export APP_KEY="base64:vy3FjUlWgMnNrqcQI3tN0EtnCcdtaf7bpBn9F0sfG1M="
 fi
 
-# 5. Run migrations & seeders safely
+# 5. Configure Mail Credentials for Gmail SMTP
+export MAIL_MAILER="${MAIL_MAILER:-smtp}"
+export MAIL_HOST="${MAIL_HOST:-smtp.gmail.com}"
+export MAIL_PORT="${MAIL_PORT:-587}"
+export MAIL_USERNAME="${MAIL_USERNAME:-hr.intraeats@gmail.com}"
+export MAIL_PASSWORD="${MAIL_PASSWORD:-iazbncolxbsrqorv}"
+export MAIL_ENCRYPTION="${MAIL_ENCRYPTION:-tls}"
+export MAIL_FROM_ADDRESS="${MAIL_FROM_ADDRESS:-hr.intraeats@gmail.com}"
+export MAIL_FROM_NAME="${MAIL_FROM_NAME:-IntraEats & Talisha Software HR}"
+export MAIL_HR="${MAIL_HR:-hr@intraeats.com}"
+
+# 6. Run migrations & seeders safely
 echo "Ensuring database schema is up-to-date..."
 php artisan migrate --force || true
 php artisan db:seed --force || true
